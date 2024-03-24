@@ -1,15 +1,16 @@
 import UIKit
 import Combine
 
-extension Splash {
+extension Home {
     final class ViewController: UIViewController {
         
-        private let splashView: Splash.View
-        private let viewModel: Splash.ViewModel
+        private let homeView: Home.View
+        private let viewModel: Home.ViewModel
         
-        init(with viewModel: Splash.ViewModel) {
+        init(with viewModel: Home.ViewModel) {
             self.viewModel = viewModel
-            splashView = Splash.View()
+            homeView = Home.View()
+            
             super.init(nibName: nil, bundle: nil)
         }
         
@@ -18,16 +19,19 @@ extension Splash {
         }
         
         override func loadView() {
-            self.view = splashView
+            self.view = homeView
         }
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                let coordinator = Home.Coordinator(navigationController: self.navigationController)
-                coordinator.start()
-            }
+            configure()
+        }
+        
+        // MARK: - Private Method -
+        
+        private func configure() {
+           
         }
     }
 }
+
