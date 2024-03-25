@@ -7,17 +7,17 @@ extension BaseCoordinator {
         let tabBarController = UITabBarController()
         setupTabBarAppearance(with: tabBarController.tabBar)
         
-        let homeViewFactory = Home.ViewFactory(with: self)
-        let homeViewController = homeViewFactory.make()
+        let comicListViewFactory = Comic.List.ViewFactory(with: self)
+        let comicListViewController = comicListViewFactory.make()
             .embedded
             .withTabConfiguration(.comics)
         
-        let viewController = UIViewController()
+        let characterListViewFactory = Character.List.ViewFactory(with: self)
+        let CharacterListViewController = characterListViewFactory.make()
             .embedded
             .withTabConfiguration(.characters)
-        viewController.view.backgroundColor = .blue
         
-        tabBarController.setViewControllers([homeViewController, viewController], animated: true)
+        tabBarController.setViewControllers([comicListViewController, CharacterListViewController], animated: true)
         return tabBarController
     }
     

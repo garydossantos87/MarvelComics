@@ -1,9 +1,10 @@
 import UIKit
-public extension Home {
+
+extension Comic.List {
     struct ViewFactory {
         private let coordinator: BaseCoordinator
         
-        //MARK: - Init
+        // MARK: - Init
         
         init(with coordinator: BaseCoordinator) {
             self.coordinator = coordinator
@@ -11,11 +12,11 @@ public extension Home {
     }
 }
 
-//MARK: - Protocol metods
+// MARK: - Protocol metods
 
-extension Home.ViewFactory: ViewFactory {
+extension Comic.List.ViewFactory: ViewFactory {
     func make() -> UIViewController {
-        let viewModel = Home.ViewModel(coordinator: coordinator)
-        return Home.ViewController(with: viewModel)
+        let viewModel = Comic.List.ViewModel(coordinator: coordinator)
+        return Comic.List.ViewController(with: viewModel)
     }
 }

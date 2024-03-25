@@ -1,6 +1,6 @@
 import UIKit
 
-extension Home {
+extension Comic.List {
     final class View: UIView {
         
         init() {
@@ -15,7 +15,7 @@ extension Home {
         }
         
         private func setup() {
-            backgroundColor = .white
+            backgroundColor = .red
             setupConstraints()
         }
         

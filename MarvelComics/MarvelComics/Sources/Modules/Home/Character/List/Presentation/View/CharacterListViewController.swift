@@ -1,15 +1,14 @@
 import UIKit
-import Combine
 
-extension Home {
+extension Character.List {
     final class ViewController: UIViewController {
         
-        private let homeView: Home.View
-        private let viewModel: Home.ViewModel
+        private let characterListView: Character.List.View
+        private let viewModel: Character.List.ViewModel
         
-        init(with viewModel: Home.ViewModel) {
+        init(with viewModel: Character.List.ViewModel) {
             self.viewModel = viewModel
-            homeView = Home.View()
+            characterListView = Character.List.View()
             
             super.init(nibName: nil, bundle: nil)
         }
@@ -19,19 +18,11 @@ extension Home {
         }
         
         override func loadView() {
-            self.view = homeView
+            self.view = characterListView
         }
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            configure()
-        }
-        
-        // MARK: - Private Method -
-        
-        private func configure() {
-           
         }
     }
 }
-

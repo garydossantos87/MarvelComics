@@ -11,9 +11,20 @@
 		C10F73BA2BB17D1C00F6DD74 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73B92BB17D1C00F6DD74 /* BaseCoordinator.swift */; };
 		C10F73BD2BB17FAE00F6DD74 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73BC2BB17FAE00F6DD74 /* SplashCoordinator.swift */; };
 		C10F73BF2BB1815900F6DD74 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73BE2BB1815900F6DD74 /* ViewModelProtocol.swift */; };
-		C10F73C22BB181B400F6DD74 /* HomeViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73C12BB181B400F6DD74 /* HomeViewModelProtocol.swift */; };
 		C10F73C42BB1821500F6DD74 /* SplashViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73C32BB1821500F6DD74 /* SplashViewModelProtocol.swift */; };
 		C10F73C72BB188A300F6DD74 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73C62BB188A300F6DD74 /* HomeCoordinator.swift */; };
+		C10F73CF2BB1B5EA00F6DD74 /* ComicListEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73CE2BB1B5EA00F6DD74 /* ComicListEntities.swift */; };
+		C10F73D12BB1B61000F6DD74 /* ComicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73D02BB1B61000F6DD74 /* ComicListViewController.swift */; };
+		C10F73D32BB1B61B00F6DD74 /* ComicListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73D22BB1B61B00F6DD74 /* ComicListViewModel.swift */; };
+		C10F73D52BB1B62700F6DD74 /* ComicListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73D42BB1B62700F6DD74 /* ComicListView.swift */; };
+		C10F73D72BB1B67000F6DD74 /* ComicListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73D62BB1B67000F6DD74 /* ComicListViewModelProtocol.swift */; };
+		C10F73D92BB1B6D800F6DD74 /* ComicListViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73D82BB1B6D800F6DD74 /* ComicListViewFactory.swift */; };
+		C10F73E12BB1B81500F6DD74 /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73E02BB1B81500F6DD74 /* CharacterListViewModel.swift */; };
+		C10F73E32BB1B81D00F6DD74 /* CharacterListViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73E22BB1B81D00F6DD74 /* CharacterListViewModelProtocol.swift */; };
+		C10F73E52BB1B82A00F6DD74 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73E42BB1B82A00F6DD74 /* CharacterListView.swift */; };
+		C10F73E72BB1B83100F6DD74 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73E62BB1B83100F6DD74 /* CharacterListViewController.swift */; };
+		C10F73E92BB1B83B00F6DD74 /* CharacterListViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73E82BB1B83B00F6DD74 /* CharacterListViewFactory.swift */; };
+		C10F73EB2BB1B85000F6DD74 /* CharacterListEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73EA2BB1B85000F6DD74 /* CharacterListEntities.swift */; };
 		C12978B12BB05C4B00A72CDE /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12978A12BB05C4B00A72CDE /* ViewFactory.swift */; };
 		C12978B22BB05C4B00A72CDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12978A22BB05C4B00A72CDE /* AppDelegate.swift */; };
 		C12978B32BB05C4B00A72CDE /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12978A72BB05C4B00A72CDE /* SplashViewModel.swift */; };
@@ -25,15 +36,9 @@
 		C12978C22BB060F700A72CDE /* UIImageView+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12978C12BB060F700A72CDE /* UIImageView+Gif.swift */; };
 		C12978C42BB0721700A72CDE /* loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = C12978C32BB0721700A72CDE /* loader.gif */; };
 		C19F0F932BB099C10065FAE2 /* HomeEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19F0F922BB099C10065FAE2 /* HomeEntities.swift */; };
-		C19F0F972BB099EB0065FAE2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19F0F962BB099EB0065FAE2 /* HomeViewController.swift */; };
-		C19F0F992BB099F40065FAE2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19F0F982BB099F40065FAE2 /* HomeView.swift */; };
-		C19F0F9C2BB09A190065FAE2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19F0F9B2BB09A190065FAE2 /* HomeViewModel.swift */; };
-		C19F0F9E2BB09AB30065FAE2 /* HomeViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19F0F9D2BB09AB30065FAE2 /* HomeViewFactory.swift */; };
 		C19F0FA22BB09D5B0065FAE2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19F0FA12BB09D5B0065FAE2 /* UIViewController+Extensions.swift */; };
 		C19F0FA42BB0ACC10065FAE2 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19F0FA32BB0ACC10065FAE2 /* UIColor+Palette.swift */; };
-		C1FDCD342BB01500000A5635 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1FDCD322BB01500000A5635 /* Main.storyboard */; };
 		C1FDCD362BB01501000A5635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1FDCD352BB01501000A5635 /* Assets.xcassets */; };
-		C1FDCD392BB01501000A5635 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1FDCD372BB01501000A5635 /* LaunchScreen.storyboard */; };
 		C1FDCD442BB01501000A5635 /* MarvelComicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDCD432BB01501000A5635 /* MarvelComicsTests.swift */; };
 		C1FDCD4E2BB01501000A5635 /* MarvelComicsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDCD4D2BB01501000A5635 /* MarvelComicsUITests.swift */; };
 		C1FDCD502BB01501000A5635 /* MarvelComicsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDCD4F2BB01501000A5635 /* MarvelComicsUITestsLaunchTests.swift */; };
@@ -61,9 +66,20 @@
 		C10F73B92BB17D1C00F6DD74 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		C10F73BC2BB17FAE00F6DD74 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
 		C10F73BE2BB1815900F6DD74 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
-		C10F73C12BB181B400F6DD74 /* HomeViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelProtocol.swift; sourceTree = "<group>"; };
 		C10F73C32BB1821500F6DD74 /* SplashViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModelProtocol.swift; sourceTree = "<group>"; };
 		C10F73C62BB188A300F6DD74 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		C10F73CE2BB1B5EA00F6DD74 /* ComicListEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListEntities.swift; sourceTree = "<group>"; };
+		C10F73D02BB1B61000F6DD74 /* ComicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListViewController.swift; sourceTree = "<group>"; };
+		C10F73D22BB1B61B00F6DD74 /* ComicListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListViewModel.swift; sourceTree = "<group>"; };
+		C10F73D42BB1B62700F6DD74 /* ComicListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListView.swift; sourceTree = "<group>"; };
+		C10F73D62BB1B67000F6DD74 /* ComicListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListViewModelProtocol.swift; sourceTree = "<group>"; };
+		C10F73D82BB1B6D800F6DD74 /* ComicListViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListViewFactory.swift; sourceTree = "<group>"; };
+		C10F73E02BB1B81500F6DD74 /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
+		C10F73E22BB1B81D00F6DD74 /* CharacterListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModelProtocol.swift; sourceTree = "<group>"; };
+		C10F73E42BB1B82A00F6DD74 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
+		C10F73E62BB1B83100F6DD74 /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
+		C10F73E82BB1B83B00F6DD74 /* CharacterListViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewFactory.swift; sourceTree = "<group>"; };
+		C10F73EA2BB1B85000F6DD74 /* CharacterListEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListEntities.swift; sourceTree = "<group>"; };
 		C12978A12BB05C4B00A72CDE /* ViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		C12978A22BB05C4B00A72CDE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C12978A72BB05C4B00A72CDE /* SplashViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
@@ -75,16 +91,10 @@
 		C12978C12BB060F700A72CDE /* UIImageView+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Gif.swift"; sourceTree = "<group>"; };
 		C12978C32BB0721700A72CDE /* loader.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loader.gif; sourceTree = "<group>"; };
 		C19F0F922BB099C10065FAE2 /* HomeEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntities.swift; sourceTree = "<group>"; };
-		C19F0F962BB099EB0065FAE2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		C19F0F982BB099F40065FAE2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		C19F0F9B2BB09A190065FAE2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		C19F0F9D2BB09AB30065FAE2 /* HomeViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewFactory.swift; sourceTree = "<group>"; };
 		C19F0FA12BB09D5B0065FAE2 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		C19F0FA32BB0ACC10065FAE2 /* UIColor+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
 		C1FDCD292BB01500000A5635 /* MarvelComics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelComics.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1FDCD332BB01500000A5635 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C1FDCD352BB01501000A5635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C1FDCD382BB01501000A5635 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1FDCD3A2BB01501000A5635 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1FDCD3F2BB01501000A5635 /* MarvelComicsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelComicsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1FDCD432BB01501000A5635 /* MarvelComicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelComicsTests.swift; sourceTree = "<group>"; };
@@ -158,6 +168,112 @@
 				C10F73C62BB188A300F6DD74 /* HomeCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C10F73C82BB1B59500F6DD74 /* Comic */ = {
+			isa = PBXGroup;
+			children = (
+				C10F73CB2BB1B5BE00F6DD74 /* List */,
+			);
+			path = Comic;
+			sourceTree = "<group>";
+		};
+		C10F73C92BB1B5A100F6DD74 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C10F73CC2BB1B5CE00F6DD74 /* View */,
+				C10F73CA2BB1B5AB00F6DD74 /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C10F73CA2BB1B5AB00F6DD74 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C10F73D22BB1B61B00F6DD74 /* ComicListViewModel.swift */,
+				C10F73D62BB1B67000F6DD74 /* ComicListViewModelProtocol.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C10F73CB2BB1B5BE00F6DD74 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				C10F73CD2BB1B5DA00F6DD74 /* Entities */,
+				C10F73C92BB1B5A100F6DD74 /* Presentation */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		C10F73CC2BB1B5CE00F6DD74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C10F73D02BB1B61000F6DD74 /* ComicListViewController.swift */,
+				C10F73D42BB1B62700F6DD74 /* ComicListView.swift */,
+				C10F73D82BB1B6D800F6DD74 /* ComicListViewFactory.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C10F73CD2BB1B5DA00F6DD74 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C10F73CE2BB1B5EA00F6DD74 /* ComicListEntities.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		C10F73DA2BB1B7D300F6DD74 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				C10F73DB2BB1B7DC00F6DD74 /* List */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		C10F73DB2BB1B7DC00F6DD74 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				C10F73DD2BB1B7EA00F6DD74 /* Presentation */,
+				C10F73DC2BB1B7E500F6DD74 /* Entities */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		C10F73DC2BB1B7E500F6DD74 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C10F73EA2BB1B85000F6DD74 /* CharacterListEntities.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		C10F73DD2BB1B7EA00F6DD74 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C10F73DF2BB1B7F900F6DD74 /* ViewModel */,
+				C10F73DE2BB1B7F500F6DD74 /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C10F73DE2BB1B7F500F6DD74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C10F73E42BB1B82A00F6DD74 /* CharacterListView.swift */,
+				C10F73E62BB1B83100F6DD74 /* CharacterListViewController.swift */,
+				C10F73E82BB1B83B00F6DD74 /* CharacterListViewFactory.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C10F73DF2BB1B7F900F6DD74 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C10F73E02BB1B81500F6DD74 /* CharacterListViewModel.swift */,
+				C10F73E22BB1B81D00F6DD74 /* CharacterListViewModelProtocol.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C129789F2BB05C4B00A72CDE /* Sources */ = {
@@ -239,9 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				C12978C32BB0721700A72CDE /* loader.gif */,
-				C1FDCD322BB01500000A5635 /* Main.storyboard */,
 				C1FDCD352BB01501000A5635 /* Assets.xcassets */,
-				C1FDCD372BB01501000A5635 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -260,8 +374,9 @@
 		C19F0F902BB099AF0065FAE2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				C10F73DA2BB1B7D300F6DD74 /* Character */,
+				C10F73C82BB1B59500F6DD74 /* Comic */,
 				C10F73C52BB1889400F6DD74 /* Coordinator */,
-				C19F0F942BB099DC0065FAE2 /* Presentation */,
 				C19F0F912BB099B80065FAE2 /* Entities */,
 			);
 			path = Home;
@@ -273,34 +388,6 @@
 				C19F0F922BB099C10065FAE2 /* HomeEntities.swift */,
 			);
 			path = Entities;
-			sourceTree = "<group>";
-		};
-		C19F0F942BB099DC0065FAE2 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				C19F0F9A2BB09A0F0065FAE2 /* ViewModel */,
-				C19F0F952BB099E20065FAE2 /* View */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
-		C19F0F952BB099E20065FAE2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C19F0F962BB099EB0065FAE2 /* HomeViewController.swift */,
-				C19F0F982BB099F40065FAE2 /* HomeView.swift */,
-				C19F0F9D2BB09AB30065FAE2 /* HomeViewFactory.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C19F0F9A2BB09A0F0065FAE2 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C19F0F9B2BB09A190065FAE2 /* HomeViewModel.swift */,
-				C10F73C12BB181B400F6DD74 /* HomeViewModelProtocol.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C1FDCD202BB014FF000A5635 = {
@@ -454,10 +541,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1FDCD392BB01501000A5635 /* LaunchScreen.storyboard in Resources */,
 				C12978C42BB0721700A72CDE /* loader.gif in Resources */,
 				C1FDCD362BB01501000A5635 /* Assets.xcassets in Resources */,
-				C1FDCD342BB01500000A5635 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,28 +567,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C10F73D72BB1B67000F6DD74 /* ComicListViewModelProtocol.swift in Sources */,
 				C10F73C42BB1821500F6DD74 /* SplashViewModelProtocol.swift in Sources */,
+				C10F73EB2BB1B85000F6DD74 /* CharacterListEntities.swift in Sources */,
 				C12978B62BB05C4B00A72CDE /* SplashViewFactory.swift in Sources */,
-				C19F0F992BB099F40065FAE2 /* HomeView.swift in Sources */,
 				C12978B42BB05C4B00A72CDE /* SpashViewController.swift in Sources */,
+				C10F73E72BB1B83100F6DD74 /* CharacterListViewController.swift in Sources */,
 				C10F73BF2BB1815900F6DD74 /* ViewModelProtocol.swift in Sources */,
 				C10F73BA2BB17D1C00F6DD74 /* BaseCoordinator.swift in Sources */,
+				C10F73D92BB1B6D800F6DD74 /* ComicListViewFactory.swift in Sources */,
+				C10F73CF2BB1B5EA00F6DD74 /* ComicListEntities.swift in Sources */,
 				C10F73BD2BB17FAE00F6DD74 /* SplashCoordinator.swift in Sources */,
 				C19F0FA22BB09D5B0065FAE2 /* UIViewController+Extensions.swift in Sources */,
 				C12978B32BB05C4B00A72CDE /* SplashViewModel.swift in Sources */,
 				C12978B22BB05C4B00A72CDE /* AppDelegate.swift in Sources */,
 				C10F73B82BB17D0F00F6DD74 /* CoordinatorEntities.swift in Sources */,
+				C10F73E12BB1B81500F6DD74 /* CharacterListViewModel.swift in Sources */,
 				C19F0F932BB099C10065FAE2 /* HomeEntities.swift in Sources */,
+				C10F73D52BB1B62700F6DD74 /* ComicListView.swift in Sources */,
 				C12978B12BB05C4B00A72CDE /* ViewFactory.swift in Sources */,
 				C12978C22BB060F700A72CDE /* UIImageView+Gif.swift in Sources */,
+				C10F73D12BB1B61000F6DD74 /* ComicListViewController.swift in Sources */,
 				C12978B72BB05C4B00A72CDE /* SplashEntities.swift in Sources */,
+				C10F73E32BB1B81D00F6DD74 /* CharacterListViewModelProtocol.swift in Sources */,
+				C10F73E52BB1B82A00F6DD74 /* CharacterListView.swift in Sources */,
 				C12978C02BB060E400A72CDE /* UIImage+Gif.swift in Sources */,
-				C19F0F9E2BB09AB30065FAE2 /* HomeViewFactory.swift in Sources */,
-				C19F0F972BB099EB0065FAE2 /* HomeViewController.swift in Sources */,
 				C10F73C72BB188A300F6DD74 /* HomeCoordinator.swift in Sources */,
-				C19F0F9C2BB09A190065FAE2 /* HomeViewModel.swift in Sources */,
-				C10F73C22BB181B400F6DD74 /* HomeViewModelProtocol.swift in Sources */,
+				C10F73E92BB1B83B00F6DD74 /* CharacterListViewFactory.swift in Sources */,
 				C12978B52BB05C4B00A72CDE /* SplashView.swift in Sources */,
+				C10F73D32BB1B61B00F6DD74 /* ComicListViewModel.swift in Sources */,
 				C19F0FA42BB0ACC10065FAE2 /* UIColor+Palette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,25 +631,6 @@
 			targetProxy = C1FDCD4A2BB01501000A5635 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		C1FDCD322BB01500000A5635 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C1FDCD332BB01500000A5635 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C1FDCD372BB01501000A5635 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C1FDCD382BB01501000A5635 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C1FDCD512BB01501000A5635 /* Debug */ = {
@@ -691,7 +764,6 @@
 				INFOPLIST_FILE = MarvelComics/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -719,7 +791,6 @@
 				INFOPLIST_FILE = MarvelComics/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
