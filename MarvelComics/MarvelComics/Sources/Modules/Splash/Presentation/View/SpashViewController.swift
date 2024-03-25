@@ -24,10 +24,10 @@ extension Splash {
         override func viewDidLoad() {
             super.viewDidLoad()
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                let coordinator = Home.Coordinator(navigationController: self.navigationController)
-                coordinator.start()
-            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                let coordinator = Home.Coordinator(navigationController: self.navigationController)
+//                coordinator.start()
+//            }
         }
     }
 }

@@ -2,10 +2,12 @@ import UIKit
 
 public extension Splash {
     struct ViewFactory {
+        private let coordinator: BaseCoordinator
         
         // MARK: - Init -
         
-        init() {
+        init(with coordinator: BaseCoordinator) {
+            self.coordinator = coordinator
         }
     }
 }
@@ -14,7 +16,8 @@ public extension Splash {
 
 extension Splash.ViewFactory: ViewFactory {
     func make() -> UIViewController {
-        let viewModel = Splash.ViewModel()
+        let viewModel = Splash.ViewModel(coordinator: coordinator)
+        let viewController = Splash.ViewController(with: viewModel)
         return Splash.ViewController(with: viewModel)
     }
 }
