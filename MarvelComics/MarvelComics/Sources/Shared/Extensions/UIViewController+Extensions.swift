@@ -20,8 +20,10 @@ extension UIViewController {
         }
     }
     
-    var embedded: UINavigationController {
-        return UINavigationController(rootViewController: self)
+    func embedded(isNavigationBarHidden: Bool = true) -> UINavigationController {
+        let navController = UINavigationController(rootViewController: self)
+        navController.isNavigationBarHidden = isNavigationBarHidden
+        return navController
     }
     
     func withTabConfiguration(_ config: TabConfiguration) -> UIViewController {

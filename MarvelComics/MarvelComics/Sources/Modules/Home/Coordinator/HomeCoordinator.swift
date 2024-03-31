@@ -3,18 +3,18 @@ import UIKit
 extension BaseCoordinator {
     // MARK: - Private methods -
     
-    private func homeTabBarController() -> UITabBarController {
+    private func homeTabBarController(with apiClient: APIClientProtocol) -> UITabBarController {
         let tabBarController = UITabBarController()
         setupTabBarAppearance(with: tabBarController.tabBar)
         
-        let comicListViewFactory = Comic.List.ViewFactory(with: self)
+        let comicListViewFactory = Comic.List.ViewFactory(with: apiClient, coordinator: self)
         let comicListViewController = comicListViewFactory.make()
-            .embedded
+            .embedded()
             .withTabConfiguration(.comics)
         
-        let characterListViewFactory = Character.List.ViewFactory(with: self)
+        let characterListViewFactory = Character.List.ViewFactory(with: apiClient, coordinator: self)
         let CharacterListViewController = characterListViewFactory.make()
-            .embedded
+            .embedded()
             .withTabConfiguration(.characters)
         
         tabBarController.setViewControllers([comicListViewController, CharacterListViewController], animated: true)
@@ -39,8 +39,8 @@ extension BaseCoordinator {
     
     // MARK: - Public methods -
     
-    func makeHome() -> UIViewController {
-        homeTabBarController()
+    func makeHome(with apiClient: APIClientProtocol) -> UIViewController {
+        homeTabBarController(with: apiClient)
     }
     
     func openHome() {

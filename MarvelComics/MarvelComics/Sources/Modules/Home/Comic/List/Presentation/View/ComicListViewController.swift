@@ -23,6 +23,29 @@ extension Comic.List {
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            viewModel.viewDidLoad()
         }
     }
 }
+
+//// MARK: - UICollectionViewDataSource -
+//
+//extension Comic.List.ViewController: UICollectionViewDataSource {
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 5
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 3
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as? PhotoCell else {
+//            return UICollectionViewCell()
+//        }
+//        
+//        let photo = sections[indexPath.section].items[indexPath.item]
+//        cell.viewModel = PhotoCell.ViewModel(identifier: photo.identifier, imageURL: photo.thumbnailURL)
+//        
+//    }
+//}

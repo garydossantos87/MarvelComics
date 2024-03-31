@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Private methods -
     
     private func setupWindow() {
-        coordinator = .init()
+        coordinator = BaseCoordinator(apiClient: API.DefaultClient())
         window = UIWindow(frame: UIScreen.main.bounds)
     }
     

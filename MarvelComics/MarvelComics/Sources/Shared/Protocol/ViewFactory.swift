@@ -3,5 +3,5 @@ import UIKit
 protocol ViewFactory {
     func make() -> UIViewController
     
-    init(with coordinator: BaseCoordinator)
+    init(with apiClient: APIClientProtocol, coordinator: BaseCoordinator)
 }

@@ -2,11 +2,13 @@ import UIKit
 
 final class BaseCoordinator {
     private var navigationController: UINavigationController
+    private let apiClient: APIClientProtocol
     
     // MARK: - Init -
     
-    init() {
-        self.navigationController = .init()
+    init(apiClient: APIClientProtocol) {
+        navigationController = .init()
+        self.apiClient = apiClient
     }
     
     // MARK: - Public methods -
@@ -51,9 +53,9 @@ final class BaseCoordinator {
     private func currentFlowViewController(with flow: CoordinatorFlow) -> UIViewController? {
         switch flow {
         case .splash:
-            return makeSplash()
+            return makeSplash(with: apiClient)
         case .home:
-            return makeHome()
+            return makeHome(with: apiClient)
         default: break
         }
         return UIViewController()
