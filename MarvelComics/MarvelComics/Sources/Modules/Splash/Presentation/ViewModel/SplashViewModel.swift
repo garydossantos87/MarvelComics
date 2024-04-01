@@ -8,7 +8,7 @@ public extension Splash {
         init(coordinator: BaseCoordinator?) {
             self.coordinator = coordinator
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 coordinator?.openHome()
             }
         }

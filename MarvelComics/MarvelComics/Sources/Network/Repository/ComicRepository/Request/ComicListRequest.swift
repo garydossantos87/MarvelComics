@@ -7,7 +7,7 @@ extension Comic {
         var method: API.Method = .get
         var url: URL? { API.Endpoints.comics.url }
         var parameters: [String : String]? {
-            API.RequestHeaderFactory.shared
+            API.RequestParametersFactory.shared
                 .defaultHeaders
         }
     }

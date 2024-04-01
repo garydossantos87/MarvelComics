@@ -8,10 +8,11 @@ extension Comic.List {
             let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
             collectionView.backgroundColor = .white
             collectionView.translatesAutoresizingMaskIntoConstraints = false
-            collectionView.isScrollEnabled = true
-            collectionView.bounces = false
-            collectionView.autoresizingMask = .flexibleHeight
-            collectionView.showsVerticalScrollIndicator = false
+//            collectionView.isScrollEnabled = true
+//            collectionView.bounces = false
+//            collectionView.autoresizingMask = .flexibleHeight
+//            collectionView.showsVerticalScrollIndicator = false
+            collectionView.register(Comic.List.CollectionViewCell.self, forCellWithReuseIdentifier: CollectionCell.Constants.reuseIdentifier)
             return collectionView
         }()
         
@@ -23,7 +24,16 @@ extension Comic.List {
         @available(*, unavailable)
         required init?(coder: NSCoder) { preconditionFailure("Error") }
         
-        public func configure() {
+        func configure() {
+        }
+        
+        func reloadData() {
+            collectionView.reloadData()
+        }
+        
+        func setupDelegates(with dataSource: UICollectionViewDataSource, delegate: UICollectionViewDelegate) {
+            collectionView.dataSource = dataSource
+            collectionView.delegate = delegate
         }
         
         private func setup() {

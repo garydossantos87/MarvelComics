@@ -38,9 +38,7 @@ extension API {
             }
            
             guard let finalURL = urlComponents?.url else { return nil }
-//            var urlRequest = setupDefaultURLRequest(url: finalURL, method: request.method)
             var urlRequest = URLRequest(url: finalURL)
-//            urlRequest.setValue("08c6fd830eb3f291f94cbe4f79432f45", forHTTPHeaderField: "apikey")
             urlRequest.httpMethod = request.method.rawValue.uppercased()
 
             if request.method != .get,
@@ -50,21 +48,6 @@ extension API {
             }
             return urlRequest
         }
-        
-//        private func setupDefaultURLRequest(url: URL, method: API.Method) -> URLRequest {
-//            var urlRequest = URLRequest(url: url)
-//            urlRequest.httpMethod = method.rawValue.uppercased()
-//            guard let defaultHeaders = API.RequestHeaderFactory.shared.defaultHeaders else { return urlRequest }
-//            defaultHeaders.forEach {
-//                urlRequest.queryIte
-//                urlRequest.setValue($0.value, forHTTPHeaderField: $0.key)
-//            }
-//            print("*** Headers")
-//            urlRequest.allHTTPHeaderFields?.forEach {
-//                print("*** header \($0.key)")
-//            }
-//            return urlRequest
-//        }
     }
 }
 

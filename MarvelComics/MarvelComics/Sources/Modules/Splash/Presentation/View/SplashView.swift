@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 extension Splash {
     final class View: UIView {
@@ -16,9 +17,15 @@ extension Splash {
         }()
         
         private let loaderGif: UIImageView = {
-            let imageView = UIImageView.loadGif(with: Constants.gifName)
-            imageView?.translatesAutoresizingMaskIntoConstraints = false
-            return imageView ?? UIImageView()
+            let imageView = UIImageView()
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            guard let path = Bundle.main
+                .url(forResource: Constants.gifName, withExtension: Constants.gifExtension) else {
+                return UIImageView()
+            }
+            let resource = LocalFileImageDataProvider(fileURL: path)
+            imageView.kf.setImage(with: resource)
+            return imageView
         }()
         
         // MARK: - Public methods -

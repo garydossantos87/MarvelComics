@@ -1,14 +1,14 @@
 import Foundation
 
 extension API {
-    final class RequestHeaderFactory {
+    final class RequestParametersFactory {
         // MARK:  - Lifecycle -
         
         private init() {}
         
         // MARK: - Internal -
         
-        static let shared = RequestHeaderFactory()
+        static let shared = RequestParametersFactory()
         
         // MARK: - Private methods -
     
@@ -18,7 +18,7 @@ extension API {
         
         /// Default Headers for all calls
         var defaultHeaders: [String: String]? {
-            return RequestHeaderFactory.shared
+            return RequestParametersFactory.shared
                 .addAuthorizationHeader(type: .apikey)
                 .addTimeHeader(type: .timeStamp)
                 .addAuthorizationHeader(type: .hash)
@@ -26,13 +26,13 @@ extension API {
         }
         
         @discardableResult
-        func addAuthorizationHeader(type: Headers.Authorization) -> RequestHeaderFactory {
+        func addAuthorizationHeader(type: Headers.Authorization) -> RequestParametersFactory {
             self.headers.updateValue(type.name, forKey: type.rawValue)
             return self
         }
         
         @discardableResult
-        func addTimeHeader(type: Headers.Time) -> RequestHeaderFactory {
+        func addTimeHeader(type: Headers.Time) -> RequestParametersFactory {
             self.headers.updateValue(type.name, forKey: type.rawValue)
             return self
         }
