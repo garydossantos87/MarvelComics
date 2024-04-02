@@ -21,7 +21,6 @@ extension Comic.List.ViewModel {
     func viewDidLoad() {
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
-        // need tp inject repository
         repository.fetchComics()
             .sink(receiveCompletion: { [weak self] complete in
                 switch complete {

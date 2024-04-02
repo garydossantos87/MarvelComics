@@ -6,6 +6,8 @@ extension Comic.List {
         private let comicListView: Comic.List.View
         private let viewModel: Comic.List.ViewModel
         
+        // MARK: - Init - 
+        
         init(with viewModel: Comic.List.ViewModel) {
             self.viewModel = viewModel
             comicListView = Comic.List.View()
@@ -23,10 +25,12 @@ extension Comic.List {
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            showLoading()
             viewModel.viewDidLoad()
             viewModel.showData = { [weak self] in
                 DispatchQueue.main.async {
                     self?.comicListView.reloadData()
+                    self?.hideLoading()
                 }
             }
         }
