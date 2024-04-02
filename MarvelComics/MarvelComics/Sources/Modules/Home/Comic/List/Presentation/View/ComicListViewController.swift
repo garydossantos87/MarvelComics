@@ -53,7 +53,7 @@ extension Comic.List.ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Comic.List.CollectionCell.Constants.reuseIdentifier, for: indexPath) as? Comic.List.CollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Comic.List.CollectionViewCell.Constants.reuseIdentifier, for: indexPath) as? Comic.List.CollectionViewCell else { return UICollectionViewCell() }
         guard let comicModel = viewModel.comicModel(at: indexPath.item) else { return UICollectionViewCell() }
         cell.configure(with: comicModel)
         return cell
@@ -73,17 +73,11 @@ extension Comic.List.ViewController: UICollectionViewDelegate {
 
 extension Comic.List.ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let columns: CGFloat = 2
-            let collectionViewWidth = collectionView.bounds.width
-            let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-            let spaceBetweenCells = flowLayout.minimumInteritemSpacing * (columns - 1)
-            let adjustedWidth = collectionViewWidth - spaceBetweenCells
-            let width: CGFloat = adjustedWidth / columns
-            let height: CGFloat = 270
-
-//            if indexPath.item % 5 == 0 ||  indexPath.item % 8 == 0  {
-//                return CGSize(width: width, height: height + 35)
-//            }
-            return CGSize(width: width, height: height)
-        }
+        let numberOfColumns: CGFloat = 2
+        let paddingSpace = Comic.List.View.Constants.cellPadding * (numberOfColumns + 1)
+        let availableWidth = collectionView.frame.width - paddingSpace
+        let widthPerItem = availableWidth / numberOfColumns
+        let heightPerItem = widthPerItem * 1.5
+        return CGSize(width: widthPerItem, height: heightPerItem)
+    }
 }

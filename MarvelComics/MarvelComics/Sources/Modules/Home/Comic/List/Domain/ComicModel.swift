@@ -9,10 +9,10 @@ extension Comic.List {
         let date: Date?
         let price: String?
         var datePrice: String? {
-            if let date = date, let price = price {
-                return "\(date.formatted()) | \(price)"
-            } else if let date = date {
-                return date.formatted()
+            if let date = date?.toString(), let price = price {
+                return "\(date) | \(price)"
+            } else if let date = date?.toString() {
+                return date
             } else if let price = price {
                 return price
             } else {
@@ -45,7 +45,7 @@ private extension Comic.Result {
     
     var formattedPrice: String? {
         guard let price = prices.first?.price, price != 0 else { return nil }
-        return "$ \(price)"
+        return "\(price)$"
     }
     
     var thumbnailURL: URL? {

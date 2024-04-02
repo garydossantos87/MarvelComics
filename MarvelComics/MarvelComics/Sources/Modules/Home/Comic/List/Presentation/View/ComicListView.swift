@@ -2,17 +2,23 @@ import UIKit
 
 extension Comic.List {
     final class View: UIView {
-        
         private let collectionView: UICollectionView = {
             let layout = UICollectionViewFlowLayout()
+            layout.sectionInset = UIEdgeInsets(
+                top: .zero,
+                left: Constants.cellPadding,
+                bottom: .zero,
+                right: Constants.cellPadding
+            )
+            layout.minimumInteritemSpacing = Constants.cellPadding
+            layout.minimumLineSpacing = Constants.cellPadding
             let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
             collectionView.backgroundColor = .white
             collectionView.translatesAutoresizingMaskIntoConstraints = false
-//            collectionView.isScrollEnabled = true
-//            collectionView.bounces = false
-//            collectionView.autoresizingMask = .flexibleHeight
-//            collectionView.showsVerticalScrollIndicator = false
-            collectionView.register(Comic.List.CollectionViewCell.self, forCellWithReuseIdentifier: CollectionCell.Constants.reuseIdentifier)
+            collectionView.register(
+                Comic.List.CollectionViewCell.self,
+                forCellWithReuseIdentifier: Comic.List.CollectionViewCell.Constants.reuseIdentifier
+            )
             return collectionView
         }()
         
@@ -22,7 +28,7 @@ extension Comic.List {
         }
         
         @available(*, unavailable)
-        required init?(coder: NSCoder) { preconditionFailure("Error") }
+        required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
         
         func configure() {
         }

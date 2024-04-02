@@ -46,6 +46,6 @@ extension Comic.List.ViewModel {
     }
     
     func numberOfSections() -> Int {
-        return Comic.List.CollectionView.numbersOfSections
+        return Comic.List.View.Constants.numbersOfSections
     }
 }

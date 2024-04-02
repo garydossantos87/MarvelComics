@@ -10,7 +10,7 @@ extension Date {
         return dateFormatter.date(from: dateString)
     }
     
-    func formatted(with format: String = "yyyy-MM-dd") -> String? {
+    func toString(with format: String = "dd/MM/yyyy") -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)

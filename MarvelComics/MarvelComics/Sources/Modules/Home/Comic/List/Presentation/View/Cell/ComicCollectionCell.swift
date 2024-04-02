@@ -6,13 +6,15 @@ extension Comic.List {
         private let coverImageView: UIImageView = {
             let imageView = UIImageView()
             imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.setContentHuggingPriority(.defaultLow, for: .vertical)
+            imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
             return imageView
         }()
         
         private let titleLabel: UILabel = {
             let label = UILabel()
-            label.font = Comic.List.CollectionCell.Constants.titleFont
-            label.numberOfLines = 1
+            label.font = Constants.titleFont
+            label.numberOfLines = 2
             label.textColor = .white
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
@@ -20,8 +22,8 @@ extension Comic.List {
         
         private let descriptionLabel: UILabel = {
             let label = UILabel()
-            label.font = Comic.List.CollectionCell.Constants.descriptionFont
-            label.numberOfLines = 1
+            label.font = Constants.descriptionFont
+            label.numberOfLines = 2
             label.textColor = .white
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
@@ -29,7 +31,7 @@ extension Comic.List {
         
         private let datePriceLabel: UILabel = {
             let label = UILabel()
-            label.font = Comic.List.CollectionCell.Constants.priceFont
+            label.font = Constants.datePriceFont
             label.textColor = .white
             label.numberOfLines = 1
             label.translatesAutoresizingMaskIntoConstraints = false
@@ -39,13 +41,23 @@ extension Comic.List {
         private lazy var containerInfoStackView: UIStackView = {
             let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel, datePriceLabel])
             stackView.translatesAutoresizingMaskIntoConstraints = false
-            stackView.backgroundColor = Comic.List.CollectionCell.Constants.infoContainerColor
             stackView.axis = .vertical
+            stackView.setContentHuggingPriority(.defaultHigh, for: .vertical)
+            stackView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
             return stackView
         }()
         
+        private let containerInfoView: UIView = {
+            let view = UIView()
+            view.backgroundColor = .primaryColor
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.setContentHuggingPriority(.defaultHigh, for: .vertical)
+            view.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+            return view
+        }()
+        
         private lazy var containerStackView: UIStackView = {
-            let stackView = UIStackView(arrangedSubviews: [coverImageView, containerInfoStackView])
+            let stackView = UIStackView(arrangedSubviews: [coverImageView, containerInfoView])
             stackView.translatesAutoresizingMaskIntoConstraints = false
             stackView.axis = .vertical
             return stackView
@@ -62,17 +74,14 @@ extension Comic.List {
             fatalError("init(coder:) has not been implemented")
         }
         
+        
         // MARK: - Public methods -
         
         func configure(with model: Model) {
-            let width = UIScreen.main.bounds.width / 2
-            let resizingProcessor = ResizingImageProcessor(referenceSize: CGSize(width: 130.0, height: 250), mode: .aspectFit)
             coverImageView.kf.setImage(with: model.thumbnail,
-                                       placeholder: UIImage.imageNotAvailable,
-                                       options: [.processor(resizingProcessor)]
-            )
-            titleLabel.text = "model.title"
-            descriptionLabel.text = "model.description"
+                                       placeholder: UIImage.imageNotAvailable)
+            titleLabel.text = model.title
+            descriptionLabel.text = model.description
             datePriceLabel.text = model.datePrice
         }
     }
@@ -82,16 +91,22 @@ extension Comic.List {
 
 private extension Comic.List.CollectionViewCell {
     func setup() {
+        containerStackView.layer.cornerRadius = Constants.cornerRadius
+        containerStackView.layer.masksToBounds = true
+        containerInfoView.addSubview(containerInfoStackView)
         addSubview(containerStackView)
+        setupConstraint()
     }
     
     func setupConstraint() {
-        
         containerStackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        containerInfoStackView.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
+        containerInfoStackView.topAnchor.constraint(equalTo: containerInfoView.topAnchor, constant: Constants.padding).isActive = true
+        containerInfoStackView.leadingAnchor.constraint(equalTo: containerInfoView.leadingAnchor, constant: Constants.padding).isActive = true
+        containerInfoStackView.trailingAnchor.constraint(equalTo: containerInfoView.trailingAnchor, constant: -Constants.padding).isActive = true
+        containerInfoStackView.bottomAnchor.constraint(equalTo: containerInfoView.bottomAnchor, constant: -Constants.padding).isActive = true
     }
 }
