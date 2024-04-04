@@ -28,7 +28,7 @@ extension Character.List {
         private let titleLabel: UILabel = {
             let label = UILabel()
             label.font = Constants.titleFont
-            label.numberOfLines = 1
+            label.numberOfLines = 2
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
@@ -36,7 +36,7 @@ extension Character.List {
         private let descriptionLabel: UILabel = {
             let label = UILabel()
             label.font = Constants.descriptionFont
-            label.numberOfLines = 4
+            label.numberOfLines = 0
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
@@ -71,12 +71,13 @@ extension Character.List {
         
         // MARK: - Public methods -
         
-        func configure() {
+        func configure(with model: Model) {
             backgroundColor = .white
-            coverImageView.image = .imageNotAvailable
-            titleLabel.text = "model.title".uppercased()
-            descriptionLabel.text = "model.description"
-            dateLabel.text = "model.datePrice"
+            coverImageView.kf.setImage(with: model.thumbnail,
+                                       placeholder: UIImage.imageNotAvailable)
+            titleLabel.text = model.name.uppercased()
+            descriptionLabel.text = model.description
+            dateLabel.text = model.date?.toString()
         }
     }
 }

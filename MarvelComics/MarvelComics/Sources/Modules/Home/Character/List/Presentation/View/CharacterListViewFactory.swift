@@ -18,7 +18,8 @@ extension Character.List {
 
 extension Character.List.ViewFactory: ViewFactory {
     func make() -> UIViewController {
-        let viewModel = Character.List.ViewModel(coordinator: coordinator)
+        let repository = Character.Repository(client: apiClient)
+        let viewModel = Character.List.ViewModel(coordinator: coordinator, repository: repository)
         return Character.List.ViewController(with: viewModel)
     }
 }

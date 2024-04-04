@@ -2,7 +2,6 @@ import UIKit
 
 extension Character.List {
     final class ViewController: UIViewController {
-        
         private let characterListView: Character.List.View
         private let viewModel: Character.List.ViewModel
         
@@ -23,6 +22,25 @@ extension Character.List {
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            showLoading()
+            viewModel.viewDidLoad()
+            viewModel.showData = { [weak self] in
+                DispatchQueue.main.async {
+                    self?.characterListView.reloadData()
+                    self?.hideLoading()
+                }
+            }
+            viewModel.showError = { [weak self] error in
+                // TODO: Create emptyList for retry the call
+                DispatchQueue.main.async {
+                    self?.hideLoading()
+                    self?.showAlert(with: .defaultError(
+                        with: error,
+                        actionHandler: { [weak self] in
+                            self?.hideAlert()
+                        }))
+                }
+            }
         }
     }
 }
@@ -39,13 +57,15 @@ private extension Character.List.ViewController {
 
 extension Character.List.ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        viewModel.numberOfRowsInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let tableViewCell = tableView.dequeueReusableCell(withIdentifier: Character.List.ViewCell.Constants.reuseIdentifier) as? Character.List.ViewCell else { fatalError("Cell not initialized properly") }
-        
-        tableViewCell.configure()
+        guard let model = viewModel.characterModel(at: indexPath.row) else {
+            return UITableViewCell()
+        }
+        tableViewCell.configure(with: model)
         tableViewCell.selectionStyle = .none
         return tableViewCell
     }
@@ -54,5 +74,8 @@ extension Character.List.ViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate -
 
 extension Character.List.ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Selected")
+    }
 }
 

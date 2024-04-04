@@ -3,15 +3,17 @@ import Combine
 extension Comic.List {
     final class ViewModel: ComicListViewModelProtocol {        
         weak var coordinator: BaseCoordinator?
-        private let repository: Comic.Repository
+        private let repository: ComicRepositoryProtocol
         private var comics: [Comic.List.Model]?
         private var cancellables: [AnyCancellable] = []
         var showData: (() -> ())?
         var showError: ((String) -> ())?
         
-         init(coordinator: BaseCoordinator?, repository: Comic.Repository) {
+        // MARK: - Init -
+        
+        init(coordinator: BaseCoordinator?, repository: ComicRepositoryProtocol) {
             self.coordinator = coordinator
-             self.repository = repository
+            self.repository = repository
         }
     }
 }

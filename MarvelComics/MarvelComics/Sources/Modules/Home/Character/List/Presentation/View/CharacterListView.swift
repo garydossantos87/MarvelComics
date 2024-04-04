@@ -14,6 +14,7 @@ extension Character.List {
             return tableView
         }()
         
+        // MARK: - Init -
         
         init() {
             super.init(frame: .zero)
@@ -23,13 +24,18 @@ extension Character.List {
         @available(*, unavailable)
         required init?(coder: NSCoder) { preconditionFailure("Error") }
         
-        public func configure() {
-        }
+        // MARK: - Public methods -
         
+        func reloadData() {
+            tableView.reloadData()
+        }
+                
         func setupDelegates(with dataSource: UITableViewDataSource, delegate: UITableViewDelegate) {
             tableView.dataSource = dataSource
             tableView.delegate = delegate
         }
+        
+        // MARK: - Private methods -
         
         private func setup() {
             backgroundColor = .white

@@ -69,8 +69,8 @@ extension Comic.List.ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Comic.List.CollectionViewCell.Constants.reuseIdentifier, for: indexPath) as? Comic.List.CollectionViewCell else { return UICollectionViewCell() }
-        guard let comicModel = viewModel.comicModel(at: indexPath.item) else { return UICollectionViewCell() }
-        cell.configure(with: comicModel)
+        guard let model = viewModel.comicModel(at: indexPath.item) else { return UICollectionViewCell() }
+        cell.configure(with: model)
         return cell
     }
 }
