@@ -4,7 +4,7 @@ import Foundation
 // MARK: - APIRequestProtocols -
 
 protocol APIClientProtocol {
-    func request<T: APIRequest>(_ request: T) -> AnyPublisher<T.Response, Error>
+    func request<T: APIRequest>(_ request: T) -> AnyPublisher<T.Response, API.NetworkError>
 }
 
 // MARK: - APIRequest -
@@ -54,7 +54,7 @@ extension API {
 // MARK: - Protocol methods -
 
 extension API.DefaultClient {
-    func request<T: APIRequest>(_ request: T) -> AnyPublisher<T.Response, Error> {
+    func request<T: APIRequest>(_ request: T) -> AnyPublisher<T.Response, API.NetworkError> {
         guard let request = buildURLRequest(with: request) else {
             return Fail(error: API.NetworkError.invalidRequest)
                 .eraseToAnyPublisher()
@@ -64,13 +64,21 @@ extension API.DefaultClient {
                 in API.NetworkError.invalidRequest
             }
             .tryMap { element -> Data in
-                guard let response = element.response as? HTTPURLResponse,
-                      (200...299).contains(response.statusCode) else {
-                    throw API.NetworkError.invalidRequest
+                if let response = element.response as? HTTPURLResponse,
+                      !(200...299).contains(response.statusCode) {
+                    throw API.NetworkError.badServerResponse(statusCode: response.statusCode)
                 }
                 return element.data
             }
             .decode(type: T.Response.self, decoder: JSONDecoder())
+            .mapError { error in
+                switch error {
+                case is DecodingError: return .jsonDecodingError(error: error)
+                case is URLError: return .invalidResponse
+                case is API.NetworkError: return error as? API.NetworkError ?? .unknown(error: error)
+                default: return .unknown(error: error)
+                }
+            }
             .eraseToAnyPublisher()
     }
 }

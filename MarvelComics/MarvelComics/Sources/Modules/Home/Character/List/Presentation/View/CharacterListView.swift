@@ -9,7 +9,6 @@ extension Character.List {
             tableView.isScrollEnabled = true
             tableView.bounces = false
             tableView.autoresizingMask = .flexibleHeight
-            tableView.showsVerticalScrollIndicator = false
             tableView.register(Character.List.ViewCell.self, forCellReuseIdentifier: Character.List.ViewCell.Constants.reuseIdentifier)
             tableView.tableHeaderView = UIView()
             return tableView

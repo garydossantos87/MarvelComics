@@ -56,6 +56,10 @@
 		C19F0F932BB099C10065FAE2 /* HomeEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19F0F922BB099C10065FAE2 /* HomeEntities.swift */; };
 		C19F0FA22BB09D5B0065FAE2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19F0FA12BB09D5B0065FAE2 /* UIViewController+Extensions.swift */; };
 		C19F0FA42BB0ACC10065FAE2 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19F0FA32BB0ACC10065FAE2 /* UIColor+Palette.swift */; };
+		C1D1A1092BBEB3390016FD34 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D1A1082BBEB3390016FD34 /* AlertView.swift */; };
+		C1D1A10D2BBEC1310016FD34 /* AlertEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D1A10C2BBEC1310016FD34 /* AlertEntities.swift */; };
+		C1D1A10F2BBECCB10016FD34 /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D1A10E2BBECCB10016FD34 /* Color+Palette.swift */; };
+		C1D1A1112BBECEAD0016FD34 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D1A1102BBECEAD0016FD34 /* UIViewController+Alert.swift */; };
 		C1E7FC5B2BBC2F180092C75C /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7FC5A2BBC2F180092C75C /* UIViewController+Loading.swift */; };
 		C1E7FC5E2BBC30190092C75C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7FC5D2BBC30190092C75C /* LoadingView.swift */; };
 		C1FDCD362BB01501000A5635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1FDCD352BB01501000A5635 /* Assets.xcassets */; };
@@ -130,6 +134,10 @@
 		C19F0F922BB099C10065FAE2 /* HomeEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntities.swift; sourceTree = "<group>"; };
 		C19F0FA12BB09D5B0065FAE2 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		C19F0FA32BB0ACC10065FAE2 /* UIColor+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
+		C1D1A1082BBEB3390016FD34 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		C1D1A10C2BBEC1310016FD34 /* AlertEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEntities.swift; sourceTree = "<group>"; };
+		C1D1A10E2BBECCB10016FD34 /* Color+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Palette.swift"; sourceTree = "<group>"; };
+		C1D1A1102BBECEAD0016FD34 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		C1E7FC5A2BBC2F180092C75C /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
 		C1E7FC5D2BBC30190092C75C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C1FDCD292BB01500000A5635 /* MarvelComics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelComics.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -498,6 +506,8 @@
 				C19F0FA32BB0ACC10065FAE2 /* UIColor+Palette.swift */,
 				C10D202E2BBAF4CA00839FFE /* Date+Extensions.swift */,
 				C1E7FC5A2BBC2F180092C75C /* UIViewController+Loading.swift */,
+				C1D1A10E2BBECCB10016FD34 /* Color+Palette.swift */,
+				C1D1A1102BBECEAD0016FD34 /* UIViewController+Alert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -529,9 +539,27 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		C1D1A10A2BBEC11E0016FD34 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				C1D1A1082BBEB3390016FD34 /* AlertView.swift */,
+				C1D1A10B2BBEC1270016FD34 /* Entities */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		C1D1A10B2BBEC1270016FD34 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C1D1A10C2BBEC1310016FD34 /* AlertEntities.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		C1E7FC5C2BBC300E0092C75C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C1D1A10A2BBEC11E0016FD34 /* Alert */,
 				C1E7FC5D2BBC30190092C75C /* LoadingView.swift */,
 			);
 			path = View;
@@ -725,11 +753,13 @@
 				C105675F2BB9B71D00D00F59 /* ComicResult.swift in Sources */,
 				C10F73EB2BB1B85000F6DD74 /* CharacterListEntities.swift in Sources */,
 				C12978B62BB05C4B00A72CDE /* SplashViewFactory.swift in Sources */,
+				C1D1A1092BBEB3390016FD34 /* AlertView.swift in Sources */,
 				C1E7FC5E2BBC30190092C75C /* LoadingView.swift in Sources */,
 				C12978B42BB05C4B00A72CDE /* SpashViewController.swift in Sources */,
 				C10F73E72BB1B83100F6DD74 /* CharacterListViewController.swift in Sources */,
 				C10D202D2BBAF27D00839FFE /* ComicModel.swift in Sources */,
 				C10F73BF2BB1815900F6DD74 /* ViewModelProtocol.swift in Sources */,
+				C1D1A10F2BBECCB10016FD34 /* Color+Palette.swift in Sources */,
 				C10F73BA2BB17D1C00F6DD74 /* BaseCoordinator.swift in Sources */,
 				C10F73D92BB1B6D800F6DD74 /* ComicListViewFactory.swift in Sources */,
 				C10F73CF2BB1B5EA00F6DD74 /* ComicListEntities.swift in Sources */,
@@ -752,8 +782,10 @@
 				C10F73E32BB1B81D00F6DD74 /* CharacterListViewModelProtocol.swift in Sources */,
 				C10D20232BBAE9F700839FFE /* ComicCollectionCell.swift in Sources */,
 				C10F73E52BB1B82A00F6DD74 /* CharacterListView.swift in Sources */,
+				C1D1A1112BBECEAD0016FD34 /* UIViewController+Alert.swift in Sources */,
 				C10567592BB9B5E400D00F59 /* PriceResult.swift in Sources */,
 				C10567612BB9B85400D00F59 /* ComicListRequest.swift in Sources */,
+				C1D1A10D2BBEC1310016FD34 /* AlertEntities.swift in Sources */,
 				C10D202F2BBAF4CA00839FFE /* Date+Extensions.swift in Sources */,
 				C10F73C72BB188A300F6DD74 /* HomeCoordinator.swift in Sources */,
 				C105673E2BB99CC500D00F59 /* APIClient.swift in Sources */,

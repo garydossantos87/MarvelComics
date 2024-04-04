@@ -6,7 +6,8 @@ extension Comic.List {
         private let repository: Comic.Repository
         private var comics: [Comic.List.Model]?
         private var cancellables: [AnyCancellable] = []
-        var showData : (()->())?
+        var showData: (() -> ())?
+        var showError: ((String) -> ())?
         
          init(coordinator: BaseCoordinator?, repository: Comic.Repository) {
             self.coordinator = coordinator
@@ -26,7 +27,7 @@ extension Comic.List.ViewModel {
                 switch complete {
                 case .finished: break
                 case .failure(let error):
-                    print("** Error VM \(error.localizedDescription)")
+                    self?.showError?(error.name)
                 }
             }, receiveValue: { [weak self] comicsDTO in
                 self?.comics = comicsDTO.data.results.map { Comic.List.Model(with: $0) }

@@ -33,6 +33,17 @@ extension Comic.List {
                     self?.hideLoading()
                 }
             }
+            viewModel.showError = { [weak self] error in
+                // TODO: Create emptyList for retry the call
+                DispatchQueue.main.async {
+                    self?.hideLoading()
+                    self?.showAlert(with: .defaultError(
+                        with: error,
+                        actionHandler: { [weak self] in
+                            self?.hideAlert()
+                        }))
+                }
+            }
         }
     }
 }

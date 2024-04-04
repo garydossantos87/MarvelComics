@@ -15,7 +15,7 @@ extension Comic {
 // MARK: - Protocol methods -
 
 extension Comic.Repository: ComicRepositoryProtocol {
-    func fetchComics() -> AnyPublisher<Comic.ListResult, Error> {
+    func fetchComics() -> AnyPublisher<Comic.ListResult, API.NetworkError> {
         let request = Comic.ListRequest()
         return client.request(request)
     }

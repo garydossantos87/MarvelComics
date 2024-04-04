@@ -8,7 +8,7 @@ final class LoadingView: UIView {
         }
         static let gifName: String = "loading"
         static let gifExtension: String = "gif"
-        static let backgroundColor: UIColor = .white.withAlphaComponent(0.6)
+        static let backgroundColor: UIColor = .black.withAlphaComponent(0.2)
     }
     
     private let loaderGif: UIImageView = {

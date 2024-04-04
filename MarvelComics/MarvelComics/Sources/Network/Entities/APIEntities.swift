@@ -13,7 +13,18 @@ enum API {
         case invalidRequest
         case invalidResponse
         case jsonDecodingError(error: Error)
-        case unavailable(statusCode: Int)
+        case unknown(error: Error)
+        case badServerResponse(statusCode: Int)
+        
+        var name: String {
+            switch self {
+            case .unknown(let error): return "Unknown error \n\(error.localizedDescription)"
+            case .badServerResponse(let statusCode): return "Bad server error, statusCode: \(statusCode)"
+            case .invalidRequest: return "Invalid request"
+            case .invalidResponse: return "Invalid response"
+            case .jsonDecodingError(let error): return "Decoding Error \n\(error.localizedDescription)"
+            }
+        }
     }
     
     enum Headers {
