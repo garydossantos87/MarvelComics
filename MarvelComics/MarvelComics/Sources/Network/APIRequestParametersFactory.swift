@@ -32,6 +32,12 @@ extension API {
         }
         
         @discardableResult
+        func addOffsetHeader(type: Headers.Pagination, offset: Int) -> RequestParametersFactory {
+            self.headers.updateValue(String(offset), forKey: type.rawValue)
+            return self
+        }
+        
+        @discardableResult
         func addTimeHeader(type: Headers.Time) -> RequestParametersFactory {
             self.headers.updateValue(type.name, forKey: type.rawValue)
             return self

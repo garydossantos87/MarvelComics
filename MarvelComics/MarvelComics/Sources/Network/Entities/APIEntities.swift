@@ -44,5 +44,8 @@ enum API {
             
             var name: String { "1" } // necessary header for the call
         }
+        enum Pagination: String {
+            case offset
+        }
     }
 }

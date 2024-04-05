@@ -11,6 +11,7 @@ extension Character.List {
             tableView.autoresizingMask = .flexibleHeight
             tableView.register(Character.List.ViewCell.self, forCellReuseIdentifier: Character.List.ViewCell.Constants.reuseIdentifier)
             tableView.tableHeaderView = UIView()
+            tableView.showsVerticalScrollIndicator = false
             return tableView
         }()
         

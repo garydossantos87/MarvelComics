@@ -22,8 +22,7 @@ extension Character.List {
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            showLoading()
-            viewModel.viewDidLoad()
+            loadData()
             viewModel.showData = { [weak self] in
                 DispatchQueue.main.async {
                     self?.characterListView.reloadData()
@@ -48,6 +47,10 @@ extension Character.List {
 // MARK: - Private methods -
 
 private extension Character.List.ViewController {
+    func loadData() {
+        showLoading()
+        viewModel.loadData()
+    }
     func setupTableView() {
         characterListView.setupDelegates(with: self, delegate: self)
     }
@@ -69,6 +72,13 @@ extension Character.List.ViewController: UITableViewDataSource {
         tableViewCell.selectionStyle = .none
         return tableViewCell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastItem = viewModel.numberOfRowsInSection(section: 1) - 1
+        if indexPath.row >= lastItem {
+            loadData()
+        }
+    }
 }
 
 // MARK: - UITableViewDelegate -
@@ -78,4 +88,3 @@ extension Character.List.ViewController: UITableViewDelegate {
         print("Selected")
     }
 }
-

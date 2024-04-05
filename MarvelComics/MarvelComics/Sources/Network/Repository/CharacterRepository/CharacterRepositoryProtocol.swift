@@ -1,5 +1,5 @@
 import Combine
 
 protocol CharacterRepositoryProtocol {
-    func fetchCharacters() -> AnyPublisher<Character.ListResult, API.NetworkError>
+    func fetchCharacters(with offset: Int?) -> AnyPublisher<Character.ListResult, API.NetworkError>
 }

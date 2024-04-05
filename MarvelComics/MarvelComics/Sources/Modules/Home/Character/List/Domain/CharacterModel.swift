@@ -1,7 +1,7 @@
 import Foundation
 
 extension Character.List {
-    struct Model {
+    struct Model: Decodable {
         let name: String
         let description: String?
         let thumbnail: URL?

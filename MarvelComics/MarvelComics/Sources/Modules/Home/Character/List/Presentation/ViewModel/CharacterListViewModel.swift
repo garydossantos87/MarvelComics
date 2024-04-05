@@ -3,8 +3,9 @@ import Combine
 extension Character.List {
     final class ViewModel: CharacterListViewModelProtocol {
         private let repository: CharacterRepositoryProtocol
-        private var characters: [Character.List.Model]?
+        private var dataCharacters: Character.PaginationModel?
         private var cancellables: [AnyCancellable] = []
+        private var isFetchingData: Bool = false
         weak var coordinator: BaseCoordinator?
         var showData: (() -> ())?
         var showError: ((String) -> ())?
@@ -21,29 +22,34 @@ extension Character.List {
 // MARK: - Protocol methods -
 
 extension Character.List.ViewModel {
-    func viewDidLoad() {
+    func loadData() {
+        guard !isFetchingData else { return }
+        isFetchingData = true
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
-        repository.fetchCharacters()
+        repository.fetchCharacters(with: dataCharacters?.offset)
             .sink(receiveCompletion: { [weak self] complete in
                 switch complete {
                 case .finished: break
                 case .failure(let error):
+                    self?.isFetchingData = false
                     self?.showError?(error.name)
                 }
             }, receiveValue: { [weak self] charactersDTO in
-                self?.characters = charactersDTO.data.results.map { Character.List.Model(with: $0) }
-                self?.showData?()
+                guard let self else { return }
+                self.isFetchingData = false
+                self.dataCharacters = Character.PaginationModel(with: charactersDTO, oldCharacters: self.dataCharacters?.results)
+                self.showData?()
             }).store(in: &cancellables)
     }
     
     func numberOfRowsInSection(section: Int) -> Int {
-        guard let characters else { return 0 }
+        guard let characters = dataCharacters?.results else { return 0 }
         return characters.count
     }
     
     func characterModel(at index: Int) -> Character.List.Model? {
-        guard let characters, index < characters.count else { return nil }
+        guard let characters = dataCharacters?.results, index < characters.count else { return nil }
         return characters[index]
     }
 }

@@ -15,8 +15,8 @@ extension Character {
 // MARK: - Protocol methods -
 
 extension Character.Repository: CharacterRepositoryProtocol {
-    func fetchCharacters() -> AnyPublisher<Character.ListResult, API.NetworkError> {
-        let request = Character.ListRequest()
+    func fetchCharacters(with offset: Int?) -> AnyPublisher<Character.ListResult, API.NetworkError> {
+        let request = Character.ListRequest(offset: offset ?? 0)
         return client.request(request)
     }
 }
