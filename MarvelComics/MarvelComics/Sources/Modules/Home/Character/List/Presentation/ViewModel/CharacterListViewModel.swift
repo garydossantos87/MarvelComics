@@ -52,4 +52,8 @@ extension Character.List.ViewModel {
         guard let characters = dataCharacters?.results, index < characters.count else { return nil }
         return characters[index]
     }
+    
+    func onCharacterClicked(position: Int) {
+        coordinator?.openCharacterDetail()
+    }
 }

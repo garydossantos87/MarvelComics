@@ -27,7 +27,7 @@ extension Character.List {
         
         // MARK: - Public methods -
         
-        func reloadData() {
+        func reloadData() {  
             tableView.reloadData()
         }
                 

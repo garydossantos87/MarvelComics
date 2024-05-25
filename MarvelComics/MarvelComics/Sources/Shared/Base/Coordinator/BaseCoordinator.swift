@@ -50,14 +50,15 @@ final class BaseCoordinator {
     
     // MARK: - Private methods -
     
-    private func currentFlowViewController(with flow: CoordinatorFlow) -> UIViewController? {
+    func currentFlowViewController(with flow: CoordinatorFlow) -> UIViewController? {
         switch flow {
         case .splash:
             return makeSplash(with: apiClient)
         case .home:
             return makeHome(with: apiClient)
-        default: break
+        case .characterDetail:
+            return makeCharacterDetail(with: apiClient)
+        default: return UIViewController()
         }
-        return UIViewController()
     }
 }
