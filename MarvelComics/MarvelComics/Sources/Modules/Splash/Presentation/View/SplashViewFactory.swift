@@ -19,7 +19,6 @@ public extension Splash {
 extension Splash.ViewFactory: ViewFactory {
     func make() -> UIViewController {
         let viewModel = Splash.ViewModel(coordinator: coordinator)
-        let viewController = Splash.ViewController(with: viewModel)
         return Splash.ViewController(with: viewModel)
     }
 }

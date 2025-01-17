@@ -1,7 +1,7 @@
 import UIKit
 
 extension Character.List {
-    final class ViewCell: UITableViewCell {
+    public final class ViewCell: UITableViewCell {
         private let coverImageView: UIImageView = {
             let imageView = UIImageView()
             imageView.translatesAutoresizingMaskIntoConstraints = false

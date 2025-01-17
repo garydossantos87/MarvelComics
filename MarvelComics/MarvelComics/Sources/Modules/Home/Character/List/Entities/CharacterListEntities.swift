@@ -1,7 +1,7 @@
 import UIKit
 
-enum Character {
-    enum List {
+public enum Character {
+    public enum List {
         
     }
 }
