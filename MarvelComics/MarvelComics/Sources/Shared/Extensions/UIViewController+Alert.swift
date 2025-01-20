@@ -6,6 +6,7 @@ extension UIViewController {
         let alertView = Alert.MainView(model: model)
         let alertViewController = UIHostingController(rootView: alertView)
         alertViewController.modalPresentationStyle = .overFullScreen
+        alertViewController.view.backgroundColor = .white.withAlphaComponent(0.7)
         present(alertViewController, animated: true, completion: nil)
     }
     

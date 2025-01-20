@@ -3,7 +3,7 @@ import Foundation
 
 extension Comic.List {
     final class ViewModel: ComicListViewModelProtocol {
-        @Published var result: Result<Void, Error>?
+        @Published var state: ViewModelState?
         weak var coordinator: BaseCoordinator?
         private let repository: ComicRepositoryProtocol
         private var comics: [Comic.List.Model]?
@@ -23,17 +23,18 @@ extension Comic.List {
 extension Comic.List.ViewModel {
     func viewDidLoad() {
         cancellables.cancelAll()
+        state = .loading
         repository.fetchComics()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] complete in
                 switch complete {
                 case .finished: break
                 case .failure(let error):
-                    self?.result = .failure(error)
+                    self?.state = .failure(error)
                 }
             }, receiveValue: { [weak self] comicsDTO in
                 self?.comics = comicsDTO.data.results.map { Comic.List.Model(with: $0) }
-                self?.result = .success(())
+                self?.state = .success
             }).store(in: &cancellables)
     }
 
@@ -43,7 +44,7 @@ extension Comic.List.ViewModel {
     }
     
     func numberOfRowsInSection(section: Int) -> Int {
-        guard let comics else { return 0 }
+        guard let comics else { return .zero }
         return comics.count
     }
 

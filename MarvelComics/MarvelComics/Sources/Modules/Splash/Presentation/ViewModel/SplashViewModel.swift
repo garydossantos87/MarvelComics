@@ -3,6 +3,7 @@ import Foundation
 
 public extension Splash {
     final class ViewModel: SplashViewModelProtocol {
+        var state: ViewModelState?
         weak var coordinator: BaseCoordinator?
         
         init(coordinator: BaseCoordinator?) {

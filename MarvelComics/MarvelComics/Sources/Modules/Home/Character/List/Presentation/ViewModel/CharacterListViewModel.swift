@@ -7,6 +7,7 @@ extension Character.List {
         private var cancellables: [AnyCancellable] = []
         private var isFetchingData: Bool = false
         weak var coordinator: BaseCoordinator?
+        var state: ViewModelState?
         var showData: (() -> ())?
         var showError: ((String) -> ())?
         

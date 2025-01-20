@@ -23,5 +23,14 @@ enum Alert {
                   actionTitle: "OK",
                   actionHandler: actionHandler)
         }
+        
+        static func defaultUnderConstruction(
+            actionHandler: @escaping () -> Void
+        ) -> Model {
+            Model(title: "Information!!",
+                  subtitle: "🚧 This feature is under construction",
+                  actionTitle: "OK",
+                  actionHandler: actionHandler)
+        }
     }
 }

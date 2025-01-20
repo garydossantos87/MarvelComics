@@ -6,7 +6,7 @@ extension UIViewController {
         let loadingView = LoadingView(frame: window.frame)
         window.addSubview(loadingView)
     }
-    
+
     func hideLoading() {
         guard let window = UIApplication.shared.mainKeyWindow,
               let loadingView = window.subviews.first(where: { $0 is LoadingView }) else {

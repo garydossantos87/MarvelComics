@@ -27,7 +27,6 @@ extension Comic.List {
 
         override func viewDidLoad() {
             super.viewDidLoad()
-            showLoading()
             viewModel.viewDidLoad()
         }
     }
@@ -42,11 +41,12 @@ private extension Comic.List.ViewController {
 
     func bindViewModel() {
         cancellables.cancelAll()
-        viewModel.$result
+        viewModel.$state
             .sink { [weak self] result in
                 switch result {
                 case .success:
                     self?.comicListView.reloadData()
+                    self?.hideLoading()
                 case .failure(let error):
                     self?.showAlert(with: .defaultError(
                         with: error.localizedDescription,
@@ -54,9 +54,11 @@ private extension Comic.List.ViewController {
                             self?.hideAlert()
                         }
                     ))
+                    self?.hideLoading()
+                case .loading:
+                    self?.showLoading()
                 case .none: break
                 }
-                self?.hideLoading()
             }
             .store(in: &cancellables)
 
@@ -86,7 +88,10 @@ extension Comic.List.ViewController: UICollectionViewDataSource {
 
 extension Comic.List.ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected")
+        showAlert(with: .defaultUnderConstruction(
+            actionHandler: { [weak self] in
+                self?.hideAlert()
+            }))
     }
 }
 
