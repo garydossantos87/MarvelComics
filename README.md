@@ -1,4 +1,4 @@
-# **Marvel Comics App
+# ** Marvel Comics App **
 
 This repository serves as a demonstration of skills in iOS app development, showcasing modern architectural patterns, testing strategies, and external library integration. The app fetches and displays Marvel characters, their associated comics, and a comic list.
 
