@@ -5,15 +5,18 @@ extension Comic.List {
     final class ViewModel: ComicListViewModelProtocol {
         @Published var state: ViewModelState?
         weak var coordinator: BaseCoordinator?
-        private let repository: ComicRepositoryProtocol
+        private let useCases: UseCase.ComicUseCases
         private var comics: [Comic.List.Model]?
         private var cancellables: Set<AnyCancellable> = []
 
         // MARK: - Init -
 
-        init(coordinator: BaseCoordinator?, repository: ComicRepositoryProtocol) {
+        init(
+            coordinator: BaseCoordinator?,
+            useCases: UseCase.ComicUseCases
+        ) {
             self.coordinator = coordinator
-            self.repository = repository
+            self.useCases = useCases
         }
     }
 }
@@ -24,7 +27,7 @@ extension Comic.List.ViewModel {
     func viewDidLoad() {
         cancellables.cancelAll()
         state = .loading
-        repository.fetchComics()
+        useCases.fetchComics.execute()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] complete in
                 switch complete {
@@ -32,8 +35,8 @@ extension Comic.List.ViewModel {
                 case .failure(let error):
                     self?.state = .failure(error)
                 }
-            }, receiveValue: { [weak self] comicsDTO in
-                self?.comics = comicsDTO.data.results.map { Comic.List.Model(with: $0) }
+            }, receiveValue: { [weak self] comics in
+                self?.comics = comics
                 self?.state = .success
             }).store(in: &cancellables)
     }
