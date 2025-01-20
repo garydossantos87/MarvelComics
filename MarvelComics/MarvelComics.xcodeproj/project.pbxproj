@@ -671,7 +671,7 @@
 		C1A0FE9B2D3EDC50006277CE /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				C1A0FE9D2D3EDD0D006277CE /* ComicUseCases */,
+				C1A0FE9D2D3EDD0D006277CE /* Comic */,
 				C1A0FE9C2D3EDC65006277CE /* Entities */,
 				C1A0FE992D3ED63F006277CE /* UseCaseProtocol.swift */,
 			);
@@ -686,15 +686,13 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		C1A0FE9D2D3EDD0D006277CE /* ComicUseCases */ = {
+		C1A0FE9D2D3EDD0D006277CE /* Comic */ = {
 			isa = PBXGroup;
 			children = (
+				C1A0FEA92D3EECE8006277CE /* UseCases */,
 				C1A0FEA22D3EDDE7006277CE /* Entities */,
-				C1A0FE9E2D3EDD36006277CE /* FetchComicUseCase.swift */,
-				C1A0FEA52D3EE427006277CE /* FetchComicUseCaseProtocol.swift */,
-				C1A0FEA72D3EE511006277CE /* ComicUseCases.swift */,
 			);
-			path = ComicUseCases;
+			path = Comic;
 			sourceTree = "<group>";
 		};
 		C1A0FEA22D3EDDE7006277CE /* Entities */ = {
@@ -703,6 +701,16 @@
 				C1A0FEA32D3EDDEE006277CE /* ComicModel.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		C1A0FEA92D3EECE8006277CE /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				C1A0FE9E2D3EDD36006277CE /* FetchComicUseCase.swift */,
+				C1A0FEA52D3EE427006277CE /* FetchComicUseCaseProtocol.swift */,
+				C1A0FEA72D3EE511006277CE /* ComicUseCases.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		C1D1A10A2BBEC11E0016FD34 /* Alert */ = {
