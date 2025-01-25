@@ -19,8 +19,11 @@ extension Comic.List {
 extension Comic.List.ViewFactory: ViewFactory {
     func make() -> UIViewController {
         let repository = Comic.Repository(client: apiClient)
-        let useCases = UseCase.ComicUseCases(repository: repository)
-        let viewModel = Comic.List.ViewModel(coordinator: coordinator, useCases: useCases)
+        let useCases = UseCase.ComicUseCases(with: repository)
+        let viewModel = Comic.List.ViewModel(
+            coordinator: coordinator,
+            useCases: useCases
+        )
         return Comic.List.ViewController(with: viewModel)
     }
 }

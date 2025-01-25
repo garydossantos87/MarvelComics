@@ -30,14 +30,16 @@ extension Comic.List.ViewModel {
         useCases.fetchComics.execute()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] complete in
+                guard let self else { return }
                 switch complete {
                 case .finished: break
                 case .failure(let error):
-                    self?.state = .failure(error)
+                    self.state = .failure(error)
                 }
             }, receiveValue: { [weak self] comics in
-                self?.comics = comics
-                self?.state = .success
+                guard let self else { return }
+                self.comics = comics
+                self.state = .success
             }).store(in: &cancellables)
     }
 

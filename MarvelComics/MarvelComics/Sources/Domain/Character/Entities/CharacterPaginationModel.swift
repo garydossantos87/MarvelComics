@@ -11,15 +11,15 @@ extension Character {
             super.init(offset: dto.data.offset, limit: dto.data.limit, total: dto.data.total, count: dto.data.count)
         }
         
-        init(with dto: ListResult, oldCharacters: [List.Model]?) {
+        init(with paginationModel: PaginationModel, oldCharacters: [List.Model]?) {
             if let oldCharacters = oldCharacters {
-                results = oldCharacters + dto.data.results.map { List.Model(with: $0) }
+                results = oldCharacters + paginationModel.results
             } else {
-                results = dto.data.results.map { List.Model(with: $0) }
+                results = paginationModel.results
             }
-            super.init(offset: results.count, limit: dto.data.limit, total: dto.data.total, count: dto.data.count)
+            super.init(offset: results.count, limit: paginationModel.limit, total: paginationModel.total, count: paginationModel.count)
         }
-        
+
         required init(from decoder: Decoder) throws {
             fatalError("init(from:) has not been implemented")
         }

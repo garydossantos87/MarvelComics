@@ -13,7 +13,7 @@ extension UseCase {
 
         // MARK: - Init -
 
-        init(repository: ComicRepositoryProtocol) {
+        init(with repository: ComicRepositoryProtocol) {
             self.fetchComics = UseCase.FetchComicsUseCase(repository: repository)
         }
     }
