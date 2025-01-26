@@ -13,9 +13,10 @@ extension Character.Detail {
     }
 }
 
+// MARK: - Protocol methods -
 
 extension Character.Detail.ViewModel {
-    func goBack() {
+    func onBackButtonClicked() {
         coordinator?.openCharacterList()
     }
 }

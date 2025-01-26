@@ -1,5 +1,5 @@
 import Foundation
 
-protocol SplashViewModelProtocol: ViewModelProtocol {
-    
+protocol SplashViewModelProtocol: ViewModelProtocol where CoordinatorType == SplashCoordinator {
+
 }

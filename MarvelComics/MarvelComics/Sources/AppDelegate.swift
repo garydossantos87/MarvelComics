@@ -3,8 +3,8 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    private var coordinator: BaseCoordinator?
-    
+    private var coordinator: SplashCoordinator?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupWindow()
         start()
@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        coordinator = BaseCoordinator()
+        coordinator = SplashCoordinator()
     }
     
     private func start() {

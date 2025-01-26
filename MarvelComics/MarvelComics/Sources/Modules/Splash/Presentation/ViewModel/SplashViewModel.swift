@@ -4,14 +4,12 @@ import Foundation
 public extension Splash {
     final class ViewModel: SplashViewModelProtocol {
         var state: ViewModelState?
-        weak var coordinator: BaseCoordinator?
-
-        init(coordinator: BaseCoordinator?) {
+        var coordinator: SplashCoordinator?
+        
+        init(coordinator: SplashCoordinator?) {
             self.coordinator = coordinator
             
-            // TODO: Call comic sevice here and pass the data to Home screen
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                // TODO: // change this
                 coordinator?.openHome()
             }
         }

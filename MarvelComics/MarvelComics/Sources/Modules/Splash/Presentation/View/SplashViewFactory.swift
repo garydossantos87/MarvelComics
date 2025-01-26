@@ -2,11 +2,11 @@ import UIKit
 
 public extension Splash {
     struct ViewFactory {
-        private let coordinator: BaseCoordinator
+        private let coordinator: SplashCoordinator
 
         // MARK: - Init -
         
-        init(with coordinator: BaseCoordinator) {
+        init(with coordinator: SplashCoordinator) {
             self.coordinator = coordinator
         }
     }

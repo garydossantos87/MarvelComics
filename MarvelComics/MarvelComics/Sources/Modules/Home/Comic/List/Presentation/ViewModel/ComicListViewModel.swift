@@ -4,7 +4,7 @@ import Foundation
 extension Comic.List {
     final class ViewModel: ComicListViewModelProtocol {
         @Published var state: ViewModelState?
-        weak var coordinator: ComicListCoordinator?
+        var coordinator: ComicListCoordinator?
         private let useCases: UseCase.ComicUseCases
         private var comics: [Comic.List.Model]?
         private var cancellables: Set<AnyCancellable> = []

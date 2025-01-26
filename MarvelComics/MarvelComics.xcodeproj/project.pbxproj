@@ -71,10 +71,11 @@
 		C1A0FEA42D3EDDEE006277CE /* ComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A0FEA32D3EDDEE006277CE /* ComicModel.swift */; };
 		C1A0FEA62D3EE427006277CE /* FetchComicUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A0FEA52D3EE427006277CE /* FetchComicUseCaseProtocol.swift */; };
 		C1A0FEA82D3EE511006277CE /* ComicUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A0FEA72D3EE511006277CE /* ComicUseCases.swift */; };
-		C1A4F7822D4645AD00550B29 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F7812D4645AD00550B29 /* HomeCoordinator.swift */; };
 		C1A4F7842D46694400550B29 /* BaseHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F7832D46694400550B29 /* BaseHostingController.swift */; };
 		C1A4F7862D466A2700550B29 /* CharacterListCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F7852D466A2700550B29 /* CharacterListCoordinatorProtocol.swift */; };
 		C1A4F7882D466A7800550B29 /* ComicListCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F7872D466A7800550B29 /* ComicListCoordinatorProtocol.swift */; };
+		C1A4F78C2D466C1D00550B29 /* SplashCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F7892D466C1D00550B29 /* SplashCoordinatorProtocol.swift */; };
+		C1A4F78D2D466C1D00550B29 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F78A2D466C1D00550B29 /* SplashCoordinator.swift */; };
 		C1B8A9562D396C4D0028C858 /* InlineSnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = C1B8A9552D396C4D0028C858 /* InlineSnapshotTesting */; };
 		C1B8A9582D396C4D0028C858 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = C1B8A9572D396C4D0028C858 /* SnapshotTesting */; };
 		C1C46A002D451FE90073ABD3 /* FetchCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C469FE2D451FE90073ABD3 /* FetchCharactersUseCase.swift */; };
@@ -183,10 +184,11 @@
 		C1A0FEA32D3EDDEE006277CE /* ComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicModel.swift; sourceTree = "<group>"; };
 		C1A0FEA52D3EE427006277CE /* FetchComicUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchComicUseCaseProtocol.swift; sourceTree = "<group>"; };
 		C1A0FEA72D3EE511006277CE /* ComicUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicUseCases.swift; sourceTree = "<group>"; };
-		C1A4F7812D4645AD00550B29 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		C1A4F7832D46694400550B29 /* BaseHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHostingController.swift; sourceTree = "<group>"; };
 		C1A4F7852D466A2700550B29 /* CharacterListCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		C1A4F7872D466A7800550B29 /* ComicListCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		C1A4F7892D466C1D00550B29 /* SplashCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		C1A4F78A2D466C1D00550B29 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
 		C1C469FE2D451FE90073ABD3 /* FetchCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharactersUseCase.swift; sourceTree = "<group>"; };
 		C1C469FF2D451FE90073ABD3 /* FetchCharacterUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharacterUseCaseProtocol.swift; sourceTree = "<group>"; };
 		C1C46A022D4525D80073ABD3 /* CharacterUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUseCases.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 		C12978A52BB05C4B00A72CDE /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C1A4F78B2D466C1D00550B29 /* Coordinator */,
 				C12978A62BB05C4B00A72CDE /* ViewModel */,
 				C12978A82BB05C4B00A72CDE /* View */,
 			);
@@ -653,7 +656,6 @@
 		C19F0F902BB099AF0065FAE2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C1A4F7812D4645AD00550B29 /* HomeCoordinator.swift */,
 				C10C22BD2BC010000010D6AA /* Domain */,
 				C10F73DA2BB1B7D300F6DD74 /* Character */,
 				C10F73C82BB1B59500F6DD74 /* Comic */,
@@ -714,6 +716,15 @@
 				C1A0FEA72D3EE511006277CE /* ComicUseCases.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		C1A4F78B2D466C1D00550B29 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C1A4F7892D466C1D00550B29 /* SplashCoordinatorProtocol.swift */,
+				C1A4F78A2D466C1D00550B29 /* SplashCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		C1C469FB2D451F930073ABD3 /* Character */ = {
@@ -1067,7 +1078,6 @@
 				C1CC808E2D4579F30054FB81 /* BaseCoordinatorProtocol.swift in Sources */,
 				C1C46A012D451FE90073ABD3 /* FetchCharacterUseCaseProtocol.swift in Sources */,
 				C10567592BB9B5E400D00F59 /* PriceResult.swift in Sources */,
-				C1A4F7822D4645AD00550B29 /* HomeCoordinator.swift in Sources */,
 				C10567612BB9B85400D00F59 /* ComicListRequest.swift in Sources */,
 				C1D1A10D2BBEC1310016FD34 /* AlertEntities.swift in Sources */,
 				C10D202F2BBAF4CA00839FFE /* Date+Extensions.swift in Sources */,
@@ -1088,6 +1098,8 @@
 				C10567452BB9A2F100D00F59 /* APIRequestParametersFactory.swift in Sources */,
 				C1E7FC5B2BBC2F180092C75C /* UIViewController+Loading.swift in Sources */,
 				C18198D72BBD9708000FC790 /* CharacterCell.swift in Sources */,
+				C1A4F78C2D466C1D00550B29 /* SplashCoordinatorProtocol.swift in Sources */,
+				C1A4F78D2D466C1D00550B29 /* SplashCoordinator.swift in Sources */,
 				C13719CB2BC2EF98003E3206 /* CharacterDetailViewModel.swift in Sources */,
 				C105675B2BB9B65800D00F59 /* DateResult.swift in Sources */,
 				C10567572BB9B59B00D00F59 /* ThumbnailResult.swift in Sources */,
