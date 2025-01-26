@@ -6,42 +6,46 @@
 //
 
 import SwiftUI
-import Kingfisher
+import WebKit
 
 extension Loading.View {
-    struct GIFView: UIViewRepresentable {
-        let gifName: String
-        let gifExtension: String
-
-        func makeUIView(context: Context) -> UIImageView {
-            let imageView = UIImageView()
-            imageView.contentMode = .scaleAspectFit
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            return imageView
-        }
-
-        func updateUIView(_ uiView: UIImageView, context: Context) {
-            // Load the gif from the bundle
-            if let path = Bundle.main.url(forResource: gifName, withExtension: gifExtension) {
-                let resource = LocalFileImageDataProvider(fileURL: path)
-                uiView.kf.setImage(with: resource)
-            }
-            uiView.frame.size = CGSize(width: 10.0, height: 10.0)
-        }
-    }
-
-    struct ContentView: View {
+    struct SwiftUIView: View {
         var body: some View {
             ZStack {
-                // Full black background
-                Color.black
+                Color(Loading.Constants.backgroundColor)
                     .edgesIgnoringSafeArea(.all)
-
-                // Centered GIF view
-                GIFView(gifName: "loading", gifExtension: "gif")
-                    .frame(width: 100, height: 100)
-                    .scaledToFit() // Set the size of the GIF
+                
+                GifImageView()
+                    .background(Color.clear)
+                    .frame(
+                        width: Loading.Constants.Size.loaderSize,
+                        height: Loading.Constants.Size.loaderSize,
+                        alignment: .center
+                    )
+                    .scaledToFit()
             }
+        }
+    }
+    
+    private struct GifImageView: UIViewRepresentable {
+        func makeUIView(context: Context) -> WKWebView {
+            let webview = WKWebView()
+            guard let url = Bundle.main.url(
+                forResource: Loading.Constants.gifName,
+                withExtension: Loading.Constants.gifExtension
+            ), let data = try? Data(contentsOf: url) else {
+                return WKWebView()
+            }
+            webview.load(
+                data,
+                mimeType: Loading.Constants.mimeType,
+                characterEncodingName: Loading.Constants.encoding,
+                baseURL: url.deletingLastPathComponent()
+            )
+            return webview
+        }
+        func updateUIView(_ uiView: WKWebView, context: Context) {
+            uiView.reload()
         }
     }
 }

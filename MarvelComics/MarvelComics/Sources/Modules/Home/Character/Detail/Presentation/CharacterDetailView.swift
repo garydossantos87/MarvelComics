@@ -14,13 +14,11 @@ extension Character.Detail {
             GeometryReader {
                 let safeArea = $0.safeAreaInsets
                 let size = $0.size
-                ContentView2(viewModel: viewModel)
-//                TestView()
-//                ContentView(
-//                    safeArea: safeArea,
-//                    size: size,
-//                    viewModel: viewModel
-//                ).ignoresSafeArea(.container, edges: .top)
+                ContentView(
+                    safeArea: safeArea,
+                    size: size,
+                    viewModel: viewModel
+                ).ignoresSafeArea(.container, edges: .top)
             }
         }
     }
@@ -32,7 +30,8 @@ extension Character.Detail {
             ZStack {
                 switch viewModel.state {
                 case .loading:
-                    Loading.View.ContentView()
+                    Loading.View.SwiftUIView()
+                    //                        .frame(width: 10.0 , height: 10.0)
                         .transition(.opacity)
                         .zIndex(1)
                 case .success:
@@ -66,9 +65,8 @@ extension Character.Detail {
                 switch viewModel.state {
                 case .none: EmptyView()
                 case .loading:
-                    Loading.View.ContentView()
-                        .scaledToFit()
-                        .frame(width: 10.0 , height: 10.0)
+                    Loading.View.SwiftUIView()
+                        .transition(.opacity)
                         .zIndex(1)
                 case .failure(let error):
                     AlertSwiftUIView(model: .defaultError(
