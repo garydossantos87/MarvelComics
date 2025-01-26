@@ -4,22 +4,49 @@ import SwiftUI
 
 extension Character.Detail {
     struct MainView: View {
-        @ObservedObject private var viewModel: ViewModel
+        @StateObject private var viewModel: ViewModel
 
         init(viewModel: ViewModel) {
-            self.viewModel = viewModel
+            _viewModel = StateObject(wrappedValue: viewModel)
         }
 
         var body: some View {
             GeometryReader {
                 let safeArea = $0.safeAreaInsets
                 let size = $0.size
-                ContentView(
-                    safeArea: safeArea,
-                    size: size,
-                    viewModel: viewModel
-                ).ignoresSafeArea(.container, edges: .top)
+                ContentView2(viewModel: viewModel)
+//                TestView()
+//                ContentView(
+//                    safeArea: safeArea,
+//                    size: size,
+//                    viewModel: viewModel
+//                ).ignoresSafeArea(.container, edges: .top)
             }
+        }
+    }
+
+    struct ContentView2: View {
+        @ObservedObject var viewModel: ViewModel
+
+        var body: some View {
+            ZStack {
+                switch viewModel.state {
+                case .loading:
+                    Loading.View.ContentView()
+                        .transition(.opacity)
+                        .zIndex(1)
+                case .success:
+                    Text("Success!").font(.largeTitle).foregroundColor(.green)
+                case .failure:
+                    Text("Something went wrong.").font(.largeTitle).foregroundColor(.red)
+                case .none:
+                    EmptyView()
+                }
+            }
+            .onAppear {
+                viewModel.onAppear()
+            }
+            .animation(.easeInOut, value: viewModel.state)
         }
     }
 
@@ -31,26 +58,46 @@ extension Character.Detail {
         public init(safeArea: EdgeInsets, size: CGSize, viewModel: ViewModel) {
             self.safeArea = safeArea
             self.size = size
-            self.viewModel = viewModel
+            _viewModel = ObservedObject(wrappedValue: viewModel)
         }
 
         var body: some View {
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack{
-                        // MARK: - Artwork
-                        HeaderView()
+            ZStack {
+                switch viewModel.state {
+                case .none: EmptyView()
+                case .loading:
+                    Loading.View.ContentView()
+                        .scaledToFit()
+                        .frame(width: 10.0 , height: 10.0)
+                        .zIndex(1)
+                case .failure(let error):
+                    AlertSwiftUIView(model: .defaultError(
+                        with: error.localizedDescription,
+                        actionHandler: {
+                            viewModel.onBackButtonClicked()
+                        }))
+                case .success:
+                    ScrollView(.vertical, showsIndicators: false) {
                         VStack{
-                            Text("Popular")
-                                .fontWeight(.heavy)
-                            AlbumView()
+                            // MARK: - Artwork
+                            HeaderView()
+                            VStack{
+                                Text("Popular")
+                                    .fontWeight(.heavy)
+                                AlbumView()
+                            }
+                        }
+                        .overlay(alignment: .top) {
+                            HeaderView2(with: viewModel)
                         }
                     }
-                    .overlay(alignment: .top) {
-                        HeaderView2(with: viewModel)
-                    }
+                    .coordinateSpace(name: "SCROLL")
                 }
-                .coordinateSpace(name: "SCROLL")
+            }.onAppear {
+                viewModel.onAppear()
             }
+            .animation(.easeInOut, value: viewModel.state)
+        }
     }
 }
 
@@ -165,7 +212,7 @@ extension Character.Detail.ContentView {
 
             HStack(spacing: 15) {
                 Button {
-                    viewModel.goBack()
+                    viewModel.onBackButtonClicked()
                 } label: {
                     Image(systemName: "chevron.left")
                         .font(.title3)

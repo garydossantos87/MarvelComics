@@ -76,6 +76,9 @@
 		C1A4F7882D466A7800550B29 /* ComicListCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F7872D466A7800550B29 /* ComicListCoordinatorProtocol.swift */; };
 		C1A4F78C2D466C1D00550B29 /* SplashCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F7892D466C1D00550B29 /* SplashCoordinatorProtocol.swift */; };
 		C1A4F78D2D466C1D00550B29 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F78A2D466C1D00550B29 /* SplashCoordinator.swift */; };
+		C1A4F7902D46703700550B29 /* LoadingSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F78F2D46703700550B29 /* LoadingSwiftUIView.swift */; };
+		C1A4F7922D46712100550B29 /* AlertSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F7912D46712100550B29 /* AlertSwiftUIView.swift */; };
+		C1A4F7942D4687EA00550B29 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F7932D4687EA00550B29 /* Constants.swift */; };
 		C1B8A9562D396C4D0028C858 /* InlineSnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = C1B8A9552D396C4D0028C858 /* InlineSnapshotTesting */; };
 		C1B8A9582D396C4D0028C858 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = C1B8A9572D396C4D0028C858 /* SnapshotTesting */; };
 		C1C46A002D451FE90073ABD3 /* FetchCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C469FE2D451FE90073ABD3 /* FetchCharactersUseCase.swift */; };
@@ -189,6 +192,9 @@
 		C1A4F7872D466A7800550B29 /* ComicListCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		C1A4F7892D466C1D00550B29 /* SplashCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		C1A4F78A2D466C1D00550B29 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
+		C1A4F78F2D46703700550B29 /* LoadingSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSwiftUIView.swift; sourceTree = "<group>"; };
+		C1A4F7912D46712100550B29 /* AlertSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSwiftUIView.swift; sourceTree = "<group>"; };
+		C1A4F7932D4687EA00550B29 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C1C469FE2D451FE90073ABD3 /* FetchCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharactersUseCase.swift; sourceTree = "<group>"; };
 		C1C469FF2D451FE90073ABD3 /* FetchCharacterUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharacterUseCaseProtocol.swift; sourceTree = "<group>"; };
 		C1C46A022D4525D80073ABD3 /* CharacterUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterUseCases.swift; sourceTree = "<group>"; };
@@ -486,6 +492,7 @@
 		C12978A02BB05C4B00A72CDE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C1A4F78E2D46702D00550B29 /* SwiftUIView */,
 				C1D98C6F2D3E64FA003B4455 /* Entities */,
 				C156D66F2D3A4C5B0094FF06 /* Helpers */,
 				C1E7FC5C2BBC300E0092C75C /* View */,
@@ -727,6 +734,15 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		C1A4F78E2D46702D00550B29 /* SwiftUIView */ = {
+			isa = PBXGroup;
+			children = (
+				C1A4F7912D46712100550B29 /* AlertSwiftUIView.swift */,
+				C1A4F78F2D46703700550B29 /* LoadingSwiftUIView.swift */,
+			);
+			path = SwiftUIView;
+			sourceTree = "<group>";
+		};
 		C1C469FB2D451F930073ABD3 /* Character */ = {
 			isa = PBXGroup;
 			children = (
@@ -821,6 +837,7 @@
 		C1D98C6F2D3E64FA003B4455 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				C1A4F7932D4687EA00550B29 /* Constants.swift */,
 				C1D98C702D3E6508003B4455 /* ViewModelState.swift */,
 			);
 			path = Entities;
@@ -1036,11 +1053,14 @@
 				C10F73BF2BB1815900F6DD74 /* ViewModelProtocol.swift in Sources */,
 				C1D1A10F2BBECCB10016FD34 /* Color+Palette.swift in Sources */,
 				C10F73BA2BB17D1C00F6DD74 /* BaseCoordinator.swift in Sources */,
+				C1A4F7922D46712100550B29 /* AlertSwiftUIView.swift in Sources */,
 				C10F73D92BB1B6D800F6DD74 /* ComicListViewFactory.swift in Sources */,
 				C10F73CF2BB1B5EA00F6DD74 /* ComicListEntities.swift in Sources */,
 				C1CC80932D4596C60054FB81 /* ComicListCoordinator.swift in Sources */,
+				C1A4F7902D46703700550B29 /* LoadingSwiftUIView.swift in Sources */,
 				C1A0FEA82D3EE511006277CE /* ComicUseCases.swift in Sources */,
 				C1A0FEA12D3EDD64006277CE /* UseCase.swift in Sources */,
+				C1A4F7942D4687EA00550B29 /* Constants.swift in Sources */,
 				C13719CE2BC2F0A5003E3206 /* CharacterDetailCoordinator.swift in Sources */,
 				C1A0FE9A2D3ED63F006277CE /* UseCaseProtocol.swift in Sources */,
 				C1A0FEA62D3EE427006277CE /* FetchComicUseCaseProtocol.swift in Sources */,
