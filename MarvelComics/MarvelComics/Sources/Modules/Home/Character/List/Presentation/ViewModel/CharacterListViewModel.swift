@@ -9,12 +9,12 @@ extension Character.List {
         private var charactersPagination: Character.PaginationModel?
         private var cancellables: Set<AnyCancellable> = []
         private var isFetchingData: Bool = false
-        var coordinator: BaseCoordinator?
+        var coordinator: CharacterListCoordinator?
 
         // MARK: - Init -
 
         init(
-            coordinator: BaseCoordinator?,
+            coordinator: CharacterListCoordinator?,
             useCases: UseCase.CharacterUseCases
         ) {
             self.coordinator = coordinator

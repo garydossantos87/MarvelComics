@@ -1,12 +1,12 @@
 import UIKit
 
-final class BaseCoordinator {
-    private var navigationController: UINavigationController
-    
+class BaseCoordinator: BaseCoordinatorProtocol {
+    var navigationController: UINavigationController?
+
     // MARK: - Init -
     
-    init() {
-        navigationController = .init()
+    init(with navigationController: UINavigationController? = .init()) {
+        self.navigationController = navigationController ?? .init()
     }
     
     // MARK: - Public methods -
@@ -14,14 +14,15 @@ final class BaseCoordinator {
     // MARK: - Handle All Navigation Styles -
     
     public func handleNavigation(with navigation: CoordinatorNavigation) {
+        guard let navigationController else { return }
         switch navigation {
         case .push(let viewController):
-            self.navigationController.pushViewController(viewController, animated: true)
+            navigationController.pushViewController(viewController, animated: true)
         case .pop:
-            self.navigationController.popViewController(animated: true)
+            navigationController.popViewController(animated: true)
         case .dissmiss:
             guard let presentedViewController = navigationController.presentedViewController else {
-                self.navigationController.topViewController?.dismiss(animated: true)
+                navigationController.topViewController?.dismiss(animated: true)
                 return
             }
             presentedViewController.dismiss(animated: true, completion: nil)
@@ -40,9 +41,9 @@ final class BaseCoordinator {
     }
     
     public func setApplicationFlow(with viewController: UIViewController) -> UINavigationController? {
-        navigationController.viewControllers.removeAll()
+        navigationController?.viewControllers.removeAll()
         navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
         return navigationController
     }
 }

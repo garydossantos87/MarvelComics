@@ -19,7 +19,13 @@ extension UIViewController {
             }
         }
     }
-    
+
+    func hideTabBar() -> UINavigationController? {
+        guard let navigationController = navigationController else { return nil }
+        navigationController.tabBarController?.tabBar.isHidden = true
+        return navigationController
+    }
+
     func embedded(isNavigationBarHidden: Bool = true) -> UINavigationController {
         let navController = UINavigationController(rootViewController: self)
         navController.isNavigationBarHidden = isNavigationBarHidden
@@ -32,3 +38,4 @@ extension UIViewController {
         return self
     }
 }
+

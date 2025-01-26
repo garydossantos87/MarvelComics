@@ -1,6 +1,6 @@
 import Foundation
 
-protocol CharacterListViewModelProtocol: ViewModelProtocol {
+protocol CharacterListViewModelProtocol: ViewModelProtocol where CoordinatorType == CharacterListCoordinator {
     func viewDidLoad()
     func loadData()
     func characterModel(at index: Int) -> Character.List.Model?

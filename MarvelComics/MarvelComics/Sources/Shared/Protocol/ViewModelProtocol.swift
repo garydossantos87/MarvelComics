@@ -1,6 +1,7 @@
 import Foundation
 
 protocol ViewModelProtocol {
-    var coordinator: BaseCoordinator? { get }
+    associatedtype CoordinatorType: BaseCoordinatorProtocol
+    var coordinator: CoordinatorType? { get }
     var state: ViewModelState? { get }
 }

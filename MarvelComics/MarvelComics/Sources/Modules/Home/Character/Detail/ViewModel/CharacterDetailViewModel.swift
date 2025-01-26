@@ -3,11 +3,11 @@ import Foundation
 extension Character.Detail {
     final class ViewModel: CharacterDetailViewModelProtocol, ObservableObject {
         var state: ViewModelState?
-        var coordinator: BaseCoordinator?
+        var coordinator: CharacterDetailCoordinator?
 
         // MARK: - Init -
         
-        init(coordinator: BaseCoordinator?) {
+        init(coordinator: CharacterDetailCoordinator?) {
             self.coordinator = coordinator
         }
     }
@@ -16,6 +16,6 @@ extension Character.Detail {
 
 extension Character.Detail.ViewModel {
     func goBack() {
-        coordinator?.handleNavigation(with: .pop)
+        coordinator?.openCharacterList()
     }
 }

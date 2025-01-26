@@ -1,5 +1,5 @@
 import UIKit
 
-extension BaseCoordinator {
-    
+final class ComicListCoordinator: BaseCoordinator, ComicListCoordinatorProtocol {
+
 }

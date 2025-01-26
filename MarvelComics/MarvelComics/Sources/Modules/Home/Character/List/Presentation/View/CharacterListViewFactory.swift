@@ -2,11 +2,11 @@ import UIKit
 
 extension Character.List {
     struct ViewFactory {
-        private let coordinator: BaseCoordinator
+        private let coordinator: CharacterListCoordinator
 
         // MARK: - Init -
         
-        init(with coordinator: BaseCoordinator) {
+        init(with coordinator: CharacterListCoordinator) {
             self.coordinator = coordinator
         }
     }
