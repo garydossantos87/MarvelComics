@@ -3,12 +3,10 @@ import UIKit
 extension Character.List {
     struct ViewFactory {
         private let coordinator: BaseCoordinator
-        private let apiClient: APIClientProtocol
-        
+
         // MARK: - Init -
         
-        init(with apiClient: APIClientProtocol, coordinator: BaseCoordinator) {
-            self.apiClient = apiClient
+        init(with coordinator: BaseCoordinator) {
             self.coordinator = coordinator
         }
     }
@@ -18,7 +16,7 @@ extension Character.List {
 
 extension Character.List.ViewFactory: ViewFactory {
     func make() -> UIViewController {
-        let repository = Character.Repository(client: apiClient)
+        let repository = Character.Repository()
         let useCases = UseCase.CharacterUseCases(with: repository)
         let viewModel = Character.List.ViewModel(
             coordinator: coordinator,

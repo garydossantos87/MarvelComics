@@ -1,139 +1,190 @@
 import UIKit
-
+import Kingfisher
 import SwiftUI
 
 extension Character.Detail {
     struct MainView: View {
-        var safeArea: EdgeInsets
-        var size: CGSize
-        
+        @ObservedObject private var viewModel: ViewModel
+
+        init(viewModel: ViewModel) {
+            self.viewModel = viewModel
+        }
+
         var body: some View {
-            ScrollView {
-                ZStack {
-                    // Bottom Layer
-                    VStack(spacing: 20) {
+            GeometryReader {
+                let safeArea = $0.safeAreaInsets
+                let size = $0.size
+                ContentView(
+                    safeArea: safeArea,
+                    size: size,
+                    viewModel: viewModel
+                ).ignoresSafeArea(.container, edges: .top)
+            }
+        }
+    }
+
+    struct ContentView: View {
+        private var safeArea: EdgeInsets
+        private var size: CGSize
+        @ObservedObject private var viewModel: ViewModel
+
+        public init(safeArea: EdgeInsets, size: CGSize, viewModel: ViewModel) {
+            self.safeArea = safeArea
+            self.size = size
+            self.viewModel = viewModel
+        }
+
+        var body: some View {
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack{
+                        // MARK: - Artwork
                         HeaderView()
-                        HeaderView()
-                        HeaderView()
-                        HeaderView()
-                        HeaderView()
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.top, 300)
-                    
-                    // Top Layer (Header)
-                    GeometryReader { gr in
-                        ZStack {
-                            VStack {
-                                Image(.imageNotAvailable)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(height:
-                                            calculateHeight(minHeight: 140,
-                                                            maxHeight: 300,
-                                                            yOffset: gr.frame(in: .global).origin.y))
-                                    .clipped()
-                                // Show a shadow when minHeight is reached
-                                    .shadow(radius: self.calculateHeight(minHeight: 120,
-                                                                         maxHeight: 300,
-                                                                         yOffset: gr.frame(in: .global).origin.y) < 140 ? 8 : 0)
-                                    .overlay(
-                                        Text("UTAH")
-                                            .font(.system(size: 70, weight: .black))
-                                            .foregroundColor(.white)
-                                            .opacity(0.8))
-                                // Offset just on the Y axis
-                                    .offset(y: gr.frame(in: .global).origin.y < 0 // Is it going up?
-                                            ? abs(gr.frame(in: .global).origin.y) // Push it down!
-                                            : -gr.frame(in: .global).origin.y) // Push it up!
-                                Spacer() // Push header to top
-                            }
-                            HeaderView2()
+                        VStack{
+                            Text("Popular")
+                                .fontWeight(.heavy)
+                            AlbumView()
                         }
                     }
+                    .overlay(alignment: .top) {
+                        HeaderView2(with: viewModel)
+                    }
                 }
-            }.edgesIgnoringSafeArea(.vertical)
-        }
-        
-        func calculateHeight(minHeight: CGFloat, maxHeight: CGFloat, yOffset: CGFloat) -> CGFloat {
-            // If scrolling up, yOffset will be a negative number
-            if maxHeight + yOffset < minHeight {
-                // SCROLLING UP
-                // Never go smaller than our minimum height
-                return minHeight
-            } else if maxHeight + yOffset > maxHeight {
-                // SCROLLING DOWN PAST MAX HEIGHT
-                return maxHeight + (yOffset * 0.5) // Lessen the offset
+                .coordinateSpace(name: "SCROLL")
             }
-            
-            // SCROLLING DOWN
-            return maxHeight + yOffset
-        }
     }
 }
 
-extension Character.Detail.MainView {
+// Mark: - Album View -
+
+extension Character.Detail.ContentView {
+    @ViewBuilder
+    func AlbumView() -> some View {
+        VStack(spacing:  25) {
+            ForEach(albums.indices, id: \.self) { index in
+                HStack(spacing: 25) {
+                    Text("\(index + 1)")
+                        .font(.callout)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.gray)
+
+                    VStack(alignment: .leading, spacing: 6){
+                        Text(albums[index].albumName)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                        Text("2,282,938")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                    Image(systemName: "ellipsis")
+                        .foregroundColor(.gray)
+
+                }
+
+            }
+        }.background(.white)
+    }
+}
+
+// MARK: - Header View -
+
+extension Character.Detail.ContentView {
     @ViewBuilder
     func HeaderView() -> some View {
-        Image(.imageNotAvailable)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(height: 200, alignment: .bottom)
-            .cornerRadius(20)
-            .shadow(color: .gray, radius: 10, x: 0, y: 5)
-            .overlay(VStack {
-                Spacer()
-                Text("Title")
-                    .padding(.bottom, 20)
-                    .opacity(0.85)
-                    .font(.system(size: 30, weight: .black))
-                    .foregroundColor(.white)
-            })
-        
+        let height = size.height * Character.Detail.Constants.Header.heightPercentage
+        GeometryReader{ proxy in
+
+            let size = proxy.size
+            let minY = proxy.frame(in: .named("SCROLL")).minY
+            let progress = minY / (height * (minY > 0 ? 0.5 : 0.8))
+
+            KFImage(URL(string: "" ))
+                .placeholder {
+                    Image(uiImage: UIImage.imageNotAvailable)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: size.width, height: size.height + (minY > 0 ? minY : 0 ))
+                }
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: size.width, height: size.height + (minY > 0 ? minY : 0 ))
+                .clipped()
+                .overlay(content: {
+                    ZStack(alignment: .bottom) {
+                        // MARK: - Gradient Overlay
+                        Rectangle()
+                            .fill(
+                                .linearGradient(colors: [
+                                    .black.opacity(0 - progress),
+                                    .black.opacity(0.1 - progress),
+                                    .black.opacity(0.3 - progress),
+                                    .black.opacity(0.5 - progress),
+                                    .black.opacity(0.8 - progress),
+                                    .black.opacity(1),
+                                ], startPoint: .top, endPoint: .bottom)
+                            )
+                        VStack(spacing: 0) {
+                            Text("Fally\nIpupa")
+                                .foregroundColor(.white)
+                                .font(.system(size: 45))
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+
+                            Text("710,329 monthly listeners".uppercased())
+                                .font(.caption)
+                                .fontWeight(.bold)
+                                .foregroundColor(.gray)
+                                .padding(.top, 15)
+                        }
+                        .opacity(1 + (progress > 0 ? -progress : progress))
+                        .padding(.bottom, Character.Detail.Constants.Header.bottomPadding)
+
+                        // Moving with Scroll View
+                        .offset(y: minY < 0 ? minY : 0 )
+                    }
+                })
+                .offset(y: -minY)
+        }
+        .frame(height: height + safeArea.top)
     }
-    
+}
+
+// MARK: - Header View -
+
+extension Character.Detail.ContentView {
+    // MARK: - Header View
     @ViewBuilder
-    func HeaderView2() -> some View {
+    func HeaderView2(with viewModel: Character.Detail.ViewModel) -> some View {
+        let height = size.height * 0.45
         GeometryReader{ proxy in
             let minY = proxy.frame(in: .named("SCROLL")).minY
             let height = size.height * 0.45
             let progress = minY / (height * (minY > 0 ? 0.5 : 0.8))
             let titleProgress =  minY / height
-            
+
             HStack(spacing: 15) {
                 Button {
-                    
+                    viewModel.goBack()
                 } label: {
                     Image(systemName: "chevron.left")
                         .font(.title3)
                         .foregroundColor(.white)
                 }
                 Spacer(minLength: 0)
-                
-                
+
+
                 Button {
-                    
+
                 } label: {
-                    Text("FOLLOWING")
-                        .font(.caption)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 6)
-                        .border(.white, width: 1.5)
-                }
-                .opacity(1 + progress)
-                
-                Button {
-                    
-                } label: {
-                    Image(systemName: "ellipsis")
+                    Image(systemName: "square.and.arrow.up")
                         .font(.title3)
                         .foregroundColor(.white)
                 }
             }
             .overlay(content: {
                 Text("Fally Ipupa")
+                    .foregroundColor(.white)
                     .fontWeight(.semibold)
                     .offset(y: -titleProgress > 0.75 ? 0 : 45)
                     .clipped()
@@ -142,34 +193,54 @@ extension Character.Detail.MainView {
             .padding(.top, safeArea.top + 10)
             .padding([.horizontal,.bottom], 15)
             .background(
-                Color.black
+                Color.red
                     .opacity(-progress > 1 ? 1 : 0)
             )
             .offset(y: -minY)
-            
-            
-            
         }
-        .frame(height: 35)
+        .frame(height: height)
     }
 }
 
-struct CharacterDetail_ContentView: View {
-    var body: some View {
-        GeometryReader {
-            Character.Detail.MainView(
-                safeArea: $0.safeAreaInsets,
-                size: $0.size
-            )
-            .ignoresSafeArea(.container, edges: .top)
-        }
-    }
-}
 
-// MARK: - Previews -
-
-struct CharacterDetail_ContentView_Previews: PreviewProvider {
+struct CharacterDetailContenView_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterDetail_ContentView()
+        let viewModel = Character.Detail.ViewModel(coordinator: nil)
+        Character.Detail.MainView(viewModel: viewModel)
     }
 }
+
+
+
+struct Album: Identifiable{
+    var id = UUID().uuidString
+    var albumName: String
+
+}
+
+
+var albums: [Album] = [
+
+
+    Album(albumName: "Arsenal des belles mélodies"),
+    Album(albumName: "Bloqué"),
+    Album(albumName: "Se Yo"),
+    Album(albumName: "Droit Chemin"),
+    Album(albumName: "Destin"),
+    Album(albumName: "Tokooos II"),
+    Album(albumName: "Tokooos II Gold"),
+    Album(albumName: "Science - Fiction"),
+    Album(albumName: "Strandje Aan De Maas"),
+    Album(albumName: "Inama"),
+    Album(albumName: "Par Terre - A COLOR SHOW"),
+    Album(albumName: "QALF infinity"),
+    Album(albumName: "Berna Reloaded"),
+    Album(albumName: "Flavour of Africa"),
+    Album(albumName: "Control"),
+    Album(albumName: "Gentleman 2.0"),
+    Album(albumName: "Power 'Kosa Leka' : Vol 1"),
+    Album(albumName: "Historia"),
+    Album(albumName: "Tokooos"),
+    Album(albumName: "Fleur Froide - Second état : la cristalisation"),
+
+]

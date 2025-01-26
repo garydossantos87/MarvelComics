@@ -2,6 +2,7 @@ import Foundation
 
 extension Character.List {
     struct Model: Decodable {
+        let id: Int
         let name: String
         let description: String?
         let thumbnail: URL?
@@ -10,11 +11,13 @@ extension Character.List {
         // MARK: - Init -
 
         public init(
+            id: Int,
             name: String,
             description: String? = nil,
             thumbnail: URL? = nil,
             date: Date? = nil
         ) {
+            self.id = id
             self.name = name
             self.description = description
             self.thumbnail = thumbnail
@@ -22,6 +25,7 @@ extension Character.List {
         }
 
         init(with dto: Character.Result) {
+            self.id = dto.id
             self.name = dto.name
             self.description = dto.description
             self.thumbnail = dto.thumbnailURL

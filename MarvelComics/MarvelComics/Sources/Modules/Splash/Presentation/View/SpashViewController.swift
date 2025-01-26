@@ -3,7 +3,6 @@ import Combine
 
 extension Splash {
     final class ViewController: UIViewController {
-        
         private let splashView: Splash.View
         private let viewModel: Splash.ViewModel
         

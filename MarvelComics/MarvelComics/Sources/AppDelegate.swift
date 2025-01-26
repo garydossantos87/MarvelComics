@@ -15,11 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        coordinator = BaseCoordinator(apiClient: API.DefaultClient())
+        coordinator = BaseCoordinator()
     }
     
     private func start() {
-        window?.rootViewController = coordinator?.setApplicationFlow(with: .splash)
+        window?.rootViewController = coordinator?.setApplicationFlow(with: makeSplash())
         window?.makeKeyAndVisible()
+    }
+
+    private func makeSplash() -> UIViewController {
+        guard let coordinator = coordinator else { return UIViewController() }
+        return Splash.ViewFactory(with: coordinator)
+            .make()
     }
 }

@@ -6,7 +6,7 @@ extension Character {
         
         // MARK: - Init -
         
-        init(client: APIClientProtocol) {
+        init(client: APIClientProtocol = API.DefaultClient.shared) {
             self.client = client
         }
     }

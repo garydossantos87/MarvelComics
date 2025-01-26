@@ -3,13 +3,11 @@ import UIKit
 public extension Splash {
     struct ViewFactory {
         private let coordinator: BaseCoordinator
-        private let apiClient: APIClientProtocol
-        
+
         // MARK: - Init -
         
-        init(with apiClient: APIClientProtocol, coordinator: BaseCoordinator) {
+        init(with coordinator: BaseCoordinator) {
             self.coordinator = coordinator
-            self.apiClient = apiClient
         }
     }
 }

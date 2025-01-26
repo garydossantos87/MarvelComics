@@ -2,13 +2,11 @@ import UIKit
 
 final class BaseCoordinator {
     private var navigationController: UINavigationController
-    private let apiClient: APIClientProtocol
     
     // MARK: - Init -
     
-    init(apiClient: APIClientProtocol) {
+    init() {
         navigationController = .init()
-        self.apiClient = apiClient
     }
     
     // MARK: - Public methods -
@@ -41,24 +39,10 @@ final class BaseCoordinator {
         }
     }
     
-    public func setApplicationFlow(with flow: CoordinatorFlow) -> UINavigationController? {
+    public func setApplicationFlow(with viewController: UIViewController) -> UINavigationController? {
         navigationController.viewControllers.removeAll()
-        navigationController = UINavigationController(rootViewController: currentFlowViewController(with: flow) ?? UIViewController())
+        navigationController = UINavigationController(rootViewController: viewController)
         navigationController.isNavigationBarHidden = true
         return navigationController
-    }
-    
-    // MARK: - Private methods -
-    
-    func currentFlowViewController(with flow: CoordinatorFlow) -> UIViewController? {
-        switch flow {
-        case .splash:
-            return makeSplash(with: apiClient)
-        case .home:
-            return makeHome(with: apiClient)
-        case .characterDetail:
-            return makeCharacterDetail(with: apiClient)
-        default: return UIViewController()
-        }
     }
 }

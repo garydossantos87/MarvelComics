@@ -1,4 +1,5 @@
 import Combine
+import UIKit
 import Foundation
 
 extension Character.List {
@@ -8,7 +9,7 @@ extension Character.List {
         private var charactersPagination: Character.PaginationModel?
         private var cancellables: Set<AnyCancellable> = []
         private var isFetchingData: Bool = false
-        weak var coordinator: BaseCoordinator?
+        var coordinator: BaseCoordinator?
 
         // MARK: - Init -
 
@@ -20,6 +21,8 @@ extension Character.List {
             self.useCases = useCases
         }
     }
+
+
 }
 
 // MARK: - Protocol methods -
@@ -40,6 +43,7 @@ extension Character.List.ViewModel {
     }
 
     func onCharacterClicked(position: Int) {
+        guard let character = charactersPagination?.results.indices.contains(position) else { return }
         coordinator?.openCharacterDetail()
     }
 

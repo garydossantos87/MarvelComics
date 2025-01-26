@@ -11,11 +11,13 @@ protocol APIClientProtocol {
 
 extension API {
     final class DefaultClient: APIClientProtocol {
+        static let shared = DefaultClient()
+        
         private let session: URLSession
         
         // MARK: - Init -
         
-        init(session: URLSession = .shared) {
+        private init(session: URLSession = .shared) {
             self.session = session
         }
         
