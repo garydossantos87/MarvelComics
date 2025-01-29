@@ -19,7 +19,8 @@ extension Character.Detail.ViewModel {
     func onAppear() {
         state = .loading
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.state = .success
+            let model = Character.List.Model(id: 1, name: "Character Name")
+            self.state = .success(model)
         }
     }
 

@@ -69,7 +69,7 @@ extension Character.List.ViewModel {
                     with: newCharactersPagination,
                     oldCharacters: charactersPagination?.results
                 )
-                self.state = .success
+                self.state = .success()
             }).store(in: &cancellables)
     }
 }

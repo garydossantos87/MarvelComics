@@ -39,7 +39,7 @@ extension Comic.List.ViewModel {
             }, receiveValue: { [weak self] comics in
                 guard let self else { return }
                 self.comics = comics
-                self.state = .success
+                self.state = .success()
             }).store(in: &cancellables)
     }
 
