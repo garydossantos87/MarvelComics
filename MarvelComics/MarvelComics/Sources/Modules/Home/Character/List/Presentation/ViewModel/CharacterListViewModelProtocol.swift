@@ -5,5 +5,5 @@ protocol CharacterListViewModelProtocol: ViewModelProtocol where CoordinatorType
     func loadData()
     func characterModel(at index: Int) -> Character.List.Model?
     func numberOfRowsInSection(section: Int) -> Int
-    func onCharacterClicked(position: Int)
+    func onCharacterClicked(at index: Int)
 }

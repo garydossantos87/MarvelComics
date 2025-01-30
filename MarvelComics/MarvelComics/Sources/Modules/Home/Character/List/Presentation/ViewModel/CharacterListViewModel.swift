@@ -38,13 +38,19 @@ extension Character.List.ViewModel {
     }
 
     func characterModel(at index: Int) -> Character.List.Model? {
-        guard let characters = charactersPagination?.results, index < characters.count else { return nil }
+        guard let characters = charactersPagination?.results,
+              characters.indices.contains(index) else {
+            return nil
+        }
         return characters[index]
     }
 
-    func onCharacterClicked(position: Int) {
-        guard let character = charactersPagination?.results.indices.contains(position) else { return }
-        coordinator?.openCharacterDetail()
+    func onCharacterClicked(at index: Int) {
+        guard let characters = charactersPagination?.results,
+              characters.indices.contains(index) else {
+            return
+        }
+        coordinator?.openCharacterDetail(with: characters[index])
     }
 
     func loadData() {

@@ -6,5 +6,5 @@
 //
 
 protocol CharacterListCoordinatorProtocol: BaseCoordinatorProtocol {
-    func openCharacterDetail()
+    func openCharacterDetail(with character: Character.List.Model)
 }

@@ -246,7 +246,9 @@ extension Character.Detail.ContentView {
 
 struct CharacterDetailContenView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = Character.Detail.ViewModel(coordinator: nil)
+        let repo = Serie.Repository()
+        let useCases = UseCase.SerieUseCases(with: repo)
+        let viewModel = Character.Detail.ViewModel(coordinator: nil, useCases: useCases)
         let model = Character.List.Model(id: 1, name: "Character Name")
         viewModel.state = .success(model)
         return Character.Detail.MainView(viewModel: viewModel)

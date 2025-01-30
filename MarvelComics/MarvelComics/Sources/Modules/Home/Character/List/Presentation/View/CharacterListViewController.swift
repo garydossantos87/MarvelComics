@@ -97,6 +97,6 @@ extension Character.List.ViewController: UITableViewDataSource {
 
 extension Character.List.ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.onCharacterClicked(position: indexPath.row)
+        viewModel.onCharacterClicked(at: indexPath.row)
     }
 }

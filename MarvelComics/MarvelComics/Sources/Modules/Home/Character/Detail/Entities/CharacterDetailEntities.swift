@@ -22,3 +22,9 @@ extension Character {
         }
     }
 }
+
+enum Serie {
+    enum List {
+        
+    }
+}

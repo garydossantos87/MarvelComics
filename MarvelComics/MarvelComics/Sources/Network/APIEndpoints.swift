@@ -4,7 +4,8 @@ extension API {
     enum Endpoints {
         case characters
         case comics
-        
+        case series(Int)
+
         // MARK: - Private vars -
         
         var url: URL? { URL(string: baseURL.appending(path)) }
@@ -19,6 +20,7 @@ extension API {
             switch self {
             case .characters: "characters"
             case .comics: "comics"
+            case .series(let characterId): "characters/\(characterId)/series"
             }
         }
     }
