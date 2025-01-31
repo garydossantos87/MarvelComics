@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import Combine
 @testable import MarvelComics
 
 extension Mocks {
     static func comicsModel(ids: [Int]) -> [Comic.List.Model] {
         return ids.map { comicModel(id: $0) }
     }
-
+    
     static func comicModel(id: Int? = nil) -> Comic.List.Model {
         let randomId = id ?? Int.random(in: 1...100)
         return Comic.List.Model(
@@ -24,7 +25,7 @@ extension Mocks {
             price: "10.0$"
         )
     }
-
+    
     static func comicResult(id: Int? = nil) -> Comic.Result {
         let randomId = id ?? Int.random(in: 1...100)
         return Comic.Result(
@@ -36,11 +37,11 @@ extension Mocks {
             thumbnail: thumbnailResult
         )
     }
-
+    
     static func comicsResult(ids: [Int]) -> [Comic.Result] {
         return ids.map { comicResult(id: $0) }
     }
-
+    
     static func comicListResult(ids: [Int]) -> Comic.ListResult {
         let comicsResult = comicsResult(ids: ids)
         return Comic.ListResult(data: DataResult(
@@ -52,3 +53,15 @@ extension Mocks {
         )
     }
 }
+
+// MARK: - Modules Mocks -
+
+class MockComicUseCase: ComicRepositoryProtocol {
+    var fetchComicsReturnValue: AnyPublisher<Comic.ListResult, API.NetworkError>!
+    
+    func fetchComics() -> AnyPublisher<Comic.ListResult, API.NetworkError> {
+        return fetchComicsReturnValue
+    }
+}
+
+class MockComicListCoordinator: ComicListCoordinator {}

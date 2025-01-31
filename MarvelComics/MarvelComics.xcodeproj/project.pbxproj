@@ -51,6 +51,7 @@
 		C11350E82D4D0DC300292585 /* PriceMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11350E72D4D0DC300292585 /* PriceMocks.swift */; };
 		C11350EA2D4D0E4600292585 /* ThumbnailMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11350E92D4D0E4600292585 /* ThumbnailMocks.swift */; };
 		C11350EE2D4D164D00292585 /* ComicRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11350ED2D4D164D00292585 /* ComicRepositoryTests.swift */; };
+		C11350F22D4D22CD00292585 /* ComicViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11350F12D4D22CD00292585 /* ComicViewModelTests.swift */; };
 		C12978B12BB05C4B00A72CDE /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12978A12BB05C4B00A72CDE /* ViewFactory.swift */; };
 		C12978B32BB05C4B00A72CDE /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12978A72BB05C4B00A72CDE /* SplashViewModel.swift */; };
 		C12978B42BB05C4B00A72CDE /* SpashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12978A92BB05C4B00A72CDE /* SpashViewController.swift */; };
@@ -184,6 +185,7 @@
 		C11350E72D4D0DC300292585 /* PriceMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceMocks.swift; sourceTree = "<group>"; };
 		C11350E92D4D0E4600292585 /* ThumbnailMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailMocks.swift; sourceTree = "<group>"; };
 		C11350ED2D4D164D00292585 /* ComicRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicRepositoryTests.swift; sourceTree = "<group>"; };
+		C11350F12D4D22CD00292585 /* ComicViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewModelTests.swift; sourceTree = "<group>"; };
 		C12978A12BB05C4B00A72CDE /* ViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		C12978A72BB05C4B00A72CDE /* SplashViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		C12978A92BB05C4B00A72CDE /* SpashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpashViewController.swift; sourceTree = "<group>"; };
@@ -356,14 +358,6 @@
 				C105675C2BB9B6AC00D00F59 /* DataResult.swift */,
 			);
 			path = Entities;
-			sourceTree = "<group>";
-		};
-		C10C22BD2BC010000010D6AA /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				C10C22BE2BC010140010D6AA /* Pagination.swift */,
-			);
-			path = Domain;
 			sourceTree = "<group>";
 		};
 		C10D20212BBAE9B200839FFE /* Cell */ = {
@@ -549,6 +543,22 @@
 			isa = PBXGroup;
 			children = (
 				C11350ED2D4D164D00292585 /* ComicRepositoryTests.swift */,
+			);
+			path = Comic;
+			sourceTree = "<group>";
+		};
+		C11350EF2D4D21F200292585 /* ModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				C11350F02D4D21F900292585 /* Comic */,
+			);
+			path = ModuleTests;
+			sourceTree = "<group>";
+		};
+		C11350F02D4D21F900292585 /* Comic */ = {
+			isa = PBXGroup;
+			children = (
+				C11350F12D4D22CD00292585 /* ComicViewModelTests.swift */,
 			);
 			path = Comic;
 			sourceTree = "<group>";
@@ -744,7 +754,6 @@
 		C19F0F902BB099AF0065FAE2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C10C22BD2BC010000010D6AA /* Domain */,
 				C10F73DA2BB1B7D300F6DD74 /* Character */,
 				C10F73C82BB1B59500F6DD74 /* Comic */,
 				C19F0F912BB099B80065FAE2 /* Entities */,
@@ -775,6 +784,7 @@
 		C1A0FE9C2D3EDC65006277CE /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				C10C22BE2BC010140010D6AA /* Pagination.swift */,
 				C1A0FEA02D3EDD64006277CE /* UseCase.swift */,
 			);
 			path = Entities;
@@ -1022,6 +1032,7 @@
 		C1FDCD422BB01501000A5635 /* MarvelComicsTests */ = {
 			isa = PBXGroup;
 			children = (
+				C11350EF2D4D21F200292585 /* ModuleTests */,
 				C11350EB2D4D163000292585 /* RepositoryTests */,
 				C11350DF2D4D036400292585 /* DomainTests */,
 				C11350DE2D4D034A00292585 /* SnapshotsTests */,
@@ -1284,6 +1295,7 @@
 			files = (
 				C11350E42D4D076D00292585 /* ComicMocks.swift in Sources */,
 				C11350E22D4D03F700292585 /* FetchComicsUseCaseTests.swift in Sources */,
+				C11350F22D4D22CD00292585 /* ComicViewModelTests.swift in Sources */,
 				C11350E82D4D0DC300292585 /* PriceMocks.swift in Sources */,
 				C11350EE2D4D164D00292585 /* ComicRepositoryTests.swift in Sources */,
 				C1FDCD442BB01501000A5635 /* CharacterSnapshotTests.swift in Sources */,
