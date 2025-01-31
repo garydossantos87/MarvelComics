@@ -6,12 +6,12 @@ extension Character.Detail {
     struct MainView: View {
         @StateObject private var viewModel: ViewModel
         private let isPreview: Bool
-        
+
         init(viewModel: ViewModel, isPreview: Bool = false) {
             _viewModel = StateObject(wrappedValue: viewModel)
             self.isPreview = isPreview
         }
-        
+
         var body: some View {
             GeometryReader {
                 let safeArea = $0.safeAreaInsets
@@ -25,14 +25,14 @@ extension Character.Detail {
             }
         }
     }
-    
+
     struct ContentView: View {
         private var safeArea: EdgeInsets
         private var size: CGSize
         private let isPreview: Bool
         @ObservedObject private var viewModel: ViewModel
         @State private var isSharing = false
-        
+
         public init(
             safeArea: EdgeInsets,
             size: CGSize,
@@ -44,7 +44,7 @@ extension Character.Detail {
             self.isPreview = isPreview
             _viewModel = ObservedObject(wrappedValue: viewModel)
         }
-        
+
         var body: some View {
             ZStack {
                 switch viewModel.state {
@@ -54,7 +54,7 @@ extension Character.Detail {
                         .transition(.opacity)
                         .zIndex(1)
                 case .failure(let error):
-                    AlertSwiftUIView(model: .defaultError(
+                    Alert.MainView(model: .defaultError(
                         with: error.localizedDescription,
                         actionHandler: {
                             viewModel.onBackButtonClicked()
@@ -116,13 +116,13 @@ extension Character.Detail.ContentView {
                             .clipShape(RoundedRectangle(cornerRadius: Character.Detail.Constants.Series.cornerRadius)
                             )
                             .clipped()
-                        
+
                         VStack(alignment: .leading) {
                             Text(series[index].title)
                                 .font(.headline)
                                 .fontWeight(.semibold)
                                 .foregroundColor(.black)
-                            
+
                             VStack(alignment: .leading) {
                                 if let description = series[index].description {
                                     Text(description)
@@ -146,7 +146,7 @@ extension Character.Detail.ContentView {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }.padding([.horizontal], Character.Detail.Constants.Series.padding)
-                    
+
                 }
             }.background(.white)
         } else {
@@ -163,11 +163,11 @@ extension Character.Detail.ContentView {
         if let model = model as? Character.Detail.Model {
             let height = size.height * Character.Detail.Constants.Header.heightPercentage
             GeometryReader { proxy in
-                
+
                 let size = proxy.size
                 let minY = proxy.frame(in: .named("SCROLL")).minY
                 let progress = minY / (height * (minY > 0 ? 0.5 : 0.8))
-                
+
                 KFImage(model.character?.thumbnail)
                     .placeholder {
                         Image(uiImage: UIImage.imageNotAvailable)
@@ -227,7 +227,7 @@ extension Character.Detail.ContentView {
                 let height = size.height * 0.45
                 let progress = minY / (height * (minY > 0 ? 0.5 : 0.8))
                 let titleProgress =  minY / height
-                
+
                 HStack(spacing: 15) {
                     Button {
                         onBackButtonClicked()
@@ -236,7 +236,7 @@ extension Character.Detail.ContentView {
                             .foregroundColor(.white)
                     }
                     Spacer(minLength: 0)
-                    
+
                     Button {
                         isSharing.toggle()
                     } label: {
@@ -278,24 +278,42 @@ extension Character.Detail.ContentView {
 extension Character.Detail.ContentView {
     struct ShareSheet: UIViewControllerRepresentable {
         var activityItems: [Any]
-        
+
         func makeUIViewController(context: Context) -> UIActivityViewController {
             let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
             return activityViewController
         }
-        
+
         func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
             // No updates needed in this case
         }
     }
 }
 
-// MARK: - Preview -
+// MARK: - Previews -
 
 struct CharacterDetailContenView_Previews: PreviewProvider {
     static var previews: some View {
         return Character.Detail.MainView(
             viewModel: .preview,
+            isPreview: true
+        )
+    }
+}
+
+struct CharacterDetailContenViewError_Previews: PreviewProvider {
+    static var previews: some View {
+        return Character.Detail.MainView(
+            viewModel: .previewError,
+            isPreview: true
+        )
+    }
+}
+
+struct CharacterDetailContenViewLoading_Previews: PreviewProvider {
+    static var previews: some View {
+        return Character.Detail.MainView(
+            viewModel: .previewLoading,
             isPreview: true
         )
     }

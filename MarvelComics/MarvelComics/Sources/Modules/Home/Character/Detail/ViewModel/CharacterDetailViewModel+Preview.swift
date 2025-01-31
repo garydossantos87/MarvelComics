@@ -5,10 +5,7 @@ import Combine
 
 extension Character.Detail.ViewModel {
     static var preview: Character.Detail.ViewModel {
-        let repo = Serie.Repository(client: API.MockAPIClient())
-        let useCases = UseCase.SerieUseCases(with: repo)
-        let viewModel = Character.Detail.ViewModel(coordinator: nil, useCases: useCases)
-
+        let viewModel = viewModelMock()
         let characterModel = Character.List.Model(id: 1, name: "Character Name")
         let seriesModel = [
             Serie.List.Model(
@@ -50,5 +47,23 @@ extension Character.Detail.ViewModel {
         )
         viewModel.state = .success(model)
         return viewModel
+    }
+
+    static var previewError: Character.Detail.ViewModel {
+        let viewModel = viewModelMock()
+        viewModel.state = .failure(API.NetworkError.badServerResponse(statusCode: 500))
+        return viewModel
+    }
+
+    static var previewLoading: Character.Detail.ViewModel {
+        let viewModel = viewModelMock()
+        viewModel.state = .loading
+        return viewModel
+    }
+
+    private static func viewModelMock() -> Character.Detail.ViewModel {
+        let repo = Serie.Repository(client: API.MockAPIClient())
+        let useCases = UseCase.SerieUseCases(with: repo)
+        return Character.Detail.ViewModel(coordinator: nil, useCases: useCases)
     }
 }
