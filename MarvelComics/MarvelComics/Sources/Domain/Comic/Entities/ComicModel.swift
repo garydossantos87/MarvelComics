@@ -9,7 +9,7 @@
 import Foundation
 
 extension Comic.List {
-    struct Model {
+    struct Model: Equatable {
         let id: Int
         let title: String
         let description: String?
@@ -29,7 +29,23 @@ extension Comic.List {
         }
         
         // MARK: - Init -
-        
+
+        public init(
+            id: Int,
+            title: String,
+            description: String? = nil,
+            thumbnail: URL? = nil,
+            date: Date? = nil,
+            price: String? = nil
+        ) {
+            self.id = id
+            self.title = title
+            self.description = description
+            self.thumbnail = thumbnail
+            self.date = date
+            self.price = price
+        }
+
         init(with dto: Comic.Result) {
             self.id = dto.id
             self.title = dto.title

@@ -8,14 +8,14 @@ enum API {
         case patch
         case delete
     }
-    
+
     enum NetworkError: Error {
         case invalidRequest
         case invalidResponse
         case jsonDecodingError(error: Error)
         case unknown(error: Error)
         case badServerResponse(statusCode: Int)
-        
+
         var name: String {
             switch self {
             case .unknown(let error): return "Unknown error \n\(error.localizedDescription)"
@@ -26,12 +26,12 @@ enum API {
             }
         }
     }
-    
+
     enum Headers {
         enum Authorization: String {
             case apikey
             case hash
-            
+
             var name: String {
                 switch self {
                 case .apikey: "08c6fd830eb3f291f94cbe4f79432f45"
@@ -41,11 +41,30 @@ enum API {
         }
         enum Time: String {
             case timeStamp = "ts"
-            
+
             var name: String { "1" } // necessary header for the call
         }
         enum Pagination: String {
             case offset
+        }
+    }
+}
+
+// MARK: - Equatable Extension -
+
+extension API.NetworkError: Equatable {
+    static func == (lhs: API.NetworkError, rhs: API.NetworkError) -> Bool {
+        switch (lhs, rhs) {
+        case (.invalidRequest, .invalidRequest),
+            (.invalidResponse, .invalidResponse):
+            return true
+        case (.badServerResponse(let code1), .badServerResponse(let code2)):
+            return code1 == code2
+        case (.jsonDecodingError, .jsonDecodingError),
+            (.unknown, .unknown):
+            return true
+        default:
+            return false
         }
     }
 }

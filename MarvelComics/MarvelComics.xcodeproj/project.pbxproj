@@ -45,6 +45,11 @@
 		C10F73E72BB1B83100F6DD74 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73E62BB1B83100F6DD74 /* CharacterListViewController.swift */; };
 		C10F73E92BB1B83B00F6DD74 /* CharacterListViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73E82BB1B83B00F6DD74 /* CharacterListViewFactory.swift */; };
 		C10F73EB2BB1B85000F6DD74 /* CharacterListEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F73EA2BB1B85000F6DD74 /* CharacterListEntities.swift */; };
+		C11350E22D4D03F700292585 /* FetchComicsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11350E12D4D03F700292585 /* FetchComicsUseCaseTests.swift */; };
+		C11350E42D4D076D00292585 /* ComicMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11350E32D4D076D00292585 /* ComicMocks.swift */; };
+		C11350E62D4D079600292585 /* DateMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11350E52D4D079600292585 /* DateMocks.swift */; };
+		C11350E82D4D0DC300292585 /* PriceMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11350E72D4D0DC300292585 /* PriceMocks.swift */; };
+		C11350EA2D4D0E4600292585 /* ThumbnailMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11350E92D4D0E4600292585 /* ThumbnailMocks.swift */; };
 		C12978B12BB05C4B00A72CDE /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12978A12BB05C4B00A72CDE /* ViewFactory.swift */; };
 		C12978B32BB05C4B00A72CDE /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12978A72BB05C4B00A72CDE /* SplashViewModel.swift */; };
 		C12978B42BB05C4B00A72CDE /* SpashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12978A92BB05C4B00A72CDE /* SpashViewController.swift */; };
@@ -59,7 +64,7 @@
 		C13719CE2BC2F0A5003E3206 /* CharacterDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13719CD2BC2F0A5003E3206 /* CharacterDetailCoordinator.swift */; };
 		C156D6712D3A4C6B0094FF06 /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C156D6702D3A4C6B0094FF06 /* Devices.swift */; };
 		C156D6742D3A4CE60094FF06 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C156D6732D3A4CD90094FF06 /* SnapshotHelper.swift */; };
-		C156D6772D3A51A80094FF06 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C156D6762D3A51A80094FF06 /* Mocks.swift */; };
+		C156D6772D3A51A80094FF06 /* CharacterMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C156D6762D3A51A80094FF06 /* CharacterMocks.swift */; };
 		C18198D72BBD9708000FC790 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18198D62BBD9708000FC790 /* CharacterCell.swift */; };
 		C19F0F932BB099C10065FAE2 /* HomeEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19F0F922BB099C10065FAE2 /* HomeEntities.swift */; };
 		C19F0FA22BB09D5B0065FAE2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19F0FA12BB09D5B0065FAE2 /* UIViewController+Extensions.swift */; };
@@ -172,6 +177,11 @@
 		C10F73E62BB1B83100F6DD74 /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		C10F73E82BB1B83B00F6DD74 /* CharacterListViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewFactory.swift; sourceTree = "<group>"; };
 		C10F73EA2BB1B85000F6DD74 /* CharacterListEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListEntities.swift; sourceTree = "<group>"; };
+		C11350E12D4D03F700292585 /* FetchComicsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchComicsUseCaseTests.swift; sourceTree = "<group>"; };
+		C11350E32D4D076D00292585 /* ComicMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicMocks.swift; sourceTree = "<group>"; };
+		C11350E52D4D079600292585 /* DateMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMocks.swift; sourceTree = "<group>"; };
+		C11350E72D4D0DC300292585 /* PriceMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceMocks.swift; sourceTree = "<group>"; };
+		C11350E92D4D0E4600292585 /* ThumbnailMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailMocks.swift; sourceTree = "<group>"; };
 		C12978A12BB05C4B00A72CDE /* ViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		C12978A72BB05C4B00A72CDE /* SplashViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		C12978A92BB05C4B00A72CDE /* SpashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpashViewController.swift; sourceTree = "<group>"; };
@@ -186,7 +196,7 @@
 		C13719CD2BC2F0A5003E3206 /* CharacterDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailCoordinator.swift; sourceTree = "<group>"; };
 		C156D6702D3A4C6B0094FF06 /* Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
 		C156D6732D3A4CD90094FF06 /* SnapshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
-		C156D6762D3A51A80094FF06 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		C156D6762D3A51A80094FF06 /* CharacterMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMocks.swift; sourceTree = "<group>"; };
 		C18198D62BBD9708000FC790 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		C19F0F922BB099C10065FAE2 /* HomeEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntities.swift; sourceTree = "<group>"; };
 		C19F0FA12BB09D5B0065FAE2 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -501,6 +511,30 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		C11350DE2D4D034A00292585 /* SnapshotsTests */ = {
+			isa = PBXGroup;
+			children = (
+				C1FDCD432BB01501000A5635 /* CharacterSnapshotTests.swift */,
+			);
+			path = SnapshotsTests;
+			sourceTree = "<group>";
+		};
+		C11350DF2D4D036400292585 /* DomainTests */ = {
+			isa = PBXGroup;
+			children = (
+				C11350E02D4D036F00292585 /* Comic */,
+			);
+			path = DomainTests;
+			sourceTree = "<group>";
+		};
+		C11350E02D4D036F00292585 /* Comic */ = {
+			isa = PBXGroup;
+			children = (
+				C11350E12D4D03F700292585 /* FetchComicsUseCaseTests.swift */,
+			);
+			path = Comic;
+			sourceTree = "<group>";
+		};
 		C129789F2BB05C4B00A72CDE /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -672,7 +706,11 @@
 		C156D6752D3A51960094FF06 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				C156D6762D3A51A80094FF06 /* Mocks.swift */,
+				C11350E92D4D0E4600292585 /* ThumbnailMocks.swift */,
+				C11350E72D4D0DC300292585 /* PriceMocks.swift */,
+				C11350E32D4D076D00292585 /* ComicMocks.swift */,
+				C11350E52D4D079600292585 /* DateMocks.swift */,
+				C156D6762D3A51A80094FF06 /* CharacterMocks.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -966,9 +1004,10 @@
 		C1FDCD422BB01501000A5635 /* MarvelComicsTests */ = {
 			isa = PBXGroup;
 			children = (
+				C11350DF2D4D036400292585 /* DomainTests */,
+				C11350DE2D4D034A00292585 /* SnapshotsTests */,
 				C156D6752D3A51960094FF06 /* Mocks */,
 				C156D6722D3A4CC30094FF06 /* Extensions */,
-				C1FDCD432BB01501000A5635 /* CharacterSnapshotTests.swift */,
 			);
 			path = MarvelComicsTests;
 			sourceTree = "<group>";
@@ -1224,9 +1263,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C11350E42D4D076D00292585 /* ComicMocks.swift in Sources */,
+				C11350E22D4D03F700292585 /* FetchComicsUseCaseTests.swift in Sources */,
+				C11350E82D4D0DC300292585 /* PriceMocks.swift in Sources */,
 				C1FDCD442BB01501000A5635 /* CharacterSnapshotTests.swift in Sources */,
+				C11350E62D4D079600292585 /* DateMocks.swift in Sources */,
+				C11350EA2D4D0E4600292585 /* ThumbnailMocks.swift in Sources */,
 				C156D6742D3A4CE60094FF06 /* SnapshotHelper.swift in Sources */,
-				C156D6772D3A51A80094FF06 /* Mocks.swift in Sources */,
+				C156D6772D3A51A80094FF06 /* CharacterMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -290,7 +290,7 @@ extension Character.Detail.ContentView {
     }
 }
 
-// MARK: - Previews -
+// MARK: - PreviewsS -
 
 struct CharacterDetailContenView_Previews: PreviewProvider {
     static var previews: some View {

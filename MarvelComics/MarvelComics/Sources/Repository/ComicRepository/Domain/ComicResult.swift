@@ -8,5 +8,23 @@ extension Comic {
         let dates: [DateResult]
         let prices: [PriceResult]
         let thumbnail: ThumbnailResult
+
+        // MARK: - Init -
+
+        public init(
+            id: Int,
+            title: String,
+            description: String?,
+            dates: [DateResult],
+            prices: [PriceResult],
+            thumbnail: ThumbnailResult
+        ) {
+            self.id = id
+            self.title = title
+            self.description = description
+            self.dates = dates
+            self.prices = prices
+            self.thumbnail = thumbnail
+        }
     }
 }
