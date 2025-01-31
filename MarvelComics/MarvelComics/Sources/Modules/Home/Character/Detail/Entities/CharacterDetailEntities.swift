@@ -4,11 +4,14 @@ import SwiftUICore
 extension Character {
     enum Detail {
         enum Constants {
+            static let marvelUrl: URL = URL(string: "https://www.marvel.com/") ?? URL(fileURLWithPath: "")
             enum Series {
-                static let width: CGFloat = 130.0
+                static let width: CGFloat = 100.0
                 static let height: CGFloat = width * 9 / 6
-                static let verticalPadding: CGFloat = 25.0
-                static let horizontalPadding: CGFloat = 25.0
+                static let padding: CGFloat = 15.0
+                static let descriptionMaxLines: Int = 3
+                static let cornerRadius: CGFloat = 4.0
+                static let ratingImageSize: CGFloat = 30.0
             }
             enum Success {
                 static let title = "Series"

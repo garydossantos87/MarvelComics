@@ -5,8 +5,8 @@ extension Serie {
         let id: Int
         let title: String
         let description: String?
-        let startYear: String
-        let endYear: String
+        let startYear: Int
+        let endYear: Int
         let rating: String?
         let thumbnail: ThumbnailResult
     }

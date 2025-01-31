@@ -5,11 +5,13 @@ import SwiftUI
 extension Character.Detail {
     struct MainView: View {
         @StateObject private var viewModel: ViewModel
-
-        init(viewModel: ViewModel) {
+        private let isPreview: Bool
+        
+        init(viewModel: ViewModel, isPreview: Bool = false) {
             _viewModel = StateObject(wrappedValue: viewModel)
+            self.isPreview = isPreview
         }
-
+        
         var body: some View {
             GeometryReader {
                 let safeArea = $0.safeAreaInsets
@@ -17,23 +19,32 @@ extension Character.Detail {
                 ContentView(
                     safeArea: safeArea,
                     size: size,
-                    viewModel: viewModel
+                    viewModel: viewModel,
+                    isPreview: isPreview
                 ).ignoresSafeArea(.container, edges: .top)
             }
         }
     }
-
+    
     struct ContentView: View {
         private var safeArea: EdgeInsets
         private var size: CGSize
+        private let isPreview: Bool
         @ObservedObject private var viewModel: ViewModel
-
-        public init(safeArea: EdgeInsets, size: CGSize, viewModel: ViewModel) {
+        @State private var isSharing = false
+        
+        public init(
+            safeArea: EdgeInsets,
+            size: CGSize,
+            viewModel: ViewModel,
+            isPreview: Bool = false
+        ) {
             self.safeArea = safeArea
             self.size = size
+            self.isPreview = isPreview
             _viewModel = ObservedObject(wrappedValue: viewModel)
         }
-
+        
         var body: some View {
             ZStack {
                 switch viewModel.state {
@@ -51,13 +62,12 @@ extension Character.Detail {
                 case .success(let model):
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack{
-                            // MARK: - Artwork
-                            HeaderView(with: model)
-                            VStack{
+                            CharacterHeaderView(with: model)
+                            VStack {
                                 Text(Character.Detail.Constants.Success.title)
                                     .padding(Character.Detail.Constants.Success.padding)
                                     .fontWeight(.heavy)
-                                SeriesListView(with: [model])
+                                SeriesListView(with: model)
                             }
                         }
                         .overlay(alignment: .top) {
@@ -69,6 +79,7 @@ extension Character.Detail {
                     .coordinateSpace(name: "SCROLL")
                 }
             }.onAppear {
+                guard !isPreview else { return }
                 viewModel.onAppear()
             }
             .animation(.easeInOut, value: viewModel.state)
@@ -80,13 +91,13 @@ extension Character.Detail {
 
 extension Character.Detail.ContentView {
     @ViewBuilder
-    func SeriesListView(with model: [Any?]) -> some View {
-        if let model = model as? [Character.List.Model] {
-            VStack(spacing: Character.Detail.Constants.Series.verticalPadding) {
-                ForEach(model.indices, id: \.self) { index in
-                    HStack(spacing: Character.Detail.Constants.Series.horizontalPadding) {
-                        // TODO: add image
-                        KFImage(URL(string: ""))
+    func SeriesListView(with model: Any?) -> some View {
+        if let model = model as? Character.Detail.Model,
+           let series = model.series {
+            VStack(spacing: Character.Detail.Constants.Series.padding) {
+                ForEach(series.indices, id: \.self) { index in
+                    HStack(spacing: Character.Detail.Constants.Series.padding) {
+                        KFImage(series[index].thumbnail)
                             .placeholder {
                                 Image(uiImage: UIImage.imageNotAvailable)
                                     .resizable()
@@ -102,24 +113,40 @@ extension Character.Detail.ContentView {
                                 width: Character.Detail.Constants.Series.width,
                                 height: Character.Detail.Constants.Series.height
                             )
+                            .clipShape(RoundedRectangle(cornerRadius: Character.Detail.Constants.Series.cornerRadius)
+                            )
                             .clipped()
-
-                        // TODO: add Data
-                        Text("Name")
-                            .font(.callout)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.gray)
-
-                        VStack(alignment: .leading, spacing: 6){
-                            Text(model[index].name)
+                        
+                        VStack(alignment: .leading) {
+                            Text(series[index].title)
+                                .font(.headline)
                                 .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                            Text("Data")
-                                .font(.caption)
-                                .foregroundColor(.gray)
+                                .foregroundColor(.black)
+                            
+                            VStack(alignment: .leading) {
+                                if let description = series[index].description {
+                                    Text(description)
+                                        .font(.footnote)
+                                        .lineLimit(Character.Detail.Constants.Series.descriptionMaxLines)
+                                        .foregroundColor(.gray)
+                                }
+                                if let formattedYears = series[index].formattedYears {
+                                    Text(formattedYears)
+                                        .font(.caption)
+                                        .foregroundColor(.primary)
+                                }
+                                Image(uiImage: series[index].rating.image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(
+                                        width: Character.Detail.Constants.Series.ratingImageSize,
+                                        height: Character.Detail.Constants.Series.ratingImageSize
+                                    )
+                            }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    }
+                    }.padding([.horizontal], Character.Detail.Constants.Series.padding)
+                    
                 }
             }.background(.white)
         } else {
@@ -132,16 +159,16 @@ extension Character.Detail.ContentView {
 
 extension Character.Detail.ContentView {
     @ViewBuilder
-    func HeaderView(with model: Any?) -> some View {
-        if let model = model as? Character.List.Model {
+    func CharacterHeaderView(with model: Any?) -> some View {
+        if let model = model as? Character.Detail.Model {
             let height = size.height * Character.Detail.Constants.Header.heightPercentage
             GeometryReader { proxy in
-
+                
                 let size = proxy.size
                 let minY = proxy.frame(in: .named("SCROLL")).minY
                 let progress = minY / (height * (minY > 0 ? 0.5 : 0.8))
-
-                KFImage(URL(string: "" ))
+                
+                KFImage(model.character?.thumbnail)
                     .placeholder {
                         Image(uiImage: UIImage.imageNotAvailable)
                             .resizable()
@@ -154,7 +181,6 @@ extension Character.Detail.ContentView {
                     .clipped()
                     .overlay(content: {
                         ZStack(alignment: .bottom) {
-                            // MARK: - Gradient Overlay
                             Rectangle()
                                 .fill(
                                     .linearGradient(colors: [
@@ -167,7 +193,7 @@ extension Character.Detail.ContentView {
                                     ], startPoint: .top, endPoint: .bottom)
                                 )
                             VStack(spacing: .zero) {
-                                Text(model.name)
+                                Text(model.character?.name ?? "")
                                     .foregroundColor(.white)
                                     .font(Character.Detail.Constants.Header.titleFont)
                                     .multilineTextAlignment(.center)
@@ -194,14 +220,14 @@ extension Character.Detail.ContentView {
         with onBackButtonClicked: @escaping () -> Void,
         model: Any?
     ) -> some View {
-        if let model = model as? Character.List.Model {
+        if let model = model as? Character.Detail.Model {
             let height = size.height * 0.45
-            GeometryReader{ proxy in
+            GeometryReader { proxy in
                 let minY = proxy.frame(in: .named("SCROLL")).minY
                 let height = size.height * 0.45
                 let progress = minY / (height * (minY > 0 ? 0.5 : 0.8))
                 let titleProgress =  minY / height
-
+                
                 HStack(spacing: 15) {
                     Button {
                         onBackButtonClicked()
@@ -210,17 +236,22 @@ extension Character.Detail.ContentView {
                             .foregroundColor(.white)
                     }
                     Spacer(minLength: 0)
-
-
+                    
                     Button {
-
+                        isSharing.toggle()
                     } label: {
                         Image.iconShare
                             .foregroundColor(.white)
+                    }.sheet(isPresented: $isSharing) {
+                        ShareSheet(activityItems: [
+                            model.character?.name ?? "",
+                            Character.Detail.Constants.marvelUrl
+                        ]
+                        )
                     }
                 }
                 .overlay(content: {
-                    Text(model.name)
+                    Text(model.character?.name ?? "")
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
                         .offset(y: -titleProgress > 0.75 ? 0 : 45)
@@ -242,15 +273,30 @@ extension Character.Detail.ContentView {
     }
 }
 
+// MARK: - Share Content -
+
+extension Character.Detail.ContentView {
+    struct ShareSheet: UIViewControllerRepresentable {
+        var activityItems: [Any]
+        
+        func makeUIViewController(context: Context) -> UIActivityViewController {
+            let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+            return activityViewController
+        }
+        
+        func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
+            // No updates needed in this case
+        }
+    }
+}
+
 // MARK: - Preview -
 
 struct CharacterDetailContenView_Previews: PreviewProvider {
     static var previews: some View {
-        let repo = Serie.Repository()
-        let useCases = UseCase.SerieUseCases(with: repo)
-        let viewModel = Character.Detail.ViewModel(coordinator: nil, useCases: useCases)
-        let model = Character.List.Model(id: 1, name: "Character Name")
-        viewModel.state = .success(model)
-        return Character.Detail.MainView(viewModel: viewModel)
+        return Character.Detail.MainView(
+            viewModel: .preview,
+            isPreview: true
+        )
     }
 }
