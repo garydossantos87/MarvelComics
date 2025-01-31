@@ -1,6 +1,6 @@
 import Foundation
 
-struct ThumbnailResult: Decodable {
+struct ThumbnailResult: Encodable, Decodable, Equatable {
     let path: String
     let formatExtension: String
 

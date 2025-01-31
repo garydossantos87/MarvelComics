@@ -1,6 +1,6 @@
 import Foundation
 
-struct PriceResult: Decodable {
+struct PriceResult: Encodable, Decodable, Equatable {
     let type: String
     let price: Double
 

@@ -1,7 +1,7 @@
 import Foundation
 
 extension Comic {
-    struct ListResult: Decodable {
+    struct ListResult: Encodable, Decodable, Equatable {
         let data: DataResult<Comic.Result>
     }
 }

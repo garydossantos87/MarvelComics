@@ -1,7 +1,7 @@
 import Foundation
 
 extension Character {
-    struct ListResult: Decodable {
+    struct ListResult: Encodable, Decodable {
         let data: DataResult<Character.Result>
     }
 }

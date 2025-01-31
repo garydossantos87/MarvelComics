@@ -1,7 +1,7 @@
 import Foundation
 
 extension Serie {
-    struct Result: Decodable {
+    struct Result: Encodable, Decodable, Equatable {
         let id: Int
         let title: String
         let description: String?

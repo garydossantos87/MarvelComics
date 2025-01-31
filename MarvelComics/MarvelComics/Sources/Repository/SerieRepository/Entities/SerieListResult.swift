@@ -1,7 +1,7 @@
 import Foundation
 
 extension Serie {
-    struct ListResult: Decodable {
+    struct ListResult: Encodable, Decodable {
         let data: DataResult<Serie.Result>
     }
 }

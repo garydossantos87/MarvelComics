@@ -1,6 +1,6 @@
 import Foundation
 
-struct DataResult<T: Decodable>: Decodable {
+struct DataResult<T: Encodable & Decodable & Equatable>: Encodable, Decodable, Equatable {
     let offset: Int
     let limit: Int
     let total: Int

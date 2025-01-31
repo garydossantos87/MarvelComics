@@ -12,6 +12,7 @@ enum API {
     enum NetworkError: Error {
         case invalidRequest
         case invalidResponse
+        case networkFailure
         case jsonDecodingError(error: Error)
         case unknown(error: Error)
         case badServerResponse(statusCode: Int)
@@ -23,6 +24,7 @@ enum API {
             case .invalidRequest: return "Invalid request"
             case .invalidResponse: return "Invalid response"
             case .jsonDecodingError(let error): return "Decoding Error \n\(error.localizedDescription)"
+            case .networkFailure: return "Unknown error"
             }
         }
     }
@@ -61,7 +63,8 @@ extension API.NetworkError: Equatable {
         case (.badServerResponse(let code1), .badServerResponse(let code2)):
             return code1 == code2
         case (.jsonDecodingError, .jsonDecodingError),
-            (.unknown, .unknown):
+            (.unknown, .unknown),
+            (.networkFailure, .networkFailure):
             return true
         default:
             return false

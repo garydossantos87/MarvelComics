@@ -1,7 +1,7 @@
 import Foundation
 
 extension Comic {
-    struct Result: Decodable {
+    struct Result: Encodable, Decodable, Equatable {
         let id: Int
         let title: String
         let description: String?

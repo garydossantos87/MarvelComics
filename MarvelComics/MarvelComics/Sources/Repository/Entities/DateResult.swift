@@ -1,6 +1,6 @@
 import Foundation
 
-struct DateResult: Decodable {
+struct DateResult: Encodable, Decodable, Equatable {
     let type: String
     let date: String
 
