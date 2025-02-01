@@ -49,7 +49,7 @@ private extension Comic.List.ViewController {
                     self?.hideLoading()
                 case .failure(let error):
                     self?.showAlert(with: .defaultError(
-                        with: error.localizedDescription,
+                        with: error.name,
                         actionHandler: { [weak self] in
                             self?.hideAlert()
                         }

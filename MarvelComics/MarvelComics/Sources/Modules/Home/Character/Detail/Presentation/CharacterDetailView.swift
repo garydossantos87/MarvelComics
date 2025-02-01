@@ -55,7 +55,7 @@ extension Character.Detail {
                         .zIndex(1)
                 case .failure(let error):
                     Alert.MainView(model: .defaultError(
-                        with: error.localizedDescription,
+                        with: error.name,
                         actionHandler: {
                             viewModel.onBackButtonClicked()
                         }))

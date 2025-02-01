@@ -10,7 +10,7 @@ import Foundation
 enum ViewModelState: Equatable {
     case loading
     case success(Any? = nil)
-    case failure(Error)
+    case failure(ErrorModel)
     
     static func == (lhs: ViewModelState, rhs: ViewModelState) -> Bool {
         switch (lhs, rhs) {

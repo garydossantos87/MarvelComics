@@ -8,6 +8,6 @@
 import Foundation
 import Combine
 
-protocol FetchCharactersUseCaseProtocol: UseCaseProtocol where Input == Int?, Output == AnyPublisher<Character.PaginationModel, API.NetworkError> {
-    func execute(input: Int?) -> AnyPublisher<Character.PaginationModel, API.NetworkError>
+protocol FetchCharactersUseCaseProtocol: UseCaseProtocol where Input == Int?, Output == AnyPublisher<Character.PaginationModel, ErrorModel> {
+    func execute(input: Int?) -> AnyPublisher<Character.PaginationModel, ErrorModel>
 }

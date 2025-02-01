@@ -51,7 +51,7 @@ extension Character.Detail.ViewModel {
 
     static var previewError: Character.Detail.ViewModel {
         let viewModel = viewModelMock()
-        viewModel.state = .failure(API.NetworkError.badServerResponse(statusCode: 500))
+        viewModel.state = .failure(ErrorModel.notFound)
         return viewModel
     }
 

@@ -24,11 +24,12 @@ extension UseCase {
 
 extension UseCase.FetchComicsUseCase {
     typealias Input = Void
-    typealias Output = AnyPublisher<[Comic.List.Model], API.NetworkError>
+    typealias Output = AnyPublisher<[Comic.List.Model], ErrorModel>
 
     func execute(input: Void = ()) -> Output {
         repository.fetchComics()
             .map { $0.data.results.map(Comic.List.Model.init) }
+            .mapToDomainError()
             .eraseToAnyPublisher()
     }
 }

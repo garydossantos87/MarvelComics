@@ -24,11 +24,12 @@ extension UseCase {
 
 extension UseCase.FetchCharactersUseCase {
     typealias Input = Int?
-    typealias Output = AnyPublisher<Character.PaginationModel, API.NetworkError>
+    typealias Output = AnyPublisher<Character.PaginationModel, ErrorModel>
 
-    func execute(input: Int?) -> AnyPublisher<Character.PaginationModel, API.NetworkError> {
+    func execute(input: Int?) -> AnyPublisher<Character.PaginationModel, ErrorModel> {
         repository.fetchCharacters(with: input)
             .map { Character.PaginationModel.init(with: $0) }
+            .mapToDomainError()
             .eraseToAnyPublisher()
     }
 }
