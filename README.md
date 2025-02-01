@@ -50,8 +50,8 @@ These libraries are added using **Swift Package Manager**.
 
 ## **Missing Features / Under Construction**
 
-- **Character Details and Comics:** These sections are still under construction. The logic to fetch and display detailed character information and associated comics is in progress.
-- **Unit Tests:** Additional unit tests are needed for services and view models. Currently, the focus is on UI testing and integration.
+- **Character Details:** These sections are still under construction. The logic to fetch and display detailed character information.
+- **Unit Tests:** Additional unit tests are needed for services and view models.
 - **UI Components:** Some parts of the UI are still missing or need refinement.
 
 ---
