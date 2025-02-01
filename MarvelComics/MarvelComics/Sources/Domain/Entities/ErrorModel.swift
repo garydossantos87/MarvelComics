@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ErrorModel: Error {
+enum ErrorModel: Error, Equatable {
     case networkFailure
     case decodingError
     case unauthorized
@@ -40,7 +40,9 @@ extension ErrorModel {
         switch apiError {
         case .networkFailure:
             return .networkFailure
-        case .jsonDecodingError:
+        case .jsonDecodingError,
+             .invalidRequest,
+             .invalidResponse:
             return .decodingError
         case .badServerResponse(let statusCode):
             switch statusCode {
@@ -51,8 +53,6 @@ extension ErrorModel {
             }
         case .unknown(let error):
             return .unknown(error.localizedDescription)
-        default:
-            return .unknown("Unhandled error")
         }
     }
 }

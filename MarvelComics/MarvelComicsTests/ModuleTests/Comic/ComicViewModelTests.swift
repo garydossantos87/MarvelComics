@@ -73,8 +73,8 @@ class ComicViewModelTests: XCTestCase {
             .dropFirst()
             .sink { state in
                 // Then
-                if case .failure(let error) = state {
-                    XCTAssertEqual(error as? API.NetworkError, API.NetworkError.badServerResponse(statusCode: 500))
+                if case .failure(let errorModel) = state {
+                    XCTAssertEqual(errorModel, ErrorModel.serverError)
                     expectation.fulfill()
                 }
             }

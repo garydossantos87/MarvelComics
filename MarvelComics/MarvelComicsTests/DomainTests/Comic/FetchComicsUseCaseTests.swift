@@ -59,7 +59,7 @@ final class FetchComicsUseCaseTests: XCTestCase {
         useCase.execute()
             .sink(receiveCompletion: { completion in
                 if case .failure(let error) = completion {
-                    XCTAssertEqual(error, API.NetworkError.invalidRequest, "Expected network failure error")
+                    XCTAssertEqual(error, ErrorModel.decodingError, "Expected network failure error")
                     expectation.fulfill()
                 }
             }, receiveValue: { _ in
