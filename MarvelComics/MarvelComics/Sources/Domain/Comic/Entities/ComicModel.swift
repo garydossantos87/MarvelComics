@@ -9,7 +9,7 @@
 import Foundation
 
 extension Comic.List {
-    struct Model: Equatable {
+    struct Model: Equatable, Decodable {
         let id: Int
         let title: String
         let description: String?

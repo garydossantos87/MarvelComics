@@ -6,6 +6,8 @@ extension API {
         case comics
         case series(Int)
         case creators(Int)
+        case stories(Int)
+        case charactersForComic(Int)
 
         // MARK: - Private vars -
         
@@ -23,6 +25,8 @@ extension API {
             case .comics: "comics"
             case .series(let characterId): "characters/\(characterId)/series"
             case .creators(let comicId): "comics/\(comicId)/creators"
+            case .stories(let comicId): "comics/\(comicId)/stories"
+            case .charactersForComic(let comicId): "comics/\(comicId)/characters"
             }
         }
     }

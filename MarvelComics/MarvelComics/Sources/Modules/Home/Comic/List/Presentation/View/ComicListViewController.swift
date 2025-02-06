@@ -88,10 +88,7 @@ extension Comic.List.ViewController: UICollectionViewDataSource {
 
 extension Comic.List.ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showAlert(with: .defaultUnderConstruction(
-            actionHandler: { [weak self] in
-                self?.hideAlert()
-            }))
+        viewModel.onComicClicked(at: indexPath.item)
     }
 }
 

@@ -27,14 +27,19 @@ extension Comic.Detail {
 
 extension Comic.Detail.ViewFactory: ViewFactory {
     func make() -> UIViewController {
-//        let repository = Serie.Repository(client: API.DefaultClient.shared)
-//        let useCases = UseCase.SerieUseCases(with: repository)
-//        let viewModel = Character.Detail.ViewModel(
-//            coordinator: coordinator,
-//            useCases: useCases,
-//            character: character
-//        )
-        let rootView = Comic.Detail.MainView(viewModel: .preview)
+        let creatorRepository = Creator.Repository(client: API.DefaultClient.shared)
+        let storyRepository = Story.Repository(client: API.DefaultClient.shared)
+        let characterRepository = Character.Repository(client: API.DefaultClient.shared)
+        let useCases = UseCase.ComicDetailUseCases(
+            with: creatorRepository,
+            storyRepository: storyRepository,
+            characterRepository: characterRepository
+        )
+        let viewModel = Comic.Detail.ViewModel(
+            coordinator: coordinator,
+            useCases: useCases,
+            comic: comic)
+        let rootView = Comic.Detail.MainView(viewModel: viewModel)
         return BaseHostingController(rootView: rootView, hideTabBar: true)
     }
 }

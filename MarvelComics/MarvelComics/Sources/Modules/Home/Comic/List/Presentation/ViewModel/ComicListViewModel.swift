@@ -56,4 +56,9 @@ extension Comic.List.ViewModel {
     func numberOfSections() -> Int {
         return Comic.List.View.Constants.numbersOfSections
     }
+
+    func onComicClicked(at index: Int) {
+        guard let comic = comicModel(at: index) else { return }
+        coordinator?.openComicDetail(with: comic)
+    }
 }

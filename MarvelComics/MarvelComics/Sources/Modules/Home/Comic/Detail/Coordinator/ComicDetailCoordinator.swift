@@ -6,5 +6,6 @@ protocol ComicDetailCoordinatorProtocol: BaseCoordinatorProtocol {
 
 final class ComicDetailCoordinator: BaseCoordinator, ComicDetailCoordinatorProtocol {
     func openComicList() {
+        handleNavigation(with: .pop)
     }
 }

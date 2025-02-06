@@ -5,4 +5,5 @@ protocol ComicListViewModelProtocol: ViewModelProtocol where CoordinatorType == 
     func comicModel(at index: Int) -> Comic.List.Model?
     func numberOfRowsInSection(section: Int) -> Int
     func numberOfSections() -> Int
+    func onComicClicked(at index: Int)
 }
