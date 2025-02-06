@@ -84,6 +84,13 @@
 		C1A4F78D2D466C1D00550B29 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F78A2D466C1D00550B29 /* SplashCoordinator.swift */; };
 		C1A4F7902D46703700550B29 /* LoadingSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F78F2D46703700550B29 /* LoadingSwiftUIView.swift */; };
 		C1A4F7942D4687EA00550B29 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A4F7932D4687EA00550B29 /* Constants.swift */; };
+		C1A82C282D520E2A001364AD /* ComicDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A82C252D520E2A001364AD /* ComicDetailViewModel.swift */; };
+		C1A82C292D520E2A001364AD /* ComicDetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A82C242D520E2A001364AD /* ComicDetailViewModelProtocol.swift */; };
+		C1A82C2A2D520E2A001364AD /* ComicDetailViewModel+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A82C262D520E2A001364AD /* ComicDetailViewModel+Preview.swift */; };
+		C1ABF81B2D50BA94009315F4 /* ComicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ABF81A2D50BA94009315F4 /* ComicDetailView.swift */; };
+		C1ABF81D2D50BAA6009315F4 /* ComicDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ABF81C2D50BAA6009315F4 /* ComicDetailFactory.swift */; };
+		C1ABF8202D50BABC009315F4 /* ComicDetailEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ABF81E2D50BABC009315F4 /* ComicDetailEntities.swift */; };
+		C1ABF8232D50BADF009315F4 /* ComicDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ABF8212D50BADF009315F4 /* ComicDetailCoordinator.swift */; };
 		C1B4ADD32D4B6A5C004AF4A2 /* SerieUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B4ADD22D4B6A5C004AF4A2 /* SerieUseCases.swift */; };
 		C1B4ADD42D4B6A5C004AF4A2 /* FetchSeriesUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B4ADD12D4B6A5C004AF4A2 /* FetchSeriesUseCaseProtocol.swift */; };
 		C1B4ADD52D4B6A5C004AF4A2 /* FetchSeriesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B4ADD02D4B6A5C004AF4A2 /* FetchSeriesUseCase.swift */; };
@@ -105,6 +112,11 @@
 		C1C46A082D45558A0073ABD3 /* CharacterListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C46A062D45558A0073ABD3 /* CharacterListCoordinator.swift */; };
 		C1CC808E2D4579F30054FB81 /* BaseCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CC808D2D4579F30054FB81 /* BaseCoordinatorProtocol.swift */; };
 		C1CC80932D4596C60054FB81 /* ComicListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CC80912D4596C60054FB81 /* ComicListCoordinator.swift */; };
+		C1CECE0A2D54AF8F000AC710 /* CreatorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CECE052D54AF8F000AC710 /* CreatorResult.swift */; };
+		C1CECE0B2D54AF8F000AC710 /* CreatorRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CECE082D54AF8F000AC710 /* CreatorRepositoryProtocol.swift */; };
+		C1CECE0C2D54AF8F000AC710 /* CreatorListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CECE032D54AF8F000AC710 /* CreatorListRequest.swift */; };
+		C1CECE0D2D54AF8F000AC710 /* CreatorListResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CECE062D54AF8F000AC710 /* CreatorListResult.swift */; };
+		C1CECE0E2D54AF8F000AC710 /* CreatorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CECE092D54AF8F000AC710 /* CreatorRepository.swift */; };
 		C1D1A1092BBEB3390016FD34 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D1A1082BBEB3390016FD34 /* AlertView.swift */; };
 		C1D1A10D2BBEC1310016FD34 /* AlertEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D1A10C2BBEC1310016FD34 /* AlertEntities.swift */; };
 		C1D1A10F2BBECCB10016FD34 /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D1A10E2BBECCB10016FD34 /* Color+Palette.swift */; };
@@ -220,6 +232,13 @@
 		C1A4F78A2D466C1D00550B29 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
 		C1A4F78F2D46703700550B29 /* LoadingSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSwiftUIView.swift; sourceTree = "<group>"; };
 		C1A4F7932D4687EA00550B29 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C1A82C242D520E2A001364AD /* ComicDetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailViewModelProtocol.swift; sourceTree = "<group>"; };
+		C1A82C252D520E2A001364AD /* ComicDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailViewModel.swift; sourceTree = "<group>"; };
+		C1A82C262D520E2A001364AD /* ComicDetailViewModel+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ComicDetailViewModel+Preview.swift"; sourceTree = "<group>"; };
+		C1ABF81A2D50BA94009315F4 /* ComicDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailView.swift; sourceTree = "<group>"; };
+		C1ABF81C2D50BAA6009315F4 /* ComicDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailFactory.swift; sourceTree = "<group>"; };
+		C1ABF81E2D50BABC009315F4 /* ComicDetailEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailEntities.swift; sourceTree = "<group>"; };
+		C1ABF8212D50BADF009315F4 /* ComicDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailCoordinator.swift; sourceTree = "<group>"; };
 		C1B4ADD02D4B6A5C004AF4A2 /* FetchSeriesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSeriesUseCase.swift; sourceTree = "<group>"; };
 		C1B4ADD12D4B6A5C004AF4A2 /* FetchSeriesUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSeriesUseCaseProtocol.swift; sourceTree = "<group>"; };
 		C1B4ADD22D4B6A5C004AF4A2 /* SerieUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieUseCases.swift; sourceTree = "<group>"; };
@@ -239,6 +258,11 @@
 		C1C46A062D45558A0073ABD3 /* CharacterListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListCoordinator.swift; sourceTree = "<group>"; };
 		C1CC808D2D4579F30054FB81 /* BaseCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		C1CC80912D4596C60054FB81 /* ComicListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListCoordinator.swift; sourceTree = "<group>"; };
+		C1CECE032D54AF8F000AC710 /* CreatorListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorListRequest.swift; sourceTree = "<group>"; };
+		C1CECE052D54AF8F000AC710 /* CreatorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorResult.swift; sourceTree = "<group>"; };
+		C1CECE062D54AF8F000AC710 /* CreatorListResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorListResult.swift; sourceTree = "<group>"; };
+		C1CECE082D54AF8F000AC710 /* CreatorRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorRepositoryProtocol.swift; sourceTree = "<group>"; };
+		C1CECE092D54AF8F000AC710 /* CreatorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorRepository.swift; sourceTree = "<group>"; };
 		C1D1A1082BBEB3390016FD34 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		C1D1A10C2BBEC1310016FD34 /* AlertEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertEntities.swift; sourceTree = "<group>"; };
 		C1D1A10E2BBECCB10016FD34 /* Color+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Palette.swift"; sourceTree = "<group>"; };
@@ -316,6 +340,7 @@
 		C105674D2BB9B3AD00D00F59 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				C1CECE022D54AF28000AC710 /* CreatorRepository */,
 				C1BB085D2D4A22DD00605779 /* SerieRepository */,
 				C1D1A1122BBF0D9C0016FD34 /* CharacterRepository */,
 				C10567532BB9B55400D00F59 /* Entities */,
@@ -403,6 +428,7 @@
 		C10F73C82BB1B59500F6DD74 /* Comic */ = {
 			isa = PBXGroup;
 			children = (
+				C1ABF8182D50B99C009315F4 /* Detail */,
 				C10F73CB2BB1B5BE00F6DD74 /* List */,
 			);
 			path = Comic;
@@ -840,6 +866,52 @@
 			path = SwiftUIView;
 			sourceTree = "<group>";
 		};
+		C1A82C272D520E2A001364AD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C1A82C242D520E2A001364AD /* ComicDetailViewModelProtocol.swift */,
+				C1A82C252D520E2A001364AD /* ComicDetailViewModel.swift */,
+				C1A82C262D520E2A001364AD /* ComicDetailViewModel+Preview.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C1ABF8182D50B99C009315F4 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C1A82C272D520E2A001364AD /* ViewModel */,
+				C1ABF8222D50BADF009315F4 /* Coordinator */,
+				C1ABF81F2D50BABC009315F4 /* Entities */,
+				C1ABF8192D50BA84009315F4 /* Presentation */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		C1ABF8192D50BA84009315F4 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C1ABF81A2D50BA94009315F4 /* ComicDetailView.swift */,
+				C1ABF81C2D50BAA6009315F4 /* ComicDetailFactory.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C1ABF81F2D50BABC009315F4 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C1ABF81E2D50BABC009315F4 /* ComicDetailEntities.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		C1ABF8222D50BADF009315F4 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C1ABF8212D50BADF009315F4 /* ComicDetailCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		C1B4ADCF2D4B6A50004AF4A2 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
@@ -940,6 +1012,34 @@
 				C1CC80912D4596C60054FB81 /* ComicListCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C1CECE022D54AF28000AC710 /* CreatorRepository */ = {
+			isa = PBXGroup;
+			children = (
+				C1CECE042D54AF8F000AC710 /* Request */,
+				C1CECE072D54AF8F000AC710 /* Entities */,
+				C1CECE082D54AF8F000AC710 /* CreatorRepositoryProtocol.swift */,
+				C1CECE092D54AF8F000AC710 /* CreatorRepository.swift */,
+			);
+			path = CreatorRepository;
+			sourceTree = "<group>";
+		};
+		C1CECE042D54AF8F000AC710 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				C1CECE032D54AF8F000AC710 /* CreatorListRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		C1CECE072D54AF8F000AC710 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C1CECE052D54AF8F000AC710 /* CreatorResult.swift */,
+				C1CECE062D54AF8F000AC710 /* CreatorListResult.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		C1D1A10A2BBEC11E0016FD34 /* Alert */ = {
@@ -1208,6 +1308,7 @@
 				C1A4F7882D466A7800550B29 /* ComicListCoordinatorProtocol.swift in Sources */,
 				C10F73EB2BB1B85000F6DD74 /* CharacterListEntities.swift in Sources */,
 				C12978B62BB05C4B00A72CDE /* SplashViewFactory.swift in Sources */,
+				C1ABF8232D50BADF009315F4 /* ComicDetailCoordinator.swift in Sources */,
 				C1D1A1092BBEB3390016FD34 /* AlertView.swift in Sources */,
 				C1E7FC5E2BBC30190092C75C /* LoadingView.swift in Sources */,
 				C1A0FE9F2D3EDD36006277CE /* FetchComicUseCase.swift in Sources */,
@@ -1262,6 +1363,7 @@
 				C10C22BF2BC010140010D6AA /* Pagination.swift in Sources */,
 				C105673B2BB9990700D00F59 /* AppDelegate.swift in Sources */,
 				C13719C62BC2EF7B003E3206 /* CharacterDetailFactory.swift in Sources */,
+				C1ABF8202D50BABC009315F4 /* ComicDetailEntities.swift in Sources */,
 				C1A4F7862D466A2700550B29 /* CharacterListCoordinatorProtocol.swift in Sources */,
 				C10567432BB99E8D00D00F59 /* APIEntities.swift in Sources */,
 				C10F73E32BB1B81D00F6DD74 /* CharacterListViewModelProtocol.swift in Sources */,
@@ -1275,14 +1377,24 @@
 				C1C46A012D451FE90073ABD3 /* FetchCharacterUseCaseProtocol.swift in Sources */,
 				C10567592BB9B5E400D00F59 /* PriceResult.swift in Sources */,
 				C10567612BB9B85400D00F59 /* ComicListRequest.swift in Sources */,
+				C1CECE0A2D54AF8F000AC710 /* CreatorResult.swift in Sources */,
+				C1CECE0B2D54AF8F000AC710 /* CreatorRepositoryProtocol.swift in Sources */,
+				C1CECE0C2D54AF8F000AC710 /* CreatorListRequest.swift in Sources */,
+				C1CECE0D2D54AF8F000AC710 /* CreatorListResult.swift in Sources */,
+				C1CECE0E2D54AF8F000AC710 /* CreatorRepository.swift in Sources */,
 				C1D1A10D2BBEC1310016FD34 /* AlertEntities.swift in Sources */,
 				C10D202F2BBAF4CA00839FFE /* Date+Extensions.swift in Sources */,
 				C13719C22BC2EF6A003E3206 /* CharacterDetailView.swift in Sources */,
+				C1ABF81B2D50BA94009315F4 /* ComicDetailView.swift in Sources */,
+				C1A82C282D520E2A001364AD /* ComicDetailViewModel.swift in Sources */,
+				C1A82C292D520E2A001364AD /* ComicDetailViewModelProtocol.swift in Sources */,
+				C1A82C2A2D520E2A001364AD /* ComicDetailViewModel+Preview.swift in Sources */,
 				C105673E2BB99CC500D00F59 /* APIClient.swift in Sources */,
 				C1C46A032D4525D80073ABD3 /* CharacterUseCases.swift in Sources */,
 				C10567672BB9C0BD00D00F59 /* RepositoryProtocol.swift in Sources */,
 				C1C46A082D45558A0073ABD3 /* CharacterListCoordinator.swift in Sources */,
 				C10567652BB9BE0200D00F59 /* ComicRepository.swift in Sources */,
+				C1ABF81D2D50BAA6009315F4 /* ComicDetailFactory.swift in Sources */,
 				C1D1A11A2BBF0F880016FD34 /* CharacterListRequest.swift in Sources */,
 				C1A0FEA42D3EDDEE006277CE /* ComicModel.swift in Sources */,
 				C10F73E92BB1B83B00F6DD74 /* CharacterListViewFactory.swift in Sources */,

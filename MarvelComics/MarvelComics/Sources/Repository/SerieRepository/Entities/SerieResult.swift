@@ -1,5 +1,11 @@
 import Foundation
 
+enum Serie {
+    enum List {
+
+    }
+}
+
 extension Serie {
     struct Result: Encodable, Decodable, Equatable {
         let id: Int

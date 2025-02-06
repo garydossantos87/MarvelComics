@@ -61,17 +61,17 @@ extension Character.Detail {
                         }))
                 case .success(let model):
                     ScrollView(.vertical, showsIndicators: false) {
-                        VStack{
-                            CharacterHeaderView(with: model)
+                        VStack {
+                            makeCharacterHeaderView(with: model)
                             VStack {
                                 Text(Character.Detail.Constants.Success.title)
                                     .padding(Character.Detail.Constants.Success.padding)
                                     .fontWeight(.heavy)
-                                SeriesListView(with: model)
+                                makeSeriesListView(with: model)
                             }
                         }
                         .overlay(alignment: .top) {
-                            NavBarView(with: {
+                            makeNavBarView(with: {
                                 viewModel.onBackButtonClicked()
                             }, model: model)
                         }
@@ -91,7 +91,7 @@ extension Character.Detail {
 
 extension Character.Detail.ContentView {
     @ViewBuilder
-    func SeriesListView(with model: Any?) -> some View {
+    func makeSeriesListView(with model: Any?) -> some View {
         if let model = model as? Character.Detail.Model,
            let series = model.series {
             VStack(spacing: Character.Detail.Constants.Series.padding) {
@@ -159,7 +159,7 @@ extension Character.Detail.ContentView {
 
 extension Character.Detail.ContentView {
     @ViewBuilder
-    func CharacterHeaderView(with model: Any?) -> some View {
+    func makeCharacterHeaderView(with model: Any?) -> some View {
         if let model = model as? Character.Detail.Model {
             let height = size.height * Character.Detail.Constants.Header.heightPercentage
             GeometryReader { proxy in
@@ -216,7 +216,7 @@ extension Character.Detail.ContentView {
 
 extension Character.Detail.ContentView {
     @ViewBuilder
-    func NavBarView(
+    func makeNavBarView(
         with onBackButtonClicked: @escaping () -> Void,
         model: Any?
     ) -> some View {
@@ -245,8 +245,7 @@ extension Character.Detail.ContentView {
                     }.sheet(isPresented: $isSharing) {
                         ShareSheet(activityItems: [
                             model.character?.name ?? "",
-                            Character.Detail.Constants.marvelUrl
-                        ]
+                            Character.Detail.Constants.marvelUrl]
                         )
                     }
                 }
@@ -258,11 +257,26 @@ extension Character.Detail.ContentView {
                         .clipped()
                         .animation(.easeOut(duration: 0.25), value: -titleProgress > 0.75)
                 })
-                .padding(.top, safeArea.top + 10)
+                .padding(.top, safeArea.top)
                 .padding([.horizontal,.bottom], 15)
                 .background(
-                    Color.red
-                        .opacity(-progress > 1 ? 1 : 0)
+                    ZStack {
+                        KFImage(model.character?.thumbnail)
+                            .placeholder {
+                                Image(uiImage: UIImage.imageNotAvailable)
+                                    .resizable()
+                                    .blur(radius: 20.0, opaque: true)
+                                    .frame(height: 100)
+                                    .aspectRatio(contentMode: .fill)
+
+                            }
+                            .resizable()
+                            .blur(radius: 20.0, opaque: true)
+                            .frame(height: 100)
+                            .scaledToFill()
+                            .clipped()
+                        Color.black.opacity(0.5)
+                    }.opacity(-progress > 1 ? 1 : 0)
                 )
                 .offset(y: -minY)
             }

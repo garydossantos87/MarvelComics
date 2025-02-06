@@ -6,4 +6,5 @@
 //
 
 protocol ComicListCoordinatorProtocol: BaseCoordinatorProtocol {
+    func openComicDetail(with comic: Comic.List.Model)
 }
