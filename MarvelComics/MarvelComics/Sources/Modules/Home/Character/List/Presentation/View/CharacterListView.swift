@@ -2,6 +2,14 @@ import UIKit
 
 extension Character.List {
     final class View: UIView {
+        private let searchBar: UISearchBar = {
+            let searchBar = UISearchBar()
+            searchBar.placeholder = Constants.searchBarTitle
+            searchBar.translatesAutoresizingMaskIntoConstraints = false
+            searchBar.backgroundImage = UIImage()
+            return searchBar
+        }()
+        
         private let tableView: UITableView = {
             let tableView = UITableView()
             tableView.rowHeight = UITableView.automaticDimension
@@ -31,25 +39,37 @@ extension Character.List {
             tableView.reloadData()
         }
                 
-        func setupDelegates(with dataSource: UITableViewDataSource, delegate: UITableViewDelegate) {
+        func setupDelegates(
+            with dataSource: UITableViewDataSource,
+            delegate: UITableViewDelegate,
+            searchBarDelegate: UISearchBarDelegate
+        ) {
             tableView.dataSource = dataSource
             tableView.delegate = delegate
+            searchBar.delegate = searchBarDelegate
         }
         
         // MARK: - Private methods -
         
         private func setup() {
             backgroundColor = .white
+            addSubview(searchBar)
             addSubview(tableView)
             setupConstraints()
         }
         
         private func setupConstraints() {
-            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-            
+            NSLayoutConstraint.activate([
+                searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+                searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.searchBarPadding),
+                searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.searchBarPadding)
+            ])
+            NSLayoutConstraint.activate([
+                tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+                tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            ])
         }
     }
 }

@@ -39,7 +39,7 @@ extension Character.List {
 
 private extension Character.List.ViewController {
     func setupTableView() {
-        characterListView.setupDelegates(with: self, delegate: self)
+        characterListView.setupDelegates(with: self, delegate: self, searchBarDelegate: self)
     }
 
     func bindViewModel() {
@@ -98,5 +98,13 @@ extension Character.List.ViewController: UITableViewDataSource {
 extension Character.List.ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.onCharacterClicked(at: indexPath.row)
+    }
+}
+
+// MARK: - UISearchBarDelegate -
+
+extension Character.List.ViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.onFilterCharacters(with: searchBar.text)
     }
 }

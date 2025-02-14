@@ -6,6 +6,13 @@ public enum Character {
     }
 }
 
+extension Character.List.View {
+    enum Constants {
+        static let searchBarPadding = 10.0
+        static let searchBarTitle = "Search Characters"
+    }
+}
+
 extension Character.List.ViewCell {
     enum Constants {
         static let reuseIdentifier = String(describing: Character.List.ViewCell.self)

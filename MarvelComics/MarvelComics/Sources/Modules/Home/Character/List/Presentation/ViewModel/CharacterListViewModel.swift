@@ -7,8 +7,10 @@ extension Character.List {
         @Published var state: ViewModelState?
         private let useCases: UseCase.CharacterUseCases
         private var charactersPagination: Character.PaginationModel?
+        private var filteredCharacters: [Character.List.Model] = []
         private var cancellables: Set<AnyCancellable> = []
         private var isFetchingData: Bool = false
+        private var isFilteringData: Bool = false
         var coordinator: CharacterListCoordinator?
 
         // MARK: - Init -
@@ -21,8 +23,6 @@ extension Character.List {
             self.useCases = useCases
         }
     }
-
-
 }
 
 // MARK: - Protocol methods -
@@ -33,28 +33,24 @@ extension Character.List.ViewModel {
     }
 
     func numberOfRowsInSection(section: Int) -> Int {
-        guard let characters = charactersPagination?.results else { return 0 }
-        return characters.count
+        return isFilteringData ? filteredCharacters.count :
+        charactersPagination?.results.count ?? .zero
     }
 
     func characterModel(at index: Int) -> Character.List.Model? {
-        guard let characters = charactersPagination?.results,
-              characters.indices.contains(index) else {
-            return nil
-        }
+        let source = isFilteringData ? filteredCharacters : charactersPagination?.results
+        guard let characters = source, characters.indices.contains(index) else { return nil }
         return characters[index]
     }
 
     func onCharacterClicked(at index: Int) {
-        guard let characters = charactersPagination?.results,
-              characters.indices.contains(index) else {
-            return
-        }
+        let source = isFilteringData ? filteredCharacters : charactersPagination?.results
+        guard let characters = source, characters.indices.contains(index) else { return }
         coordinator?.openCharacterDetail(with: characters[index])
     }
 
     func loadData() {
-        guard !isFetchingData else { return }
+        guard !isFetchingData && !isFilteringData else { return }
         cancellables.cancelAll()
         isFetchingData = true
         state = .loading
@@ -77,5 +73,19 @@ extension Character.List.ViewModel {
                 )
                 self.state = .success()
             }).store(in: &cancellables)
+    }
+    
+    func onFilterCharacters(with query: String?) {
+        guard let query = query, !query.isEmpty else {
+            isFilteringData = false
+            state = .success()
+            return
+        }
+        
+        isFilteringData = true
+        filteredCharacters = charactersPagination?.results.filter { character in
+            character.name.lowercased().contains(query.lowercased())
+        } ?? []
+        state = .success()
     }
 }
