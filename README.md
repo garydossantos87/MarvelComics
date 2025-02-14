@@ -22,10 +22,11 @@ The app is structured into multiple modules, ensuring better separation of conce
 
 1. **Splash Screen:** The initial screen that loads when the app starts.
 2. **Home Screen:** Displays two main tabs:
-   - **Comics Tab:** A collection view displaying a grid of available comics.
+   - **Comics Tab:** A collection view displaying a grid of available comics. *(Pagination is missing but planned for a future update.)*
    - **Characters Tab:** A list view with endless pagination to fetch and display characters.
-3. **Character Details:** Clicking on a character navigates to a **SwiftUI-powered detail screen** with a sticky header design.
-4. **Sharing Feature:** Users can share character details from the detail screen.
+3. **Character Details:** Clicking on a character navigates to a **SwiftUI-powered detail screen** with a sticky header design. This screen also includes a **search bar that filters the list locally**, preventing unnecessary pagination reloads.
+4. **Comic Details:** Users can access a **SwiftUI-powered comic detail screen**, which features a **blurred navigation bar that appears when scrolling**.
+5. **Sharing Feature:** Users can share character details from the detail screen.
 
 ---
 
@@ -50,7 +51,7 @@ These libraries are added using **Swift Package Manager**.
 
 ## **Missing Features / Under Construction**
 
-- **Character Details:** These sections are still under construction. The logic to fetch and display detailed character information.
+- **Comic List Pagination:** The pagination functionality in the comic list is currently missing and needs to be implemented.
 - **Unit Tests:** Additional unit tests are needed for services and view models.
 - **UI Components:** Some parts of the UI are still missing or need refinement.
 
@@ -59,9 +60,9 @@ These libraries are added using **Swift Package Manager**.
 ## **To-Do / Future Enhancements**
 
 - Implement more unit tests to validate the business logic.
-- Finalize character details.
 - Add empty states for features.
 - Improve UI elements and refine missing UI components.
+- Implement a mechanism to handle empty data states in the UI.
 
 ---
 
