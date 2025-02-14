@@ -97,7 +97,7 @@ extension Character.Detail.ContentView {
             VStack(spacing: Character.Detail.Constants.Series.padding) {
                 ForEach(series.indices, id: \.self) { index in
                     HStack(spacing: Character.Detail.Constants.Series.padding) {
-                        KFImage(series[index].thumbnail)
+                        KFImage(url: series[index].thumbnail)
                             .placeholder {
                                 Image(uiImage: UIImage.imageNotAvailable)
                                     .resizable()
@@ -168,7 +168,7 @@ extension Character.Detail.ContentView {
                 let minY = proxy.frame(in: .named("SCROLL")).minY
                 let progress = minY / (height * (minY > 0 ? 0.5 : 0.8))
 
-                KFImage(model.character?.thumbnail)
+                KFImage(url: model.character?.thumbnail)
                     .placeholder {
                         Image(uiImage: UIImage.imageNotAvailable)
                             .resizable()
@@ -261,7 +261,7 @@ extension Character.Detail.ContentView {
                 .padding([.horizontal,.bottom], 15)
                 .background(
                     ZStack {
-                        KFImage(model.character?.thumbnail)
+                        KFImage(url: model.character?.thumbnail)
                             .placeholder {
                                 Image(uiImage: UIImage.imageNotAvailable)
                                     .resizable()

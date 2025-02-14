@@ -87,8 +87,8 @@ extension Comic.List {
         // MARK: - Public methods -
 
         func configure(with model: Model) {
-            coverImageView.kf.setImage(with: model.thumbnail,
-                                       placeholder: UIImage.imageNotAvailable)
+            coverImageView.setImage(with: model.thumbnail,
+                                    placeholder: UIImage.imageNotAvailable)
             titleLabel.text = model.title
             descriptionLabel.text = model.description
             datePriceLabel.text = model.datePrice

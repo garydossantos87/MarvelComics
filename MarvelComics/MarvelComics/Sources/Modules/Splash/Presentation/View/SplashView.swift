@@ -1,5 +1,6 @@
 import UIKit
 import Kingfisher
+import MarvelComicsShared
 
 extension Splash {
     final class View: UIView {
@@ -13,6 +14,7 @@ extension Splash {
             let imageView = UIImageView(image: .marvelComicsLogo)
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.contentMode = .scaleToFill
+            imageView.accessibilityIdentifier = AccessibilityIdentifiers.Splash.imageViewLogoID
             return imageView
         }()
         
@@ -25,6 +27,7 @@ extension Splash {
             }
             let resource = LocalFileImageDataProvider(fileURL: path)
             imageView.kf.setImage(with: resource)
+            imageView.accessibilityIdentifier = AccessibilityIdentifiers.Splash.loaderGifID
             return imageView
         }()
         

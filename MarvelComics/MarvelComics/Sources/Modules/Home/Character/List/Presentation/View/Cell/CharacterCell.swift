@@ -73,8 +73,8 @@ extension Character.List {
         
         func configure(with model: Model) {
             backgroundColor = .white
-            coverImageView.kf.setImage(with: model.thumbnail,
-                                       placeholder: UIImage.imageNotAvailable)
+            coverImageView.setImage(with: model.thumbnail,
+                                    placeholder: UIImage.imageNotAvailable)
             titleLabel.text = model.name.uppercased()
             descriptionLabel.text = model.description
             dateLabel.text = model.date?.toString()

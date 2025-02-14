@@ -90,7 +90,7 @@ extension Comic.Detail.MainView {
                     HStack(spacing: Constants.Characters.spacing) {
                         ForEach(characters.indices, id: \.self) { index in
                             ZStack {
-                                KFImage(characters[index].thumbnail)
+                                KFImage(url: characters[index].thumbnail)
                                     .placeholder {
                                         Image(uiImage: UIImage.imageNotAvailable)
                                             .resizable()
@@ -209,7 +209,7 @@ extension Comic.Detail.MainView {
                     HStack(spacing: Constants.Creators.horizontalSpacing) {
                         ForEach(creators.indices, id: \.self) { index in
                             ZStack {
-                                KFImage(creators[index].thumbnail)
+                                KFImage(url: creators[index].thumbnail)
                                     .placeholder {
                                         Image(uiImage: UIImage.imageNotAvailable)
                                             .resizable()
@@ -273,7 +273,7 @@ extension Comic.Detail.MainView {
         let model = model as? Comic.Detail.Model
         let maxScrollOffset = Constants.navBarHeight / 2
         ZStack {
-            KFImage(model?.comic?.thumbnail)
+            KFImage(url: model?.comic?.thumbnail)
                 .placeholder {
                     Image(uiImage: UIImage.imageNotAvailable)
                         .resizable()
@@ -338,7 +338,7 @@ extension Comic.Detail.MainView {
                 let height = UIScreen.main.bounds.height
                 let width = UIScreen.main.bounds.width
                 ZStack(alignment: .bottom) {
-                    KFImage(comic.thumbnail)
+                    KFImage(url: comic.thumbnail)
                         .placeholder {
                             Image(uiImage: UIImage.imageNotAvailable)
                                 .resizable()
