@@ -36,6 +36,7 @@ The project uses the following external libraries:
 
 - **Kingfisher:** For handling image downloading and caching.
 - **SnapshotTesting:** For UI snapshot testing to ensure UI consistency across device configurations.
+- **Swifter:** For mocking network responses in UI tests and avoid real calls to the server.
 
 These libraries are added using **Swift Package Manager**.
 
