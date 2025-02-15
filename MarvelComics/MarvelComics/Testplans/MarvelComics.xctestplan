@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "DBDA9907-3A97-4066-8858-F6DE9BFD0FEC",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:MarvelComics.xcodeproj",
+      "identifier" : "C1FDCD282BB01500000A5635",
+      "name" : "MarvelComics"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:MarvelComics.xcodeproj",
+        "identifier" : "C1FDCD3E2BB01501000A5635",
+        "name" : "MarvelComicsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:MarvelComics.xcodeproj",
+        "identifier" : "C1FDCD482BB01501000A5635",
+        "name" : "MarvelComicsUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -263,6 +263,8 @@
 		C156D6732D3A4CD90094FF06 /* SnapshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		C156D6762D3A51A80094FF06 /* CharacterMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMocks.swift; sourceTree = "<group>"; };
 		C18198D62BBD9708000FC790 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
+		C196F6222D60985F00EFFCEC /* MarvelComicsUITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = MarvelComicsUITests.xctestplan; path = MarvelComics/Testplans/MarvelComicsUITests.xctestplan; sourceTree = "<group>"; };
+		C196F6232D60987900EFFCEC /* MarvelComics.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = MarvelComics.xctestplan; path = MarvelComics/Testplans/MarvelComics.xctestplan; sourceTree = "<group>"; };
 		C19F0F922BB099C10065FAE2 /* HomeEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntities.swift; sourceTree = "<group>"; };
 		C19F0FA12BB09D5B0065FAE2 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		C19F0FA32BB0ACC10065FAE2 /* UIColor+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
@@ -1322,6 +1324,8 @@
 		C1FDCD202BB014FF000A5635 = {
 			isa = PBXGroup;
 			children = (
+				C196F6232D60987900EFFCEC /* MarvelComics.xctestplan */,
+				C196F6222D60985F00EFFCEC /* MarvelComicsUITests.xctestplan */,
 				C1FDCD2B2BB01500000A5635 /* MarvelComics */,
 				C1FDCD422BB01501000A5635 /* MarvelComicsTests */,
 				C1FDCD4C2BB01501000A5635 /* MarvelComicsUITests */,

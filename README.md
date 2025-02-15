@@ -53,13 +53,14 @@ These libraries are added using **Swift Package Manager**.
 
 - **Comic List Pagination:** The pagination functionality in the comic list is currently missing and needs to be implemented.
 - **Unit Tests:** Additional unit tests are needed for services and view models.
+- **UI Tests:** Additional UI tests are needed.
 - **UI Components:** Some parts of the UI are still missing or need refinement.
 
 ---
 
 ## **To-Do / Future Enhancements**
 
-- Implement more unit tests to validate the business logic.
+- Implement more unit tests and UI tests to validate the business logic.
 - Add empty states for features.
 - Improve UI elements and refine missing UI components.
 - Implement a mechanism to handle empty data states in the UI.

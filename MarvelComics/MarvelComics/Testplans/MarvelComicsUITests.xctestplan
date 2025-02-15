@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "43FB2DD9-7579-4DCF-8A5A-9DD6C0794D94",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:MarvelComics.xcodeproj",
+        "identifier" : "C1FDCD482BB01501000A5635",
+        "name" : "MarvelComicsUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
