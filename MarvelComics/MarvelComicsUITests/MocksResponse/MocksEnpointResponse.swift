@@ -1,18 +1,35 @@
 import Foundation
 
-public enum MocksUI {
-    public enum Constants {
-        static let pathMocksReponse: String = "MocksResponse/"
-        public enum MocksResponse {
-            public static let getComics: String = "get_comics"
+public enum MocksEnpoint {
+    case comics
+    case characters
+    
+    var path: String {
+        switch self {
+        case .comics: return "/comics"
+        case .characters: return "/characters"
+        }
+    }
+    
+    var data: Data? {
+        switch self {
+        case .comics: return Helper.loadJSONFromFile(named: Constants.FileName.getComics)
+        case .characters: return Helper.loadJSONFromFile(named: Constants.FileName.getCharacters)
         }
     }
 }
 
 // MARK: - Public functions -
 
-public extension MocksUI {
-    class Helpers {
+private extension MocksEnpoint {
+    enum Constants {
+        public enum FileName {
+            public static let getComics: String = "get_comics"
+            public static let getCharacters: String = "get_characters"
+        }
+    }
+    
+    class Helper {
         public static func printFilesInBundle() {
             let bundle = Bundle(for: Self.self)
             
@@ -36,6 +53,5 @@ public extension MocksUI {
             }
             return try? Data(contentsOf: url)
         }
-        
     }
 }

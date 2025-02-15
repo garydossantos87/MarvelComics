@@ -1,6 +1,5 @@
 import UIKit
 import Kingfisher
-import MarvelComicsShared
 
 extension Splash {
     final class View: UIView {

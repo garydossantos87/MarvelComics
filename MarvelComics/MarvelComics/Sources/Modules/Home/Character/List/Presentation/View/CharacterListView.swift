@@ -7,6 +7,7 @@ extension Character.List {
             searchBar.placeholder = Constants.searchBarTitle
             searchBar.translatesAutoresizingMaskIntoConstraints = false
             searchBar.backgroundImage = UIImage()
+            searchBar.accessibilityIdentifier = AccessibilityIdentifiers.Character.searchBarViewID
             return searchBar
         }()
         
@@ -20,6 +21,7 @@ extension Character.List {
             tableView.register(Character.List.ViewCell.self, forCellReuseIdentifier: Character.List.ViewCell.Constants.reuseIdentifier)
             tableView.tableHeaderView = UIView()
             tableView.showsVerticalScrollIndicator = false
+            tableView.accessibilityIdentifier = AccessibilityIdentifiers.Character.tableViewID
             return tableView
         }()
         

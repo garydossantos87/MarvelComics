@@ -1,7 +1,6 @@
 import Kingfisher
 import UIKit
 import Foundation
-import MarvelComicsShared
 
 // MARK: - Kingfisher extensions -
 

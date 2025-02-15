@@ -18,11 +18,19 @@ extension UIViewController {
             case .characters: return .icnCharacters
             }
         }
+        
+        var accessabilityIdentifier: String {
+            switch self {
+            case .comics: return AccessibilityIdentifiers.Comic.tabBarItemID
+            case .characters: return AccessibilityIdentifiers.Character.tabBarItemID
+            }
+        }
     }
 
     func withTabConfiguration(_ config: TabConfiguration) -> UIViewController {
         tabBarItem?.image = config.image
         tabBarItem?.title = config.title
+        tabBarItem?.accessibilityIdentifier = config.accessabilityIdentifier
         return self
     }
 }

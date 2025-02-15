@@ -11,13 +11,7 @@ protocol APIClientProtocol {
 
 extension API {
     final class DefaultClient: APIClientProtocol {
-        static let shared: APIClientProtocol = {
-            if ProcessInfo.processInfo.isUITests {
-                return MockUIAPIClient()
-            } else {
-                return DefaultClient()
-            }
-        }()
+        static let shared = DefaultClient()
         
         private let session: URLSession
         

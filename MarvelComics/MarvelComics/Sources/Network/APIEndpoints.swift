@@ -16,7 +16,9 @@ extension API {
         // MARK: - Private vars -
         
         private var baseURL: String {
-            return "https://gateway.marvel.com/v1/public/"
+            ProcessInfo.processInfo.isUITests ?
+            "http://localhost:8080/" :
+            "https://gateway.marvel.com/v1/public/"
         }
         
         private var path: String {

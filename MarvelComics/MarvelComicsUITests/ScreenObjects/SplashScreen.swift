@@ -1,5 +1,5 @@
-import MarvelComicsShared
 import XCTest
+@testable import MarvelComics
 
 enum SplashScreen {
     private static var app: XCUIApplication = XCUIApplication()

@@ -19,6 +19,7 @@ extension Comic.List {
                 Comic.List.CollectionViewCell.self,
                 forCellWithReuseIdentifier: Comic.List.CollectionViewCell.Constants.reuseIdentifier
             )
+            collectionView.accessibilityIdentifier = AccessibilityIdentifiers.Comic.collectionViewID
             return collectionView
         }()
         
@@ -29,9 +30,6 @@ extension Comic.List {
         
         @available(*, unavailable)
         required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-        
-        func configure() {
-        }
         
         func reloadData() {
             collectionView.reloadData()
